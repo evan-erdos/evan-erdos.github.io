@@ -3,7 +3,7 @@ name: Ben Scott
 url: http://bescott.org/
 avatar: "/rsc/Rook Top.png"
 github_username: iasEnvy
-description: "2015-09-14: When Dan Left v1.0.4 almost works properly! Who's a good Dev?"
+description: "2015-09-18: Oh, jeez Morty, you really did a number on this website right now."
 footer-links:
   email: bescott@andrew.cmu.edu
   github: iasEnvy
@@ -18,10 +18,16 @@ footer-links:
 baseurl: ""
 markdown: redcarpet
 redcarpet:
-  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data", "strikethrough"]
+
+#kramdown:
+#  input: GFM
+#  syntax_highlighter: coderay
+#  coderay_css: 'fruity.css'
+
 highlighter: pygments
 permalink: /:title/
-version: v1.8.5
+version: v1.9.2
 
 #stylus:
 #  compress: true
