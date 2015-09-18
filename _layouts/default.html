@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
+
+    {% include meta.html %}
+
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="titlerect">
+        <div id="fade-down">
+          <header class="masthead clearfix">
+            <a href="{{ site.baseurl }}/" class="site-avatar"><img src="/rsc/rook-top.png" /></a>
+            <!--<div class="site-info"> -->
+              <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
+              <p class="site-description">{{ site.description }}</p>
+            <!--</div>-->
+          </header>
+         <hr id="thr">
+          <nav>
+            <a href="{{ site.baseurl }}/about">About</a>
+            <a href="{{ site.baseurl }}/blag">Blag</a>
+            <a href="{{ site.baseurl }}/gd">Game Dev</a>
+            <a href="{{ site.baseurl }}/3d">3D Modeling</a>
+            <a href="{{ site.baseurl }}/music">Music</a>
+            <a href="{{ site.baseurl }}/if">Writing</a>
+            <a href="{{ site.baseurl }}/other">Other</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div id="main" role="main" class="container">
+      {{ content }}
+      <p>
+    </div>
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          {% include svg-icons.html %}
+        </footer>
+      </div>
+    </div>
+    {% include analytics.html %}
+  </body>
+</html>

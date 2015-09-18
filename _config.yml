@@ -1,0 +1,41 @@
+# This file contains configuration flags
+name: Ben Scott
+url: http://bescott.org/
+avatar: "/rsc/Rook Top.png"
+github_username: iasEnvy
+description: "2015-09-14: When Dan Left v1.0.4 almost works properly! Who's a good Dev?"
+footer-links:
+  email: bescott@andrew.cmu.edu
+  github: iasEnvy
+  facebook: IASJazz
+  youtube: channel/UCGAciiuP89ERn-iqUuYHFBQ
+  #rss: rss
+  #linkedin: /404
+  #twitter: /404
+  stackoverflow: users/5266983/ben-scott
+  #dribbble:
+#google_analytics:
+baseurl: ""
+markdown: redcarpet
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
+highlighter: pygments
+permalink: /:title/
+version: v1.8.5
+
+#stylus:
+#  compress: true
+#  path: ./path/to
+
+sass:
+  style: :compressed # ! :expanded
+
+gems:    # plugins
+- jekyll-sitemap
+
+exclude:
+- Gemfile
+- Gemfile.lock
+- LICENSE
+- README.md
+- CNAME

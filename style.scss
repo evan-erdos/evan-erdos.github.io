@@ -1,0 +1,420 @@
+---
+---
+
+/* imports */
+@import "reset";
+@import "variables";
+@import "highlights";
+@import "svg-icons";
+
+video { /* bescott edits */
+  width: 100%    !important;
+  height: auto   !important;
+  border-radius: 8px;
+}
+
+img.portrait {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 128px;
+  width: 256px;
+  height: 256px;
+  padding: 16px;
+  background-size: 512px;
+  background-position: center;
+} /* end bescott edits */
+
+/* base rules */
+
+html {
+  font-size: 100%;
+    /*url("/rsc/V-2_von_braun.svg"),*/
+  background-image:
+    url("/rsc/stolen-rubicon-x-background.jpg");
+  /*background-repeat: no-repeat, repeat;*/
+  background-repeat: repeat;
+  /*background-attachment: fixed, round;*/
+  /*background-position: left top;*/
+  background-size: auto;
+}
+
+body {
+  font: 18px/1.4 $helvetica;
+  color: $darkGray;
+}
+
+.vector_background {
+  display: block;
+  text-indent: -9999px;
+  width: 800px;
+  height: auto;
+  background-size: auto;
+
+}
+
+.container {
+  background: $lightGray;
+  background-image: url("/rsc/crossword.png");
+  border-radius: 6px;
+  border: 2px outset #FEFEFE;
+  margin: 0 auto;
+  max-width: 768px;
+  padding: 8px;
+  width: 100%;
+  /*opacity: 0.95; */
+}
+
+.mainContainer {
+  background: $white;
+  border-radius: 6px;
+  margin: 0 auto;
+  max-width: 768px;
+  padding: 8px;
+  margin-bottom: 64px;
+  width: 100%;
+  /*opacity: 0.75;*/
+}
+
+.rect {
+  background: $white;
+  margin: 0 auto;
+  max-width: 768px;
+  padding: 0 10px;
+  width: 100%;
+}
+
+#fade-up {
+  border-radius: 6px;
+  background: url(/rsc/fade-up.png) top repeat-x;
+  padding: 0 10px;
+  margin-top: -10px;
+}
+
+#fade-down {
+  //position: absolute;
+  //width: 100%;
+  //height: 48px;
+  border-radius: 6px;
+  background: url(/rsc/fade-down.png) bottom repeat-x;
+  padding: 10px;
+  margin-bottom: -10px;
+  //top: 0px;
+  //left: 0px;
+}
+
+
+.titlerect {
+  background-image: url("/rsc/dark-tex.png");
+  background-repeat: repeat-x repeat-y;
+  /*background: $white;*/
+  /*border: 2px outset rgba(48,48,48,0.25); */
+  border-radius: 6px;
+  margin: 0 auto;
+  //margin-top: 16px;
+  //margin-bottom: 4px;
+  max-width: 768px;
+  //padding: 16px;
+  width: 100%;
+}
+
+#thr {
+  clear: both;
+  float: none;
+  width: 100%;
+  height: 3px;
+  margin: 1.4em 0;
+  border: none;
+  background: #242424;
+  background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      color-stop(0.5, #242424),
+      color-stop(0.5, #484848)
+  );
+  background-image: -moz-linear-gradient(
+      center top,
+      rgb(221,221,221) 50%,
+      rgb(255,255,255) 50%
+  );
+}
+
+
+hr {
+  clear: both;
+  float: none;
+  width: 100%;
+  height: 3px;
+  margin: 1.4em 0;
+  border: none;
+  background: #ddd;
+  background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      color-stop(0.5, rgb(221,221,221)),
+      color-stop(0.5, rgb(255,255,255))
+  );
+  background-image: -moz-linear-gradient(
+      center top,
+      rgb(221,221,221) 50%,
+      rgb(255,255,255) 50%
+  );
+}
+
+
+
+table, th, td {
+  padding: 4px;
+  border: 2px outset $white;
+  border-radius: 2px;
+}
+
+table { width: 100%; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $helveticaNeue;
+  color: $darkerGray;
+  font-weight: bold;
+  text-shadow: 2px 2px 0px #fff;
+
+  line-height: 1.7;
+  margin: 0em 0 16px;
+  padding: 0;
+
+  @include mobile {
+    line-height: 1.4;
+  }
+}
+
+h1 {
+  font-size: 32px;
+  text-shadow: 2px 2px 0px #fff;
+  a { color: inherit; }
+}
+
+h2 {
+  font-size: 24px;
+  text-shadow: 2px 2px 0px #fff;
+}
+
+h3 { font-size: 20px; text-shadow: 2px 2px 0px #fff; }
+
+h4 {
+  font-size: 18px;
+  text-shadow: 2px 2px 0px #fff;
+  color: $gray;
+}
+
+p { margin: 15px 0; }
+
+a {
+  /*color: $darkGray;*/
+  text-decoration: none;
+	cursor: pointer;
+  &:hover, &:active { color: $darkGray; }
+}
+
+ul, ol {
+  margin: 15px 0;
+  padding-left: 30px;
+}
+
+ul { list-style-type: disc; }
+
+ol { list-style-type: decimal; }
+
+ol ul, ul ol, ul ul, ol ol { margin: 0; }
+
+ul ul, ol ul { list-style-type: circle; }
+
+em, i { font-style: italic; }
+
+strong, b { font-weight: bold; }
+
+img {
+  max-width: 100%;
+  border-radius: 2px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Fixes images in popup boxes from Google Translate */
+.gmnoprint img { max-width: none; }
+
+.date {
+  font-style: italic;
+  color: $gray;
+}
+
+/* Specify the color of the selection */
+::-moz-selection {
+  color: $black;
+  background: $lightGray;
+}
+
+::selection {
+  color: $black;
+  background: $lightGray;
+}
+
+/*  Nicolas Gallagher's micro clearfix hack
+    http://nicolasgallagher.com/micro-clearfix-hack/ */
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/* layout & sections */
+
+
+/* .masthead */
+
+.wrapper-masthead {
+  margin-top: 16px;
+  margin-bottom: 64px;
+}
+
+.masthead {
+  padding: 2px 0;
+  /*border-bottom: 1px solid $lightGray;*/
+  @include mobile { text-align: center; }
+}
+
+.site-avatar {
+  float: left;
+  width: 72px;
+  height: 72px;
+  margin-left: 8px;
+  margin-right: 16px;
+  /*box-shadow: 1px 3px 2px $darkerGray; */
+  border-radius: 4px;
+  @include mobile {
+    float: none;
+    display: block;
+    margin: 0 auto;
+  } img { border-radius: 5px; }
+}
+
+.site-info {
+  float: left;
+  @include mobile {
+    float: none;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.site-name {
+  margin: 0;
+  color: $white;
+  cursor: pointer;
+  text-shadow: 0px 0px 4px rgba(255,255,255,0.5);
+  font-family: $helveticaNeue;
+  font-weight: 300;
+  font-size: 32px;
+  letter-spacing: 2px;
+  a:hover, a:active {
+    color: $white;
+    text-shadow: 0px 0px 4px $white;
+  }
+}
+
+.site-description {
+  margin: -5px 0 0 0;
+  color: $offwhite;
+  font-size: 16px;
+  @include mobile { margin: 3px 0; }
+}
+
+nav {
+  float: center;
+  text-align: center;
+  padding-bottom: 16px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-family: $helveticaNeue;
+  text-shadow: 0px 0px 4px rgba(255,255,255,0.5);
+  font-size: 18px;
+
+  a:hover, a:active {
+    color: $white;
+    text-shadow: 0px 0px 4px $white;
+  }
+
+  @include mobile {
+    float: none;
+    margin-top: 9px;
+    display: block;
+    font-size: 16px;
+  }
+
+  a {
+    margin-left: 20px;
+    color: $white;
+    /* text-shadow: 1px 3px 2px $darkerGray; */
+    text-align: center;
+    font-weight: 300;
+    letter-spacing: 1px;
+    @include mobile {
+      margin: 0 10px;
+      color: $white;
+    }
+  }
+}
+
+/* .main */
+
+.posts > .post {
+  padding-bottom: 2em;
+  border-bottom: 1px solid $lightGray;
+}
+
+.posts > .post:last-child {
+  padding-bottom: 1em;
+  border-bottom: none;
+}
+
+.post {
+  blockquote {
+    margin: 1.8em .8em;
+    border-left: 2px solid $gray;
+    padding: 0.1em 1em;
+    color: $gray;
+    font-size: 22px;
+    font-style: italic;
+  }
+
+  .comments {
+    margin-top: 10px;
+  }
+
+  .read-more {
+    text-transform: uppercase;
+    font-size: 15px;
+  }
+}
+
+.wrapper-footer {
+  padding-top: 64px;
+  //border-top: 1px solid #ddd;
+  //border-bottom: 1px solid #ddd;
+  padding-bottom: 16px;
+  margin: 0 auto;
+  max-width: 768px;
+  width: 100%;
+  //background-color: $lightGray;
+}
+
+footer {
+  padding: 16px;
+  border-radius: 6px;
+  text-align: center;
+}

@@ -1,0 +1,22 @@
+# coffeescript cfaarpbdasfadf
+
+text = "Now listen! I need your help Morty! I mean, we got, we gotta get, get the hell out of here; and go take care of business *burp* *burp* it's important geuuhhh come on Morty!"
+
+n = 42
+
+square = (x) -> x*x
+
+math =
+  root: Math.sqrt
+  square: square
+  cube: (x) -> x*square x
+
+document.write text
+
+document.write "<br>Quick, Morty! What's the square root of Pi?<br>"
+
+document.write "Aw, come on Rick, you know I can't!<br>"
+
+document.write "MORTY!<br>"
+
+document.write "It's "+math.root(3.1415926536)
