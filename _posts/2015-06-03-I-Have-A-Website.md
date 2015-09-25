@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Wow! I have a website!
+tag: Other
 ---
 
 Hello World!

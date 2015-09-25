@@ -1,6 +1,7 @@
 ---
 layout: post
 title: CoffeeScript is Delicious
+tag: GameDevelopment
 ---
 
 CoffeeScript is really doing a number on this webpage right now.

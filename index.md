@@ -9,6 +9,8 @@ This is my website. It's not ready yet, but you can look at a spinning monitor l
 
 I have stolen this background from D. Scott Brown's [Rubicon X](http://www.marathonrubicon.com) website, as the last one was tacky and I haven't finished the new one yet. The thievery and low cunning will be over by the weekend, no later.
 
+Edit: Yeah, it's been awhile. I'll make my own soon, and then the plagiarizing will come to an end.
+
 ---
 
 Look! A rocket!

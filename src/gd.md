@@ -1,11 +1,12 @@
 ---
-layout: page
+layout: tagpage
 title: Game Development
 permalink: /gd/
+tag: GameDev
 ---
 
 Under Construction!!!1!
-=======================
+-----------------------
 
 Shoo. I mean it.
 

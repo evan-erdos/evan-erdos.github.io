@@ -1,7 +1,8 @@
 ---
-layout: page
+layout: tagpage
 title: Writing
 permalink: /if/
+tag: Writing
 ---
 
 I like text adventures. [*Vividity*][vividity-web] and my new, small, subject-to-change adventure [*When Dan Left*][when-dan-left-web] were authored in [TADS3][tads] and are on [GitHub][github], which means if you want to steal my prose, sell it, and become rich and famous, you can do so. Alternately, you can play it online at the [Interactive Fiction Database][ifdb].

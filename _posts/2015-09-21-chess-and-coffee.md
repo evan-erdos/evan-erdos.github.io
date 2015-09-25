@@ -1,12 +1,18 @@
 ---
+layout: post
+title: Chess & Coffee
+tag: GameDev
 ---
 
+Ben attempts to write a Chess TwitterBot in CoffeeScript (Hipster nonsense)
+
+I'll begin with constants and arrays for the base board, and the usual initial setup. This doesn't mean we won't be playing fischer 360 later.
+
+```coffee
 # Ben Scott # 2015-09-21 # coffee & chess #
 
 # const
 col = ['a','b','c','d','e','f','g']
-
-inc = 9812 # king++ == queen, etc
 
 init_board = [
 	[0xC,0xD,0xC,0xA,0xB,0xC,0xD,0xC],
@@ -17,8 +23,12 @@ init_board = [
 	[0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0],
 	[0x9,0x9,0x9,0x9,0x9,0x9,0x9,0x9],
 	[0x6,0x7,0x8,0x4,0x5,0x8,0x7,0x6]]
+```
 
-pieces = [
+Then an array of their unicode values, for the final output.
+
+```coffee
+pieces = [ # king++ == queen, etc
 	# white    # black
 	"&#9634;", "&#9638;", # square
 	"&#9812;", "&#9818;", # king
@@ -27,7 +37,12 @@ pieces = [
 	"&#9815;", "&#9821;", # bishop
 	"&#9816;", "&#9822;", # knight
 	"&#9817;", "&#9823;"] # pawn
+```
 
+This is the base class for a piece, which stores its unicode representation, the moves for that piece, and it's status as captured, and so forth.
+
+
+```coffee
 move =
 	n: 0x9 # white pawn default
 	captured: false
@@ -39,34 +54,39 @@ move =
 		else if (n==9634)
 			return pieces[0]
 		return move.html(n)
+```
 
+The following functions verify their inputs as valid moves.
+
+```coffee
 validSquare = (sq) -> sq.search(/^[a-h][1-8]$/)
 
-# moves e.g, "e2-e4", "f6-d5"
 validMove = (move) ->
 	temp = move.split('-')
 	return (temp.length==2 && validSquare(temp))
+```
 
-# /[!kqrbnpKQRNBP1-8]/
+`overlayBoard` returns a char-array of unicode characters, which represent whatever board was passed in. It uses a sort of masking to retain the underlying square colors.
 
+```coffee
 overlayBoard = (board) ->
 	base = [
 		[pieces[0],pieces[1],pieces[0],pieces[1],
-			pieces[0],pieces[1],pieces[0],pieces[1]],
+		 pieces[0],pieces[1],pieces[0],pieces[1]],
 		[pieces[1],pieces[0],pieces[1],pieces[0],
-			pieces[1],pieces[0],pieces[1],pieces[0]],
+		 pieces[1],pieces[0],pieces[1],pieces[0]],
 		[pieces[0],pieces[1],pieces[0],pieces[1],
-			pieces[0],pieces[1],pieces[0],pieces[1]],
+		 pieces[0],pieces[1],pieces[0],pieces[1]],
 		[pieces[1],pieces[0],pieces[1],pieces[0],
-			pieces[1],pieces[0],pieces[1],pieces[0]],
+		 pieces[1],pieces[0],pieces[1],pieces[0]],
 		[pieces[0],pieces[1],pieces[0],pieces[1],
-			pieces[0],pieces[1],pieces[0],pieces[1]],
+		 pieces[0],pieces[1],pieces[0],pieces[1]],
 		[pieces[1],pieces[0],pieces[1],pieces[0],
-			pieces[1],pieces[0],pieces[1],pieces[0]],
+		 pieces[1],pieces[0],pieces[1],pieces[0]],
 		[pieces[0],pieces[1],pieces[0],pieces[1],
-			pieces[0],pieces[1],pieces[0],pieces[1]],
+		 pieces[0],pieces[1],pieces[0],pieces[1]],
 		[pieces[1],pieces[0],pieces[1],pieces[0],
-			pieces[1],pieces[0],pieces[1],pieces[0]]]
+		 pieces[1],pieces[0],pieces[1],pieces[0]]]
 	base_i = 0
 	for i in board
 		base_j = 0
@@ -76,7 +96,11 @@ overlayBoard = (board) ->
 			base_j++
 		base_i++
 	return base
+```
 
+These two functions return arrays of unicode characters as HTML tables or just unicode characters, which can be sent directly to twitter / website / whatever.
+
+```coffee
 printBoardTable = (board) ->
 	document.write("<br><table style=\"width: 30%\">")
 	for i in overlayBoard(board)
@@ -91,6 +115,10 @@ printBoard = (board) ->
 		document.write("<br>")
 		for j in i
 			document.write(j)
+```
 
-printBoardTable(init_board)
+And the result of `printBoardTable(init_board)`:
+
+<script src="/js/ChessAnd.js"></script>
+
 

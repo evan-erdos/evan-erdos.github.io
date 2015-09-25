@@ -8,7 +8,7 @@ footer-links:
   email: bescott@andrew.cmu.edu
   github: iasEnvy
   facebook: IASJazz
-  youtube: channel/UCGAciiuP89ERn-iqUuYHFBQ
+  #youtube: channel/UCGAciiuP89ERn-iqUuYHFBQ
   #rss: rss
   #linkedin: /404
   #twitter: /404
@@ -18,7 +18,7 @@ footer-links:
 baseurl: ""
 markdown: redcarpet
 redcarpet:
-  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data", "strikethrough"]
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data", "strikethrough", "footnotes", "highlight", "superscript"]
 
 #kramdown:
 #  input: GFM

@@ -1,7 +1,8 @@
 ---
-layout: page
+layout: tagpage
 title: Other
 permalink: /other/
+tag: Other
 ---
 
 ## Text Highlighting ##

@@ -2,6 +2,7 @@
 layout: post
 title: Counterpoint v1.18.3
 permalink: 3d/counterpoint/
+tag: 3D
 ---
 
 I seem to gravitate towards radial architecture when I set out to draft a building. I also seem to cling to words from a bygone era to describe new technology: Draft? Nobody uses drafting tables anymore, it's all CAD!

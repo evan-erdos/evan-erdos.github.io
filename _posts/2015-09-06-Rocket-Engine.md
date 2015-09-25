@@ -2,6 +2,7 @@
 layout: post
 title: Rocket Engine v2.1.55
 permalink: 3d/vulcain
+tag: 3D
 ---
 
 Rocket engines inspire me: the nuances and specifics of their operation are excessively fascinating to me, and even if you know literally *epsilon* about rocket science, it's still quite interesting to read about where the fuel goes, how they figured out how to do this, that, and the other thing, etc., and there's also some very interesting history, if you're into that sort of thing.
