@@ -2,14 +2,9 @@
 layout: post
 title: Toledo Nanochess
 tag: GameDev
-img:
-  large: /rsc/gd/chess.png
 ---
 
 See if you can beat the [Toledo Nanochess][] bot! I'm in the process of turning the underlying javascript into `*.coffee`, because I want to learn how it works: it's mathematically astounding that 2kB can create a chess bot that's so hard to beat, and I'm going to get to the bottom of it.
-
-[![_chess](/rsc/gd/chess.png)][Toledo Nanochess]
-
 
 For reference, this is the entire source code.
 
@@ -18,6 +13,9 @@ b=0;I=[];G=120;l=[5,3,4,6,2,4,3,5,1,1,1,1,1,1,1,1,9,9,9,9,9,9,9,9,13,11,12,14,10
 ```
 
 That's it. Pretty neat, huh? Only 1683 characters.
+
+[![_chess](/rsc/gd/chess.png)][Toledo Nanochess]
+
 
 [Toledo Nanochess]: </chess/>
 
