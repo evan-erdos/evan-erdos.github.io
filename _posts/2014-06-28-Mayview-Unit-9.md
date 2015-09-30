@@ -7,9 +7,9 @@ tag: 3D
 
 The same grandfather of mine who built his own house tasked me with designing some office space for one of the units in the industrial park. Now, there's some offices in Pittsburgh, PA whose floor plan look more or less like these images.
 
-![Unit 8 Diagram](/rsrc/3d/office/diagram_v4.2.0.png)
+![Unit 8 Diagram](/rsc/3d/office/diagram.png)
 
 ---
 
-![Unit 8 Color](/rsrc/3d/office/color_v4.1.5.png)
+![Unit 8 Color](/rsc/3d/office/color.png)
 

@@ -9,6 +9,10 @@ layout: default
     {{ content }}
   </div>
 
+  {% if page.img.large %}
+	<img class="caption__media" src="{{site.baseurl}}{{page.img.large}}">
+  {% endif %}
+
   <div class="date">
     Ben Scott {{ page.date | date: "%Y-%m-%d" }}
   </div>
