@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-<script type="text/javascript" src="/js/rand_about.js"></script>
+<script type="text/javascript" src="/js/about.js"></script>
 
 ### Contact Me ###
 
