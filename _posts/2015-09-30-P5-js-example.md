@@ -1,17 +1,17 @@
 ---
 layout: post
-title: P5.js & CoffeeScript
+title: P5.coffee
 tag: Programming
 ---
 
 
-> Sketch: "What is my purpose?"
+> [Sketch: "What is my purpose?"][coffee_rings]
 >
-> Ben: "You draw circles."
+> [Ben: "You draw circles."][coffee_rings]
 
 ```CoffeeScript
 
-# Ben Scott # 2015-10-02 # CoffeeScript Sketch #
+# Ben Scott # 2015-10-02 # P5.coffee #
 
 myp = new p5 (p)->
     alt = false
@@ -78,4 +78,5 @@ myp = new p5 (p)->
 
 ```
 
+[coffee_rings]: </other/coffee_rings/>
 
