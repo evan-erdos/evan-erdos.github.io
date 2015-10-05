@@ -9,9 +9,11 @@ tag: Programming
 >
 > [Ben: "You draw circles."][coffee_rings]
 
-```CoffeeScript
 
-# Ben Scott # 2015-10-02 # P5.coffee #
+This sketch is inspired by [bokeh][], which are artifacts that cameras make when they're not in focus.
+
+```CoffeeScript
+# Ben Scott # 2015-10-02 # CoffeeScript Sketch #
 
 myp = new p5 (p)->
     alt = false
@@ -78,5 +80,5 @@ myp = new p5 (p)->
 
 ```
 
-[coffee_rings]: </other/coffee_rings/>
+[coffee_rings]: </other/circle_ex/>
 

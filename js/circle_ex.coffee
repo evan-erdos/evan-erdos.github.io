@@ -65,4 +65,3 @@ myp = new p5 (p)->
             mouse[0]+p.random(-rand,rand)
             mouse[1]+p.random(-rand,rand)
             x*delta_size,y*delta_size)
-
