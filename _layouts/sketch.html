@@ -1,72 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
+	<script language="javascript" src="/js/lib/p5.min.js"></script>
+	<script language="javascript" src="/js/lib/p5.dom.js"></script>
+	<script language="javascript" src="/js/lib/p5.sound.min.js"></script>
 
-    {% include meta.html %}
-
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
-    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
+	<style> body { overflow: hidden; } </style>
   </head>
-
   <body>
-
-<!-- Begin Sketch Parody -->
-
-    <script language="javascript" type="text/javascript" src="/js/p5.js"></script>
-    <script language="javascript" type="text/javascript" src="/js/addons/p5.dom.js"></script>
-    <!--<script language="javascript" type="text/javascript" src="/js/circle_ex.js"></script> -->
-
-    <iframe frameBorder='0' id='home-sketch-frame' src='/other/coffee_rings'></iframe>
-    <script type='text/javascript'>
-        $('#home-sketch-frame').width(window.innerWidth);
-        $('#home-sketch-frame').height(window.innerHeight);
-
-        $('#home-sketch-frame').css('position', 'fixed');
-        $('#home-sketch-frame').css('top', '0px');
-        $('#home-sketch-frame').css('left', '0px');
-        $('#home-sketch-frame').css('z-index', '-2');
-        $('body').css('pointer-events', 'none');
-        $('iframe').css('pointer-events', 'auto');
-        $('a').css('pointer-events', 'auto');
-      </script>
-
-<!-- End Sketch Parody -->
-
-    <div class="wrapper-masthead">
-      <div class="titlerect">
-        <div id="fade-down">
-          <header class="masthead clearfix">
-            <a href="{{ site.baseurl }}/" class="site-avatar"><img src="/rsc/rook-top.png" /></a>
-            <!--<div class="site-info"> -->
-              <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
-              <p class="site-description">{{ site.description }}</p>
-            <!--</div>-->
-          </header>
-         <hr id="thr">
-          <nav>
-            <a href="{{ site.baseurl }}/about">About</a>
-            <a href="{{ site.baseurl }}/blag">Blag</a>
-            <a href="{{ site.baseurl }}/gd">Game Dev</a>
-            <a href="{{ site.baseurl }}/3d">3D Modeling</a>
-            <a href="{{ site.baseurl }}/music">Music</a>
-            <a href="{{ site.baseurl }}/if">Writing</a>
-            <a href="{{ site.baseurl }}/other">Other</a>
-          </nav>
-        </div>
-      </div>
-    </div>
-    <div id="main" role="main" class="container">
-      {{ content }}
-      <p>
-    </div>
-    <div class="wrapper-footer">
-      <div class="container">
-        <footer class="footer">
-          {% include svg-icons.html %}
-        </footer>
-      </div>
-    </div>
-    {% include analytics.html %}
+  	<script language="javascript" type="text/javascript" src= "{{ page.script }}" ></script>
+  	{{ content }}
   </body>
 </html>

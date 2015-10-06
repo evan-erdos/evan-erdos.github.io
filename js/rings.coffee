@@ -15,12 +15,21 @@ callbacks for P5.js events.
 myp = new p5 (p)->
     alt = false
     pi = p.PI
+
+    [planet_img,sun_img,ring_img] = [null,null,null]
+
+    ### DOM ###
     [r_sl,g_sl,b_sl] = [null,null,null]
     [d_sl,s_sl,rand_sl] = [null,null,null]
-    [planet_img,sun_img,ring_img] = [null,null,null]
-    mouse = [p.mouseX,p.mouseY]
 
-    ### `Planet` Main Class
+    ### Audio ###
+    [input,analyzer,volume] = [null,null,null]
+
+    ### Input ###
+    mouse = [p.mouseX,p.mouseY]
+    lastMouse = [p.pmouseX,p.pmouseY]
+
+    ### `Planet`
 
     This is a class which represents planets.
     - `@x,@y`: center
@@ -28,13 +37,13 @@ myp = new p5 (p)->
     - `@hasRing`: planet has rings
     ###
     class Planet
-        r_r: 1
+        r_ring: 1
 
         constructor: (@x=0,@y=0,@r=1,@hasRing=false) ->
-            @r_r = @r+50 if @hasRing
+            @r_ring = @r+50 if @hasRing
         #draw: ->
 
-    ### `P5.js` Events
+    ### `Events`
 
     These functions are automatic callbacks for `P5.js` events:
     - `p.preload` is called once, immediately before `setup`
@@ -45,6 +54,7 @@ myp = new p5 (p)->
     - `p.remove` destroys everything in the sketch
     ###
     p.preload = ->
+        palette_img = p.loadImage("/rsc/colormap.gif")
         planet_img = p.loadImage("/rsc/planet.png")
         sun_img = p.loadImage("/rsc/sun.png")
         #ring_img = p.loadImage("/rsc/ring.png")
@@ -52,15 +62,20 @@ myp = new p5 (p)->
     p.setup = ->
         p.createCanvas(p.windowWidth,p.windowHeight, p.WEBGL)
         p.noStroke()
-        #p.setupUI()
-        #p.setupWebGL()
+        #p.setupDOM()
+        #p.setupAudio()
+        p.setupWebGL()
         p.frameRate(60)
+
+    p.setupAudio = ->
+        mic = new p5.AudioIn()
+        mic.start()
 
     p.draw = ->
         p.background(120)
         p.HexGrid(128,128)
         p.getInput()
-        #p.drawUI()
+        #p.drawDOM()
         p.renderWebGL()
 
     p.keyPressed = ->
@@ -121,16 +136,16 @@ myp = new p5 (p)->
                     y+(3.45*j*h*r)+((i%2)*(h)*r*p.sin(pi_3))*2
                     r, 6, pi_6)
 
-    ### UI Functions
+    ### DOM Functions
 
     These functions initialize the DOM objects in the sketch.
-    - `p.setupUI` creates and positions the color sliders
-    - `p.drawUI` renders the color sliders on every draw
+    - `p.setupDOM` creates and positions the color sliders
+    - `p.drawDOM` renders the color sliders on every draw
     - `p.getInput` collects input data, processes it, and in
         the case of `p.mouseIsPressed`, it calls the mouse
         event callback (otherwise it single-clicks)
     ###
-    p.setupUI = ->
+    p.setupDOM = ->
         r_sl = p.createSlider(0,255,100)
         r_sl.position(16,16)
         g_sl = p.createSlider(0,255,0)
@@ -144,7 +159,7 @@ myp = new p5 (p)->
         rand_sl = p.createSlider(0,16,4)
         rand_sl.position(16,96)
 
-    p.drawUI = ->
+    p.drawDOM = ->
         p.fill(0)
         p.text("Red",150,16+4)
         p.text("Green",150,32+4)
@@ -152,14 +167,14 @@ myp = new p5 (p)->
         p.text("Size",150,64+4)
         p.text("Delta",150,80+4)
         p.text("Rand",150,96+4)
-        p.image(planet_img)
+        p.image(palette_img)
 
     p.getInput = ->
         mouse = [p.mouseX,p.mouseY]
         #p.mousePressed() if (p.mouseIsPressed)
 
     p.setupWebGL = ->
-        p.move(0,2,0)
+        p.translate(0,2,0)
 
     p.renderWebGL = ->
         p.background(0)
@@ -178,11 +193,4 @@ myp = new p5 (p)->
         #p.plane(100, 100)
         p.texture(planet_img)
         p.sphere(50)
-
-
-
-
-
-
-
 
