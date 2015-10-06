@@ -4,13 +4,11 @@ title: P5.coffee
 tag: Programming
 ---
 
-
 > [Sketch: "What is my purpose?"][coffee_rings]
 >
 > [Ben: "You draw circles."][coffee_rings]
 
-
-This sketch is inspired by [bokeh][], which are artifacts that cameras make when they're not in focus.
+This sketch is inspired by [bokeh][], which are artifacts that cameras make when they're not in focus. The above quote is inspired by [Rick and Morty][].
 
 ```CoffeeScript
 # Ben Scott # 2015-10-02 # CoffeeScript Sketch #
@@ -80,5 +78,7 @@ myp = new p5 (p)->
 
 ```
 
+[Rick and Morty]: <http://www.adultswim.com/videos/rick-and-morty/>
+[bokeh]: <https://en.wikipedia.org/wiki/Bokeh>
 [coffee_rings]: </other/circle_ex/>
 

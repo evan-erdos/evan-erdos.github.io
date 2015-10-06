@@ -17,7 +17,6 @@ This is pretty clearly inspired by space, and depending upon when you look at th
 ### Ben Scott # 2015-10-05 # Coffee Rings ###
 
 'use strict' # just like Javscript
-
 ```
 
 
@@ -27,7 +26,6 @@ This is our instance of the main class in the `P5.js` library.
 The argument is the link between the library and this code, and
 the special functions we override in the class definition are
 callbacks for P5.js events.
-
 
 
 ```coffee
@@ -41,7 +39,6 @@ myp = new p5 (p)->
 ```
 
 
-
 ### `P5.js` Events ###
 
 These functions are automatic callbacks for `P5.js` events:
@@ -51,7 +48,6 @@ These functions are automatic callbacks for `P5.js` events:
 - `p.keyPressed` is called on every key input event
 - `p.mousePressed` is called on mouse down
 - `p.remove` destroys everything in the sketch
-
 
 
 ```coffee
@@ -131,8 +127,8 @@ p.HexGrid = (x=0,y=0,r=32,s=16) ->
                 x+(i*(h)*r*p.cos(pi_3))*2
                 y+(3.45*j*h*r)+((i%2)*(h)*r*p.sin(pi_3))*2
                 r, 6, pi_6)
-
 ```
+
 
 ### UI Functions ###
 

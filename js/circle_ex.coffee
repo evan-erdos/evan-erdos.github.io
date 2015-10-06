@@ -3,6 +3,15 @@
 
 # Ben Scott # 2015-10-02 # CoffeeScript Sketch #
 
+'use strict' # just like JavaScript
+
+### `P5.js` Main class
+
+This is our instance of the main class in the `P5.js` library.
+The argument is the link between the library and this code, and
+the special functions we override in the class definition are
+callbacks for P5.js events.
+###
 myp = new p5 (p)->
     alt = false
     [r_sl,g_sl,b_sl] = [null,null,null]
@@ -10,6 +19,16 @@ myp = new p5 (p)->
     mouse = [p.mouseX,p.mouseY]
     lastMouse = [0,0]
 
+    ### `P5.js` Events
+
+    These functions are automatic callbacks for `P5.js` events:
+    - `p.preload` is called once, immediately before `setup`
+    - `p.setup` is called once, at the beginning of execution
+    - `p.draw` is called as frequently as `p.framerate`
+    - `p.keyPressed` is called on every key input event
+    - `p.mousePressed` is called on mouse down
+    - `p.remove` destroys everything in the sketch
+    ###
     p.setup = ->
         p.createCanvas(p.windowWidth,p.windowHeight)
         p.noStroke()
@@ -65,3 +84,4 @@ myp = new p5 (p)->
             mouse[0]+p.random(-rand,rand)
             mouse[1]+p.random(-rand,rand)
             x*delta_size,y*delta_size)
+

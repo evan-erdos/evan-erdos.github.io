@@ -17,8 +17,22 @@ myp = new p5 (p)->
     pi = p.PI
     [r_sl,g_sl,b_sl] = [null,null,null]
     [d_sl,s_sl,rand_sl] = [null,null,null]
+    [planet_img,sun_img,ring_img] = [null,null,null]
     mouse = [p.mouseX,p.mouseY]
-    img = null
+
+    ### `Planet` Main Class
+
+    This is a class which represents planets.
+    - `@x,@y`: center
+    - `@r`: radius of the planet
+    - `@hasRing`: planet has rings
+    ###
+    class Planet
+        r_r: 1
+
+        constructor: (@x=0,@y=0,@r=1,@hasRing=false) ->
+            @r_r = @r+50 if @hasRing
+        #draw: ->
 
     ### `P5.js` Events
 
@@ -30,7 +44,10 @@ myp = new p5 (p)->
     - `p.mousePressed` is called on mouse down
     - `p.remove` destroys everything in the sketch
     ###
-    p.preload = -> img = p.loadImage("/rsc/colormap.gif")
+    p.preload = ->
+        planet_img = p.loadImage("/rsc/planet.png")
+        sun_img = p.loadImage("/rsc/sun.png")
+        #ring_img = p.loadImage("/rsc/ring.png")
 
     p.setup = ->
         p.createCanvas(p.windowWidth,p.windowHeight, p.WEBGL)
@@ -67,6 +84,7 @@ myp = new p5 (p)->
             mouse[1]+p.random(-rand,rand)
             x*delta_size,y*delta_size)
     ###
+
     #p.remove = -> p5 = null
 
     ### Library Functions
@@ -134,7 +152,7 @@ myp = new p5 (p)->
         p.text("Size",150,64+4)
         p.text("Delta",150,80+4)
         p.text("Rand",150,96+4)
-        p.image(img)
+        p.image(planet_img)
 
     p.getInput = ->
         mouse = [p.mouseX,p.mouseY]
@@ -145,11 +163,26 @@ myp = new p5 (p)->
 
     p.renderWebGL = ->
         p.background(0)
-        p.pointLight(250,250,250,0,0,0)
         p.translate(0,100,0)
+
+        p.pointLight(0,0,0,0,0,0)
+        p.texture(sun_img)
+        p.rotateY(-p.frameCount * 0.005)
         p.sphere(200)
         p.rotateZ(0.5)
         p.rotateY(p.frameCount * 0.01)
         p.translate(0,0,500)
+
+        #p.texture(ring_img)
+        #p.rotateZ(90)
+        #p.plane(100, 100)
+        p.texture(planet_img)
         p.sphere(50)
-        p.cylinder(100, 1)
+
+
+
+
+
+
+
+
