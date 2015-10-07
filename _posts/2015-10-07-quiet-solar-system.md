@@ -1,17 +1,29 @@
 ---
+layout: post
+title: A Quiet Solar System
+tag: [Programming, GameDev]
 ---
 
+This sketch responds to the ambient volume, and the sun explodes if it's too loud.
+
+[Here it is][].
+
+[Here it is]: </sketch/quiet_solarsystem.coffee>
+
+```coffee
 ### Ben Scott # 2015-10-05 # A Quiet Solar System ###
 
 'use strict' # just like JavaScript
+```
 
-### `P5.js` Main class
+### `P5.js` Main class ###
 
 This is our instance of the main class in the `P5.js` library.
 The argument is the link between the library and this code, and
 the special functions we override in the class definition are
 callbacks for P5.js events.
-###
+
+```coffee
 myp = new p5 (p) ->
 
     ### Constants ###
@@ -44,15 +56,19 @@ myp = new p5 (p) ->
     ### Audio ###
     [mic,analyzer,volume] = [null,null,0]
 
-    ### `Planet`
+```
 
-    This is a class which represents planets.
-    - `@x,@y`: center
-    - `@dt`: day period
-    - `@o`: orbital radius
-    - `@ot`: orbit time
-    - `@r`: body radius
-    ###
+### `Planet` ###
+
+This is a class which represents planets.
+
+- `@x,@y`: center
+- `@dt`: day period
+- `@o`: orbital radius
+- `@ot`: orbit time
+- `@r`: body radius
+
+```coffee
     class Planet
         constructor: (@x,@y,@r,@dt=0.1,@ot=0.05,@img) ->
             @img = planet_img if @img==null
@@ -68,18 +84,20 @@ myp = new p5 (p) ->
 
         burn: ->
             @img = sun_img
+```
 
+### `Sun` ###
 
-    ### `Sun`
+This is a class which represents the sun. I'd like to have
+it inherit from planet (or vice versa) but that seems to
+cause problems.
 
-    This is a class which represents the sun. I'd like to have
-    it inherit from planet (or vice versa) but that seems to
-    cause problems.
-    - `@r`: body radius
-    - `@dt`: day period
-    - `@ot`: orbit time
-    - `@img`: texture for the sun
-    ###
+- `@r`: body radius
+- `@dt`: day period
+- `@ot`: orbit time
+- `@img`: texture for the sun
+
+```coffee
     class Sun
         constructor: (@r,@dt=0.1,@ot=0.05,@img) ->
             @img = sun_img if @img==null
@@ -92,16 +110,21 @@ myp = new p5 (p) ->
             p.rotateY(p.frameCount * @dt)
             p.pop()
 
-    ### `Events`
+```
 
-    These functions are automatic callbacks for `P5.js` events:
-    - `p.preload` is called once, immediately before `setup`
-    - `p.setup` is called once, at the beginning of execution
-    - `p.draw` is called as frequently as `p.framerate`
-    - `p.keyPressed` is called on every key input event
-    - `p.mousePressed` is called on mouse down
-    - `p.remove` destroys everything in the sketch
-    ###
+### `Events` ###
+
+These functions are automatic callbacks for `P5.js` events:
+
+- `p.preload` is called once, immediately before `setup`
+- `p.setup` is called once, at the beginning of execution
+- `p.draw` is called as frequently as `p.framerate`
+- `p.keyPressed` is called on every key input event
+- `p.mousePressed` is called on mouse down
+- `p.remove` destroys everything in the sketch
+
+
+```coffee
     p.preload = ->
         palette_img = p.loadImage("/rsc/colormap.gif")
         planet_img = p.loadImage("/rsc/planet.png")
@@ -130,7 +153,6 @@ myp = new p5 (p) ->
         key.down = (p.keyCode is p.DOWN_ARROW)
         key.left = (p.keyCode is p.LEFT_ARROW)
         key.right = (p.keyCode is p.RIGHT_ARROW)
-
     ###
     p.mousePressed = ->
         s = s_sl.value()
@@ -151,22 +173,26 @@ myp = new p5 (p) ->
     ###
 
     #p.remove = -> p5 = null
+```
 
-    ### Library Functions
+### Library Functions ###
 
-    These functions I've included from other files. They're the
-    sort of generic utilities that would constitute a library.
+These functions I've included from other files. They're the
+sort of generic utilities that would constitute a library.
 
-    - `p.polygon` draws a regular polygon.
-      - @x,@y: center
-      - @r: radius
-      - @n: number of points
-      - @o: offset theta
-    - `p.HexGrid` draws a grid of hexagons.
-      - @x,@y: center
-      - @r: radius
-      - @s: size
-    ###
+- `p.polygon` draws a regular polygon.
+  - @x,@y: center
+  - @r: radius
+  - @n: number of points
+  - @o: offset theta
+
+- `p.HexGrid` draws a grid of hexagons.
+  - @x,@y: center
+  - @r: radius
+  - @s: size
+
+
+```coffee
     polygon = (x,y,r=1,n=3,o=0) ->
         theta = p.TWO_PI/n
         p.beginShape()
@@ -186,13 +212,16 @@ myp = new p5 (p) ->
                     y+(3.45*j*h*r)+((i%2)*(h)*r*p.sin(pi_3))*2
                     r, 6, pi_6)
 
+```
 
-    ### Audio Functions
+### Audio Functions ###
 
-    These functions deal with audio input.
-    - `p.setupAudio` initializes audio system
-    - `p.getAudio` gets the volume, maps it to the sun
-    ###
+These functions deal with audio input:
+
+- `p.setupAudio` initializes audio system
+- `p.getAudio` gets the volume, maps it to the sun
+
+```coffee
     setupAudio = ->
         mic = new p5.AudioIn()
         mic.start()
@@ -203,16 +232,19 @@ myp = new p5 (p) ->
         if volume>0.001 then sun_r_base+=5 else sun_r_base-=2
         sun_r = p.max(150,sun_r_base) + p.map(volume,0,1,0,300)
         burnPlanets(sun_r)
+```
 
-    ### DOM Functions
+### DOM Functions ###
 
-    These functions initialize the DOM objects in the sketch.
-    - `p.setupDOM` creates and positions the color sliders
-    - `p.drawDOM` renders the color sliders on every draw
-    - `p.getInput` collects input data, processes it, and in
-        the case of `p.mouseIsPressed`, it calls the mouse
-        event callback (otherwise it single-clicks)
-    ###
+These functions initialize the DOM objects in the sketch:
+
+- `p.setupDOM` creates and positions the color sliders
+- `p.drawDOM` renders the color sliders on every draw
+- `p.getInput` collects input data, processes it, and in
+    the case of `p.mouseIsPressed`, it calls the mouse
+    event callback (otherwise it single-clicks)
+
+```coffee
     setupDOM = ->
         r_sl = p.createSlider(0,255,100)
         r_sl.position(16,16)
@@ -246,13 +278,16 @@ myp = new p5 (p) ->
         cam_pos[0]++ if key.left
         cam_pos[0]-- if key.right
         #p.camera(cam_pos[0],-10,cam_pos[1])
+```
 
-    ### WebGL Functions
+### WebGL Functions ###
 
-    WebGL defers rendering to the system's GPU. Neat, huh?
-    - `setupWebGL` creates WebGL objects
-    - `renderWebGL` renders the WebGL objects
-    ###
+WebGL defers rendering to the system's GPU. Neat, huh?
+
+- `setupWebGL` creates WebGL objects
+- `renderWebGL` renders the WebGL objects
+
+```coffee
     setupWebGL = ->
         sun = new Sun(0,0,150,-0.005,-0.5)
         planets = [
@@ -275,17 +310,20 @@ myp = new p5 (p) ->
 
         p.texture(planet_img)
         p.sphere(20)
+```
 
-    ### Domain Functions
+### Domain Functions ###
 
-    These functions draw the stars, the planets, and carry out
-    the logic of the game / sketch.
-    - `setupStars`: initializes a random array of stars
-    - `drawStars`: renders the stars as planes
-    - `drawPlanets`: renders the planets
-    - `burnPlanets`: sets the planet teture to that of the sun
-        if the sun engulfs it.
-    ###
+These functions draw the stars, the planets, and carry out
+the logic of the game / sketch.
+
+- `setupStars`: initializes a random array of stars
+- `drawStars`: renders the stars as planes
+- `drawPlanets`: renders the planets
+- `burnPlanets`: sets the planet teture to that of the sun
+    if the sun engulfs it.
+
+```coffee
     setupStars = ->
         [x,y] = [2048,2048]
         for i in [0..n_stars]
@@ -307,5 +345,5 @@ myp = new p5 (p) ->
     burnPlanets = (r) ->
         for planet in planets
             planet.burn() if (planet.ot<r)
-
+```
 
