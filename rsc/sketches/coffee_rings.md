@@ -1,5 +1,5 @@
 ---
 layout: sketch
-permalink: /other/rings.coffee/
+permalink: /sketch/rings.coffee/
 script: /js/rings.js/
 ---

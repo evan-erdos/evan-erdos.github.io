@@ -1,7 +1,7 @@
 ---
 ---
 
-### Ben Scott # 2015-10-05 # Coffee Rings ###
+### Ben Scott # 2015-10-05 # A Quiet Solar System ###
 
 'use strict' # just like JavaScript
 
@@ -12,37 +12,76 @@ The argument is the link between the library and this code, and
 the special functions we override in the class definition are
 callbacks for P5.js events.
 ###
-myp = new p5 (p)->
+myp = new p5 (p) ->
+
+    ### Constants ###
+    [pi,pi_3,pi_6] = [p.PI,p.PI/3,p.PI/6]
+
+    ### Input ###
     alt = false
-    pi = p.PI
+    mouse = [p.mouseX,p.mouseY]
+    lastMouse = [p.pmouseX,p.pmouseY]
+    key =
+        up: false
+        down: false
+        left: false
+        right: false
 
     ### WebGL ###
-    [planet_img,sun_img,ring_img] = [null,null,null]
+    [sun_img,planet_img,ring_img] = [null,null,null]
+
+    [sun,sun_r,sun_r_base] = [null,50,150]
+    [cam_pos] = [0,0,0]
+    planets = []
+
+    n_stars = 1024
+    arr_stars = []
 
     ### DOM ###
     [r_sl,g_sl,b_sl] = [null,null,null]
     [d_sl,s_sl,rand_sl] = [null,null,null]
 
     ### Audio ###
-    [input,analyzer,volume] = [null,null,null]
-
-    ### Input ###
-    mouse = [p.mouseX,p.mouseY]
-    lastMouse = [p.pmouseX,p.pmouseY]
+    [mic,analyzer,volume] = [null,null,0]
 
     ### `Planet`
 
     This is a class which represents planets.
     - `@x,@y`: center
-    - `@r`: radius of the planet
-    - `@hasRing`: planet has rings
+    - `@dt`: day period
+    - `@o`: orbital radius
+    - `@ot`: orbit time
+    - `@r`: body radius
     ###
     class Planet
-        r_ring: 1
+        constructor: (@x,@y,@r,@dt=0.1,@ot=0.05,@img) ->
+            @img = planet_img if @img==null
 
-        constructor: (@x=0,@y=0,@r=1,@hasRing=false) ->
-            @r_ring = @r+50 if @hasRing
-        #draw: ->
+        draw: ->
+            p.push()
+            p.rotateZ(0.375)
+            p.rotateY(p.frameCount * 0.01)
+            #p.translate(0,0,@ot)
+            p.texture(@img)
+            p.sphere(@r)
+            p.pop()
+
+        burn: ->
+            @img = sun_img
+
+    class Sun
+        @img = sun_img
+
+        constructor: (@x,@y,@r,@dt=0.1,@ot=0.05,@img) ->
+            @img = sun_img if @img==null
+
+        draw: ->
+            p.push()
+            p.texture(sun_img)
+            p.rotateY(p.frameCount * 0.005)
+            p.sphere(sun_r)
+            p.rotateY(p.frameCount * @dt)
+            p.pop()
 
     ### `Events`
 
@@ -64,23 +103,24 @@ myp = new p5 (p)->
         p.createCanvas(p.windowWidth,p.windowHeight, p.WEBGL)
         p.noStroke()
         #p.setupDOM()
-        #p.setupAudio()
-        p.setupWebGL()
+        setupAudio()
+        setupWebGL()
         p.frameRate(60)
 
-    p.setupAudio = ->
-        mic = new p5.AudioIn()
-        mic.start()
-
     p.draw = ->
-        p.background(120)
-        p.HexGrid(128,128)
-        p.getInput()
+        #p.background(120)
+        #p.HexGrid(128,128)
+        getInput()
+        getAudio()
         #p.drawDOM()
-        p.renderWebGL()
+        renderWebGL()
 
     p.keyPressed = ->
         alt = !alt if (p.keyCode is p.ALT)
+        key.up = (p.keyCode is p.UP_ARROW)
+        key.down = (p.keyCode is p.DOWN_ARROW)
+        key.left = (p.keyCode is p.LEFT_ARROW)
+        key.right = (p.keyCode is p.RIGHT_ARROW)
 
     ###
     p.mousePressed = ->
@@ -118,15 +158,15 @@ myp = new p5 (p)->
       - @r: radius
       - @s: size
     ###
-    p.polygon = (x,y,r=1,n=3,o=0) ->
+    polygon = (x,y,r=1,n=3,o=0) ->
         theta = p.TWO_PI/n
         p.beginShape()
         for i in [0..p.TWO_PI] by theta
             p.vertex(x+p.cos(i+o)*r, y+p.sin(i+o)*r)
         p.endShape(p.CLOSE)
 
-    p.HexGrid = (x=0,y=0,r=32,s=16) ->
-        [pi_3,pi_6,h] = [p.PI/3, p.PI/6, p.sqrt(3)/2]
+    HexGrid = (x=0,y=0,r=32,s=16) ->
+        h = p.sqrt(3)/2
         for i in [0..s]
             for j in [0..s/4]
                 if p.random(4)>3
@@ -137,6 +177,24 @@ myp = new p5 (p)->
                     y+(3.45*j*h*r)+((i%2)*(h)*r*p.sin(pi_3))*2
                     r, 6, pi_6)
 
+
+    ### Audio Functions
+
+    These functions deal with audio input.
+    - `p.setupAudio` initializes audio system
+    - `p.getAudio` gets the volume, maps it to the sun
+    ###
+    setupAudio = ->
+        mic = new p5.AudioIn()
+        mic.start()
+
+    getAudio = ->
+        raw_volume = p.abs(mic.getLevel())
+        volume = ((raw_volume-volume)/2)%10
+        if volume>0.001 then sun_r_base+=5 else sun_r_base-=2
+        sun_r = p.max(150,sun_r_base) + p.map(volume,0,1,0,300)
+        burnPlanets(sun_r)
+
     ### DOM Functions
 
     These functions initialize the DOM objects in the sketch.
@@ -146,7 +204,7 @@ myp = new p5 (p)->
         the case of `p.mouseIsPressed`, it calls the mouse
         event callback (otherwise it single-clicks)
     ###
-    p.setupDOM = ->
+    setupDOM = ->
         r_sl = p.createSlider(0,255,100)
         r_sl.position(16,16)
         g_sl = p.createSlider(0,255,0)
@@ -160,7 +218,7 @@ myp = new p5 (p)->
         rand_sl = p.createSlider(0,16,4)
         rand_sl.position(16,96)
 
-    p.drawDOM = ->
+    drawDOM = ->
         p.fill(0)
         p.text("Red",150,16+4)
         p.text("Green",150,32+4)
@@ -170,36 +228,68 @@ myp = new p5 (p)->
         p.text("Rand",150,96+4)
         p.image(palette_img)
 
-    p.getInput = ->
+    getInput = ->
         mouse = [p.mouseX,p.mouseY]
         lastMouse = [p.pmouseX,p.pmouseY]
         #p.mousePressed() if (p.mouseIsPressed)
-
+        cam_pos[1]++ if key.up
+        cam_pos[1]-- if key.down
+        cam_pos[0]++ if key.left
+        cam_pos[0]-- if key.right
+        #p.camera(cam_pos[0],-10,cam_pos[1])
 
     ### WebGL Functions
 
     WebGL defers rendering to the system's GPU. Neat, huh?
-    - `p.setupWebGL` creates WebGL objects
-    - `p.renderWebGL` renders the WebGL objects
+    - `setupWebGL` creates WebGL objects
+    - `renderWebGL` renders the WebGL objects
     ###
-    p.setupWebGL = ->
+    setupWebGL = ->
+        sun = new Sun(0,0,150,-0.005,-0.5)
+        planets = [
+            new Planet(300,0,20,0.01,-0.2,planet_img)
+            new Planet(200,200,100,-0.005,-0.5)]
         p.translate(0,2,0)
+        setupStars()
 
-    p.renderWebGL = ->
+    renderWebGL = ->
         p.background(0)
         p.translate(0,100,0)
+        p.pointLight(250,250,250,1,0,0,0)
+        drawStars()
+        sun.draw()
+        #drawPlanets()
 
-        p.pointLight(0,0,0,0,0,0)
-        p.texture(sun_img)
-        p.rotateY(-p.frameCount * 0.005)
-        p.sphere(200)
         p.rotateZ(0.5)
         p.rotateY(p.frameCount * 0.01)
         p.translate(0,0,500)
 
-        #p.texture(ring_img)
-        #p.rotateZ(90)
-        #p.plane(100, 100)
         p.texture(planet_img)
-        p.sphere(50)
+        p.sphere(20)
+
+    setupStars = ->
+        [x,y] = [2048,2048]
+        for i in [0..n_stars]
+            arr_stars.push(
+                [x-p.random(x*2),[y-p.random(y*2)]])
+
+    drawStars = ->
+        for i in [0..n_stars]
+            p.push()
+            p.translate(arr_stars[i][0],arr_stars[i][1],-1000)
+            p.plane(2,2)
+            p.pop()
+
+
+    drawPlanets = ->
+        for planet in planets
+            p.translate(0,0,planet.ot)
+            planet.draw()
+
+    burnPlanets = (r) ->
+        for planet in planets
+            if (planet.ot<r)
+                planet.burn()
+
+
 
