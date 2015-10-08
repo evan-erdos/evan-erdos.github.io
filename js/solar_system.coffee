@@ -100,6 +100,7 @@ myp = new p5 (p) ->
     - `p.draw` is called as frequently as `p.framerate`
     - `p.keyPressed` is called on every key input event
     - `p.mousePressed` is called on mouse down
+    - `p.windowResized` keeps window full
     - `p.remove` destroys everything in the sketch
     ###
     p.preload = ->
@@ -146,6 +147,9 @@ myp = new p5 (p) ->
             mouse[1]+p.random(-rand,rand)
             x*delta_size,y*delta_size)
     ###
+
+    p.windowResized = ->
+        p.resizeCanvas(p.windowWidth, p.windowHeight);
 
     #p.remove = -> p5 = null
 
@@ -198,7 +202,7 @@ myp = new p5 (p) ->
         raw_volume = p.abs(mic.getLevel())
         volume = ((raw_volume-volume)/2)%10
         if volume>0.001 then sun_r_base+=5 else sun_r_base-=2
-        sun_r = p.max(150,sun_r_base) + p.map(volume,0,1,0,300)
+        sun_r = p.max(150,sun_r_base)+p.map(volume,0,1,0,300)
         burnPlanets(sun_r)
 
     ### DOM Functions
