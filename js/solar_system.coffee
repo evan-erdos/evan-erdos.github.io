@@ -1,7 +1,7 @@
 ---
 ---
 
-### Ben Scott # 2015-10-05 # A Quiet Solar System ###
+### Ben Scott # 2015-10-07 # Solar System ###
 
 'use strict' # just like JavaScript
 
@@ -31,7 +31,7 @@ myp = new p5 (p) ->
     [sun_img,planet_img,sky_img] = [null,null,null]
 
     [sun,sun_r,sun_r_base] = [null,50,150]
-    [cam_pos] = [0,0,0]
+    cam_pos = [0,0,1000]
     planets = []
 
     n_stars = 1024
@@ -47,14 +47,14 @@ myp = new p5 (p) ->
     ### `Planet`
 
     This is a class which represents planets.
-    - `@x,@y`: center
-    - `@dt`: day period
-    - `@o`: orbital radius
-    - `@ot`: orbit time
     - `@r`: body radius
+    - `@o`: orbital radius
+    - `@dt`: day period
+    - `@ot`: orbit time
+    - `@img`: surface image reference
     ###
     class Planet
-        constructor: (@x,@y,@r,@dt=0.1,@ot=0.05,@img) ->
+        constructor: (@r=1,@o,@dt=0.1,@ot=0.05,@img) ->
             @img = planet_img if @img==null
 
         draw: ->
@@ -62,7 +62,7 @@ myp = new p5 (p) ->
             p.rotateZ(0.375)
             p.rotateY(p.frameCount * 0.01)
             #p.translate(0,0,@ot)
-            p.texture(@img)
+            p.texture(@img) if @img?
             p.sphere(@r)
             p.pop()
 
@@ -88,7 +88,7 @@ myp = new p5 (p) ->
             p.push()
             p.texture(sun_img)
             p.rotateY(p.frameCount * 0.005)
-            p.sphere(sun_r) # from outside, set by audio
+            p.sphere(@r)
             p.rotateY(p.frameCount * @dt)
             p.pop()
 
@@ -113,7 +113,7 @@ myp = new p5 (p) ->
         p.createCanvas(p.windowWidth,p.windowHeight, p.WEBGL)
         p.noStroke()
         #p.setupDOM()
-        setupAudio()
+        #setupAudio()
         setupWebGL()
         p.frameRate(60)
 
@@ -121,16 +121,12 @@ myp = new p5 (p) ->
         #p.background(120)
         #p.HexGrid(128,128)
         getInput()
-        getAudio()
+        #getAudio()
         #p.drawDOM()
         renderWebGL()
 
     p.keyPressed = ->
         alt = !alt if (p.keyCode is p.ALT)
-        key.up = (p.keyCode is p.UP_ARROW)
-        key.down = (p.keyCode is p.DOWN_ARROW)
-        key.left = (p.keyCode is p.LEFT_ARROW)
-        key.right = (p.keyCode is p.RIGHT_ARROW)
 
     ###
     p.mousePressed = ->
@@ -242,11 +238,21 @@ myp = new p5 (p) ->
         mouse = [p.mouseX,p.mouseY]
         lastMouse = [p.pmouseX,p.pmouseY]
         #p.mousePressed() if (p.mouseIsPressed)
-        cam_pos[1]++ if key.up
-        cam_pos[1]-- if key.down
-        cam_pos[0]++ if key.left
-        cam_pos[0]-- if key.right
-        #p.camera(cam_pos[0],-10,cam_pos[1])
+
+        key.up = (p.keyCode is p.UP_ARROW)
+        key.down = (p.keyCode is p.DOWN_ARROW)
+        key.left = (p.keyCode is p.LEFT_ARROW)
+        key.right = (p.keyCode is p.RIGHT_ARROW)
+
+        if (key.up || key.down)
+            cam_pos[2]-=5 if key.up
+            cam_pos[2]+=5 if key.down
+
+        if (key.left || key.right)
+            cam_pos[0]-=5 if key.left
+            cam_pos[0]+=5 if key.right
+
+        p.camera(cam_pos[0],cam_pos[1],cam_pos[2])
 
     ### WebGL Functions
 
@@ -255,7 +261,7 @@ myp = new p5 (p) ->
     - `renderWebGL` renders the WebGL objects
     ###
     setupWebGL = ->
-        sun = new Sun(0,0,150,-0.005,-0.5)
+        sun = new Sun(150,-0.005,-0.5)
         planets = [
             new Planet(300,0,20,0.01,-0.2,planet_img)
             new Planet(200,200,100,-0.005,-0.5)]
@@ -269,8 +275,6 @@ myp = new p5 (p) ->
         drawStars()
         sun.draw()
         drawPlanets()
-        tempPlanet()
-        drawPlanet(0.2,0.1,600,10)
 
     ### Domain Functions
 
@@ -278,46 +282,72 @@ myp = new p5 (p) ->
     the logic of the game / sketch.
     - `setupStars`: initializes a random array of stars
     - `drawStars`: renders the stars as planes
+    - `setupPlanets`: initializes an array of planets
     - `drawPlanets`: renders the planets
     - `burnPlanets`: sets the planet teture to that of the sun
         if the sun engulfs it.
     ###
     setupStars = ->
+        xoff = 0
         [x,y] = [2048,2048]
-        for i in [0..n_stars]
+        for i in [0..n_stars/2]
+            xoff+=0.01
             arr_stars.push(
-                [x-p.random(x*2),[y-p.random(y*2)]])
+                [[(x-p.noise(xoff)*x*2)*10]
+                 [(y-p.random(y*2))*10]])
+        for i in [0..n_stars/2]
+            arr_stars.push(
+                [[(2*x-p.random(x*4))*10]
+                 [(2*y-p.random(y*4))*10]])
 
     drawStars = ->
         for i in [0..n_stars]
             p.push()
-            p.translate(arr_stars[i][0],arr_stars[i][1],-1000)
-            p.plane(2,2)
+            p.translate(
+                arr_stars[i][0]
+                arr_stars[i][1], -10000)
+            p.plane(10,10)
             p.pop()
 
+    setupPlanets = ->
+        planets = [
+            new Planet(-0.2,-0.05,250,40)
+            new Planet(0.5,0.01,600,50)]
+
     drawPlanets = ->
-        for planet in planets
-            p.translate(0,0,planet.ot)
-            planet.draw()
+        drawPlanet(-0.2,-0.05,250,40)
+        startPlanetSet(0.5,0.01,700,50)
+        drawPlanet(0,-0.1,125,10)
+        endPlanetSet(0,-0.05,100,5)
+        #for planet in planets
+        #    p.translate(0,0,planet.ot)
+        #    planet.draw()
 
     burnPlanets = (r) ->
         for planet in planets
             planet.burn() if (planet.ot<r)
 
-    tempPlanet = ->
-        p.rotateZ(0.5)
-        p.rotateY(p.frameCount * 0.01)
-        p.translate(0,0,50)
-        p.texture(planet_img)
-        p.sphere(5)
-
-    drawPlanet = (z,orbit,orbit_dist,radius) ->
+    startPlanetSet = (z,orbit,dist,radius) ->
         p.push()
+        rawPlanet(z,orbit,dist,radius)
+
+    endPlanetSet = (z,orbit,dist,radius) ->
+        rawPlanet(z,orbit,dist,radius)
+        p.pop()
+
+    rawPlanet = (z,orbit,dist,radius) ->
         p.rotateZ(z)
-        p.rotateY(p.frameCount * 0.01)
-        p.translate(0,0,500)
+        p.rotateY(p.frameCount * orbit)
+        p.translate(0,0,dist)
+        p.push()
+        p.rotateY(p.frameCount * 0.2)
         p.texture(planet_img)
-        p.sphere(20)
+        p.sphere(radius)
+        p.pop()
+
+    drawPlanet = (z,orbit,dist,radius) ->
+        p.push()
+        rawPlanet(z,orbit,dist,radius)
         p.pop()
 
 ### WebGL `Point`
