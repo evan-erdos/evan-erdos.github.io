@@ -8,7 +8,7 @@ tag: [Programming, GameDev]
 > ... and like, we'll be so advanced, that, like, they will just...
 > be powered by smiles and happiness, and love.][here]
 
-Once in ~20 times, you will generate a binary star (keep clicking). The code below is sloppy and not as well documented as the previous few. This *was* named smile drive because I was going to have a spaceship thing, and then have it thrust based upon if the camera recorded if the user was smiling or not. The silly text above would have made sense if I had that running. Anyways, click on it or click [here][] to look around in the universe.
+Once in ~20 times, you will generate a binary star (keep clicking). The code below is sloppy and not as well documented as the previous few. I left some code to generate a hexagonal grid in there while testing to see if I could integrate the WebGL side with the usual P5.js part, and I couldn't. This *was* named smile drive because I was going to have a spaceship, and then have it thrust based upon if the camera recorded if the user was smiling or not. The silly text above would have made sense if I had that running. Anyways, click on it or click [here][] to look around in the universe.
 
 The most interesting code examples are probably the recursive planet drawing in the planet class and the perlin noise stars at the end.
 
@@ -383,6 +383,7 @@ WebGL defers rendering to the system's GPU. Neat, huh?
 ### Domain Functions ###
 
 These functions draw the stars, the planets, and carry out the logic of the game / sketch.
+
 - `setupStars`: initializes a random array of stars
 - `setupPlanets`: initializes an array of planets
 - `drawStars`: renders the stars as planes
@@ -427,7 +428,7 @@ setupStars = ->
             p.translate(
                 arr_stars[i][0]
                 arr_stars[i][1],-10000)
-            p.plane(20*p.noise(xoff),20*p.noise(xoff)) #p.sphere(20)
+            p.plane(20*p.noise(xoff),20*p.noise(xoff))
             p.pop()
 
     drawPlanets = ->
