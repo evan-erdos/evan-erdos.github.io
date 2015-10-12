@@ -2,13 +2,16 @@
 layout: post
 title: Random Universe
 tag: [Programming, GameDev]
+img: /rsc/sketch/random-universe.png
 ---
 
 > [In the future, like, man, the spaceships will fly all over the place.
 > ... and like, we'll be so advanced, that, like, they will just...
 > be powered by smiles and happiness, and love.][here]
 
-Once in ~20 times, you will generate a binary star (keep clicking). The code below is sloppy and not as well documented as the previous few. I left some code to generate a hexagonal grid in there while testing to see if I could integrate the WebGL side with the usual P5.js part, and I couldn't. This *was* named smile drive because I was going to have a spaceship, and then have it thrust based upon if the camera recorded if the user was smiling or not. The silly text above would have made sense if I had that running. Anyways, click on it or click [here][] to look around in the universe.
+Once in ~20 times, you will generate a binary star (keep clicking). The code below is sloppy and not as well documented as the previous few. I left some code to generate a hexagonal grid in there while testing to see if I could integrate the WebGL side with the usual P5.js part, and I couldn't. This *was* named smile drive because I was going to have a spaceship, and then have it thrust based upon if the camera recorded if the user was smiling or not. The silly text above would have made sense if I had that running. Anyways, click on it or click on the image below to look around in the universe.
+
+[![img][]][here]
 
 The most interesting code examples are probably the recursive planet drawing in the planet class and the perlin noise stars at the end.
 
@@ -435,5 +438,6 @@ setupStars = ->
         planet.draw() for planet in planets
 ```
 
+[img]: </rsc/sketch/rsc/random-universe.png>
 [here]: </sketch/smile_drive.coffee>
 

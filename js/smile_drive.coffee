@@ -161,12 +161,11 @@ myp = new p5 (p) ->
     - `p.remove` destroys everything in the sketch
     ###
     p.preload = ->
-        palette_img = p.loadImage("/rsc/colormap.gif")
-        sun_img = p.loadImage("/rsc/sun.png")
-        blue_img = p.loadImage("/rsc/blue_sun.png")
-        planet_img = p.loadImage("/rsc/planet.png")
-        gas_img = p.loadImage("/rsc/gas_giant.png")
-        rock_img = p.loadImage("/rsc/rock.png")
+        sun_img = p.loadImage("/rsc/sketch/rsc/sun.png")
+        blue_img = p.loadImage("/rsc/sketch/rsc/blue_sun.png")
+        planet_img = p.loadImage("/rsc/sketch/rsc/planet.png")
+        gas_img = p.loadImage("/rsc/sketch/rsc/gas_giant.png")
+        rock_img = p.loadImage("/rsc/sketch/rsc/rock.png")
 
     p.setup = ->
         p.createCanvas(p.windowWidth,p.windowHeight, p.WEBGL)
