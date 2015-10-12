@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The Smile Drive
+title: Random Universe
 tag: [Programming, GameDev]
 ---
 
@@ -8,10 +8,12 @@ tag: [Programming, GameDev]
 > ... and like, we'll be so advanced, that, like, they will just...
 > be powered by smiles and happiness, and love... where's my drink?][Here it is]
 
-[Here it is][].
+
+Once in ~20 times, you will generate a binary star with this thing. The code below is sloppy and not as well documented as the previous few.
+
 
 ```coffee
-### Ben Scott # 2015-10-05 # A Quiet Solar System ###
+### Ben Scott # 2015-10-12 # Random Universe ###
 
 'use strict' # just like JavaScript
 ```
@@ -40,10 +42,10 @@ myp = new p5 (p) ->
         right: false
 
     ### WebGL ###
-    [sun_img,planet_img,ring_img] = [null,null,null]
-
+    [sun_img,blue_img] = [null,null]
+    [planet_img,gas_img,rock_img] = [null,null,null]
     [sun,sun_r,sun_r_base] = [null,50,150]
-    [cam_pos] = [0,0,0]
+    cam_pos = [0,0,5000]
     planets = []
 
     n_stars = 1024
@@ -55,42 +57,74 @@ myp = new p5 (p) ->
 
     ### Audio ###
     [mic,analyzer,volume] = [null,null,0]
-
 ```
 
 ### `Planet` ###
 
-This is a class which represents planets.
+This is a class which represents planets. If no arguments are passed to it, it makes a random planet, with random attributes. A planet of sufficient size turns into a gas giant, while smaller planets look whiter. Moons are added recursively, and are also drawn as such, taking their proper orbit.
 
-- `@x,@y`: center
-- `@dt`: day period
-- `@o`: orbital radius
-- `@ot`: orbit time
 - `@r`: body radius
+- `@dist`: orbital radius
+- `@ot`: orbit time
+- `@dt`: day period
+- `@z`: z-offset
+- `@moons`: list of other planets
+- `@img`: image to render onto the planet
 
 ```coffee
-    class Planet
-        constructor: (@x,@y,@r,@dt=0.1,@ot=0.05,@img) ->
-            @img = planet_img if @img==null
+class Planet
+    @moons = []
+    @img = null
+    constructor: (@r=-1,@dist,@ot,@dt,@z) ->
+        @makeRandomPlanet() if (@r<0)
+        if (60<=@r<=150)
+            @img = rock_img
+        else if (@r>150)
+            @img = gas_img
+        else @img = planet_img
+        @moons = new Array()
 
-        draw: ->
-            p.push()
-            p.rotateZ(0.375)
-            p.rotateY(p.frameCount * 0.01)
-            #p.translate(0,0,@ot)
-            p.texture(@img)
-            p.sphere(@r)
-            p.pop()
+    draw: ->
+        p.push()
+        p.rotateZ(@z)
+        p.rotateY(p.frameCount*@ot)
+        p.translate(0,0,@dist)
+        p.push()
+        p.rotateY(p.frameCount*@dt)
+        p.texture(@img)
+        p.sphere(@r)
+        @drawMoons()
+        p.pop()
+        p.pop()
 
-        burn: ->
-            @img = sun_img
+    drawMoons: ->
+        return if (@moons==undefined)
+        for moon in @moons
+            moon.draw()
+
+    addMoon: (moon) ->
+        return if (@moons==undefined)
+        @moons.push(moon)
+
+    makeRandomPlanet: ->
+        @r = p.random(10,200)
+        @dist = p.random(1500,15000)
+        @ot = p.random(0.0005,0.05)
+        @dt = p.random(0.001,0.5)
+        @z = p.random(-0.5,0.5)
+        if (p.random(10)>7)
+            for i in [0..p.random(3)]
+                @addMoon(new Planet(
+                    p.random(15)
+                    p.random(@r+20,@r+200)
+                    p.random(0.05)
+                    p.random()
+                    p.random(-0.05,0.05)))
 ```
 
 ### `Sun` ###
 
-This is a class which represents the sun. I'd like to have
-it inherit from planet (or vice versa) but that seems to
-cause problems.
+This is a class which represents the sun. I'd like to have it inherit from planet (or vice versa) but that seems to cause problems. Every once in awhile, you will get a binary star. Uncommenting the one line will cause it to always be a binary star.
 
 - `@r`: body radius
 - `@dt`: day period
@@ -98,17 +132,39 @@ cause problems.
 - `@img`: texture for the sun
 
 ```coffee
-    class Sun
-        constructor: (@r,@dt=0.1,@ot=0.05,@img) ->
-            @img = sun_img if @img==null
+class Sun
+    @isBinaryStar = false
+    constructor: (@r,@dt=0.1,@ot=0.05,@img) ->
+        @r+=(p.random(-150,150)) if (@r>=300)
+        if (@r<=1000) then @img = sun_img else @img = blue_img
+        #@isBinaryStar = true # to get binary each time
+        @isBinaryStar = (p.random(100)>95)
 
-        draw: ->
-            p.push()
-            p.texture(sun_img)
-            p.rotateY(p.frameCount * 0.005)
-            p.sphere(sun_r) # from outside, set by audio
+    draw: ->
+        p.push()
+        p.texture(@img)
+        p.rotateY(240)
+        unless (@isBinaryStar)
+            p.rotateY(p.frameCount*0.005)
+            p.sphere(@r)
             p.rotateY(p.frameCount * @dt)
-            p.pop()
+        else @drawBinaryStar()
+        p.pop()
+
+    drawBinaryStar: ->
+        p.rotateX(p.frameCount*0.5)
+        p.rotateY(p.frameCount*0.5)
+        p.rotateZ(p.frameCount*0.5)
+        p.push()
+        p.basicMaterial(250,250,255)
+        p.translate(0,-@r/4,-@r/4)
+        p.sphere(@r/2)
+        p.pop()
+        p.push()
+        p.basicMaterial(255,255,250)
+        p.translate(0,@r/4,@r/4)
+        p.sphere(@r/2)
+        p.pop()
 
 ```
 
@@ -125,34 +181,39 @@ These functions are automatic callbacks for `P5.js` events:
 
 
 ```coffee
-    p.preload = ->
+	p.preload = ->
         palette_img = p.loadImage("/rsc/colormap.gif")
-        planet_img = p.loadImage("/rsc/planet.png")
         sun_img = p.loadImage("/rsc/sun.png")
-        #ring_img = p.loadImage("/rsc/ring.png")
+        blue_img = p.loadImage("/rsc/blue_sun.png")
+        planet_img = p.loadImage("/rsc/planet.png")
+        gas_img = p.loadImage("/rsc/gas_giant.png")
+        rock_img = p.loadImage("/rsc/rock.png")
 
     p.setup = ->
         p.createCanvas(p.windowWidth,p.windowHeight, p.WEBGL)
         p.noStroke()
         #p.setupDOM()
-        setupAudio()
+        #setupAudio()
         setupWebGL()
         p.frameRate(60)
 
     p.draw = ->
         #p.background(120)
-        #p.HexGrid(128,128)
+        #HexGrid(128,128)
         getInput()
-        getAudio()
+        #getAudio()
         #p.drawDOM()
-        renderWebGL()
+        drawWebGL()
 
     p.keyPressed = ->
         alt = !alt if (p.keyCode is p.ALT)
-        key.up = (p.keyCode is p.UP_ARROW)
-        key.down = (p.keyCode is p.DOWN_ARROW)
-        key.left = (p.keyCode is p.LEFT_ARROW)
-        key.right = (p.keyCode is p.RIGHT_ARROW)
+
+    p.mouseDragged = ->
+        mouse = [p.mouseX,p.mouseY]
+        lastMouse = [p.pmouseX,p.pmouseY]
+        cam_pos[0]-= (mouse[0]-lastMouse[0])*8
+        cam_pos[1]-= (mouse[1]-lastMouse[1])*8
+
     ###
     p.mousePressed = ->
         s = s_sl.value()
@@ -171,6 +232,9 @@ These functions are automatic callbacks for `P5.js` events:
             mouse[1]+p.random(-rand,rand)
             x*delta_size,y*delta_size)
     ###
+
+    p.windowResized = ->
+        p.resizeCanvas(p.windowWidth, p.windowHeight);
 
     #p.remove = -> p5 = null
 ```
@@ -230,8 +294,7 @@ These functions deal with audio input:
         raw_volume = p.abs(mic.getLevel())
         volume = ((raw_volume-volume)/2)%10
         if volume>0.001 then sun_r_base+=5 else sun_r_base-=2
-        sun_r = p.max(150,sun_r_base) + p.map(volume,0,1,0,300)
-        burnPlanets(sun_r)
+        sun_r = p.max(150,sun_r_base)+p.map(volume,0,1,0,300)
 ```
 
 ### DOM Functions ###
@@ -273,11 +336,26 @@ These functions initialize the DOM objects in the sketch:
         mouse = [p.mouseX,p.mouseY]
         lastMouse = [p.pmouseX,p.pmouseY]
         #p.mousePressed() if (p.mouseIsPressed)
-        cam_pos[1]++ if key.up
-        cam_pos[1]-- if key.down
-        cam_pos[0]++ if key.left
-        cam_pos[0]-- if key.right
-        #p.camera(cam_pos[0],-10,cam_pos[1])
+
+        key.up = (p.keyCode is p.UP_ARROW)
+        key.down = (p.keyCode is p.DOWN_ARROW)
+        key.left = (p.keyCode is p.LEFT_ARROW)
+        key.right = (p.keyCode is p.RIGHT_ARROW)
+
+        p.camera(cam_pos[0],cam_pos[1],cam_pos[2])
+
+        ### for arrow key steering
+        if (key.up || key.down || key.left || key.right)
+            if (key.up || key.down)
+                cam_pos[1]-=10 if key.up
+                cam_pos[1]+=10 if key.down
+
+            if (key.left || key.right)
+                cam_pos[0]-=10 if key.left
+                cam_pos[0]+=10 if key.right
+
+        #p.camera(cam_pos[0],cam_pos[1],cam_pos[2])
+        ###
 ```
 
 ### WebGL Functions ###
@@ -289,70 +367,71 @@ WebGL defers rendering to the system's GPU. Neat, huh?
 
 ```coffee
     setupWebGL = ->
-        sun = new Sun(0,0,150,-0.005,-0.5)
-        planets = [
-            new Planet(300,0,20,0.01,-0.2,planet_img)
-            new Planet(200,200,100,-0.005,-0.5)]
-        p.translate(0,2,0)
+        setupPlanets()
         setupStars()
 
-    renderWebGL = ->
+    drawWebGL = ->
         p.background(0)
         p.translate(0,100,0)
         p.pointLight(250,250,250,1,0,0,0)
         drawStars()
         sun.draw()
         drawPlanets()
-
-        p.rotateZ(0.5)
-        p.rotateY(p.frameCount * 0.01)
-        p.translate(0,0,500)
-
-        p.texture(planet_img)
-        p.sphere(20)
 ```
 
 ### Domain Functions ###
 
-These functions draw the stars, the planets, and carry out
-the logic of the game / sketch.
-
+These functions draw the stars, the planets, and carry out the logic of the game / sketch.
 - `setupStars`: initializes a random array of stars
+- `setupPlanets`: initializes an array of planets
 - `drawStars`: renders the stars as planes
 - `drawPlanets`: renders the planets
-- `burnPlanets`: sets the planet teture to that of the sun
-    if the sun engulfs it.
 
 ```coffee
-    setupStars = ->
+setupStars = ->
+        xoff = 0
         [x,y] = [2048,2048]
-        for i in [0..n_stars]
+        for i in [0..n_stars/2]
+            xoff+=0.01
             arr_stars.push(
-                [x-p.random(x*2),[y-p.random(y*2)]])
+                [[(x-p.noise(xoff)*x*2)*10]
+                 [(y-p.random(y*2))*10]])
+        for i in [0..n_stars/2]
+            arr_stars.push(
+                [[(2*x-p.random(x*4))*10]
+                 [(2*y-p.random(y*4))*10]])
+
+    setupPlanets = ->
+        sun = new Sun(1000,-0.005,-0.5)
+        planets = [
+            new Planet(64,10000,0.01,0.02,0.02)
+            new Planet(10,5000,0.01,0,0.05)
+            new Planet(25,15000,-0.01,0.2,0.1)
+            new Planet(30,20000,-0.005,0,0.1)
+            new Planet(8,7000,0.02,-0.05,-0.2)
+            new Planet(160,12000,-0.005,-0.03,-0.2)]
+        planets[0].addMoon(new Planet(10,150,-0.1,0,0.2))
+        planets[0].addMoon(new Planet(5,125,-0.05,0,0.1))
+        planets[5].addMoon(new Planet(30,400,-0.1,0.1,0.2))
+        planets[5].addMoon(new Planet(10,300,0.1,0.1,0.2))
+        for i in [0..p.random(10)]
+            planets.push(new Planet())
 
     drawStars = ->
+        xoff = 0
+        p.ambientMaterial(255,255,255)
         for i in [0..n_stars]
+            xoff+=0.1
             p.push()
-            p.translate(arr_stars[i][0],arr_stars[i][1],-1000)
-            p.plane(2,2)
+            p.translate(
+                arr_stars[i][0]
+                arr_stars[i][1],-10000)
+            p.plane(20*p.noise(xoff),20*p.noise(xoff)) #p.sphere(20)
             p.pop()
 
     drawPlanets = ->
-        for planet in planets
-            p.translate(0,0,planet.ot)
-            planet.draw()
-
-    burnPlanets = (r) ->
-        for planet in planets
-            planet.burn() if (planet.ot<r)
+        planet.draw() for planet in planets
 ```
 
-
-
-
-
-
-
 [Here it is]: </sketch/smile_drive.coffee>
-
 
