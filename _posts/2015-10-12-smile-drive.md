@@ -6,10 +6,11 @@ tag: [Programming, GameDev]
 
 > [In the future, like, man, the spaceships will fly all over the place.
 > ... and like, we'll be so advanced, that, like, they will just...
-> be powered by smiles and happiness, and love... where's my drink?][Here it is]
+> be powered by smiles and happiness, and love.][here]
 
+Once in ~20 times, you will generate a binary star with this thing. The code below is sloppy and not as well documented as the previous few. This *was* named smile drive because I was going to have a spaceship thing, and then have it thrust based upon if the camera recorded if the user was smiling or not. The silly text above would have made sense if I had that running. Anyways, click on it or click [here][] to look around in the universe.
 
-Once in ~20 times, you will generate a binary star with this thing. The code below is sloppy and not as well documented as the previous few.
+The most interesting code examples are probably the recursive planet drawing in the planet class and the perlin noise stars at the end.
 
 
 ```coffee
@@ -433,5 +434,5 @@ setupStars = ->
         planet.draw() for planet in planets
 ```
 
-[Here it is]: </sketch/smile_drive.coffee>
+[here]: </sketch/smile_drive.coffee>
 
