@@ -81,7 +81,8 @@ body {
   margin: 0 auto;
   max-width: 768px;
   padding: 8px;
-  margin-bottom: 64px;
+  margin-bottom: 2em;
+  margin-top: 2em;
   width: 100%;
   /*opacity: 0.75;*/
 }
@@ -533,7 +534,7 @@ nav {
 }
 
 .wrapper-footer {
-  padding-top: 64px;
+  padding-top: 2em;
   //border-top: 1px solid #ddd;
   //border-bottom: 1px solid #ddd;
   padding-bottom: 16px;

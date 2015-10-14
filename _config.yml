@@ -1,9 +1,9 @@
 # This file contains configuration flags
 name: Ben Scott
 url: http://bescott.org/
-avatar: "/rsc/Rook Top.png"
+avatar: "/rsc/ben-rules.jpg"
 github_username: iasEnvy
-description: "2015-09-18: Oh, jeez Morty, you really did a number on this website right now."
+description: "2015-10-13: This update brought to you by CoffeeScript."
 footer-links:
   email: bescott@andrew.cmu.edu
   github: iasEnvy
@@ -18,7 +18,16 @@ footer-links:
 baseurl: ""
 markdown: redcarpet
 redcarpet:
-  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data", "strikethrough", "footnotes", "highlight", "superscript"]
+  extensions:
+  - no_intra_emphasis
+  - fenced_code_blocks
+  - autolink
+  - tables
+  - with_toc_data
+  - strikethrough
+  - footnotes
+  - highlight
+  - superscript
 
 #kramdown:
 #  input: GFM
@@ -36,7 +45,7 @@ version: v1.9.2
 sass:
   style: :compressed # ! :expanded
 
-gems:    # plugins
+gems:
 - jekyll-sitemap
 
 exclude:
