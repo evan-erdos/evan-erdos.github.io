@@ -2,6 +2,7 @@
 layout: post
 title: 60-201 - Multiples
 tag: [Programming, GameDev]
+img: /rsc/60-201/multiples/0.png
 ---
 
 If I were more clever, there'd be a WebGL demo of the project on this page.

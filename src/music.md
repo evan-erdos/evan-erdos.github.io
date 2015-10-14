@@ -4,8 +4,7 @@ title: Music
 permalink: /music/
 ---
 
-Here's some really bad recordings. The microphone isn't high-quality, my playing isn't high-quality, the piano is a bit wobbly, I waver quite a bit: the whole affair is a mess, but here it is. I like David Bowie, Paul McCartney (and those other guys who followed him around for awhile in the 60s), Stevie Wonder, Bob Dylan, and the Velvet Underground. I like to pretend to be Mick Jagger, but being seated at a piano makes that difficult. Brian Wilson and the Beach Boys also constitute a large part of my repertoire. These are extremely raw, perfectly uncut recordings of my better sessions from my [SoundCloud][soundcloud] page.
-
+Here's some really bad recordings. The microphone isn't high-quality, my playing isn't high-quality, the piano is a bit wobbly, I waver quite a bit: the whole affair is a mess, but here it is. I like David Bowie, Paul McCartney (and those other guys who followed him around for awhile in the 60s), Stevie Wonder, Bob Dylan, and the Velvet Underground. I like to pretend to be Mick Jagger, but being seated at a piano makes that difficult. Brian Wilson and the Beach Boys also constitute a large part of my repertoire. These are extremely raw, perfectly uncut recordings of my better sessions from my [SoundCloud][] page.
 
 My Favorites
 ------------
@@ -260,4 +259,4 @@ A solid 80% of the links here won't work until I upload a recording of myself pe
 [90]: https://soundcloud.com/bescott-1/there-she-goes
 [91]: https://soundcloud.com/bescott-1/these-days
 
-[soundcloud]: https://soundcloud.com/bescott-1
+[SoundCloud]: https://soundcloud.com/bescott-1

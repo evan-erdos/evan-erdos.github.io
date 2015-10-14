@@ -298,15 +298,32 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0em 0 16px;
   padding: 0;
 
+  a { color: inherit; }
+
+  a:hover, a:active {
+    color: $gray;
+    text-shadow: 0px 0px 4px $white;
+  }
+
+
   @include mobile {
     line-height: 1.4;
+  }
+}
+
+.version {
+  color: $gray;
+
+  a { color: inherit; }
+
+  a:hover, a:active {
+    color: $lightGray;
   }
 }
 
 h1 {
   font-size: 32px;
   text-shadow: 2px 2px 0px #fff;
-  a { color: inherit; }
 }
 
 h2 {
@@ -325,7 +342,6 @@ h4 {
 p { margin: 15px 0; }
 
 a {
-  /*color: $darkGray;*/
   text-decoration: none;
 	cursor: pointer;
   &:hover, &:active { color: $darkGray; }
@@ -352,8 +368,8 @@ img {
   max-width: 100%;
   border-radius: 2px;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin-right: 1em;
+  margin-bottom: 1em;
 }
 
 /* Fixes images in popup boxes from Google Translate */
@@ -489,7 +505,6 @@ nav {
 
 .posts > .post {
   padding-bottom: 2em;
-  border-bottom: 1px solid $lightGray;
 }
 
 .posts > .post:last-child {

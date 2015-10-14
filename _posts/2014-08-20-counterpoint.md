@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Counterpoint v1.18.3
-permalink: 3d/counterpoint/
-tag: 3D
+title: Counterpoint
+version: 1.18.3
+permalink: /3d/counterpoint/
+tag: [3D, GameDev]
+img: /rsc/3d/counterpoint/terrain.png
 ---
+
+It's large, industrial, and has a totally slick [rocket][] housed in the center.
 
 I seem to gravitate towards radial architecture when I set out to draft a building. I also seem to cling to words from a bygone era to describe new technology: Draft? Nobody uses drafting tables anymore, it's all CAD!
 
@@ -12,17 +16,16 @@ I would really like to travel back in time and watch people in the 1940s use not
 ### Edit: ###
 I did go back to it! There are some finer points to it now, some better details & UV mapping, a new [rocket](/3d/vulcain), and a brand new annex.
 
-![counterpoint-terrain](/rsrc/3d/counterpoint/terrain_v1.17.9.png)
+![counterpoint-bridge](/rsc/3d/counterpoint/bridge.png)
 
-![counterpoint-bridge](/rsrc/3d/counterpoint/bridge_v1.18.3.png)
+![counterpoint-trusses](/rsc/3d/counterpoint/trusses.png)
 
-![counterpoint-trusses](/rsrc/3d/counterpoint/trusses_v1.18.3.png)
+![counterpoint-annex](/rsc/3d/counterpoint/annex.png)
 
-![counterpoint-annex](/rsrc/3d/counterpoint/annex_v1.18.2.png)
-
-[![counterpoint-vulcain](/rsrc/3d/vulcain/core_v2.1.55.png)](/3d/vulcain)
+[![counterpoint-vulcain](/rsc/3d/vulcain/core.png)](/3d/vulcain)
 
 
 [ivan]: http://en.wikipedia.org/wiki/Ivan_Sutherland
 [sketch]: http://en.wikipedia.org/wiki/Sketchpad
 [amelia]: /gd/amelia_animation
+[rocket]: </3d/vulcain/> "Rocket Engine v2.1.55"

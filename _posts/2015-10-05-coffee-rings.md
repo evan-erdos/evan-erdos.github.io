@@ -1,15 +1,14 @@
 ---
-layout: post
+layout: sketch
 title: Coffee Rings
-permalink: /other/coffee_rings/
 tag: Programming
+permalink: /sketch/rings.coffee/
+script: /js/rings.js/
 ---
 
 Just learned that P5.js does WebGL. Yaaaas.
 
-This is pretty clearly inspired by space, and depending upon when you look at this, will soon contain random planets and better colors and whatnot. At the time being, the P5.js reference website is crashing.
-
-[Here it is](/other/rings_coffee/).
+**Edit**: This sketch is deprecated. See [the more advanced sketch][].
 
 ---
 
@@ -217,9 +216,4 @@ These functions initialize the DOM objects in the sketch.
         p.sphere(50)
 ```
 
-
-
-
-
-
-
+[the more advanced sketch]: </sketch/smile_drive.coffee/>

@@ -3,15 +3,23 @@ layout: default
 ---
 
 <article class="post">
-  <h1>{{ page.title }}</h1>
+  <span><h1><a href="{{ site.baseurl }}{{ post.url }}">{{ page.title }}{% if page.version %}<span class="date"> v{{ page.version }}</span>{% endif %}</a></h1></span>
+
+  {% if page.link %}
+    <a href="{{ page.link }}">
+    {% if page.img %}
+      <img class="caption__media" src="{{site.baseurl}}{{page.img}}">
+    {% endif %}
+    </a>
+  {% else %}
+    {% if page.img %}
+      <img class="caption__media" src="{{site.baseurl}}{{page.img}}">
+    {% endif %}
+  {% endif %}
 
   <div class="entry">
     {{ content }}
   </div>
-
-  {% if page.img.large %}
-	<img class="caption__media" src="{{site.baseurl}}{{page.img.large}}">
-  {% endif %}
 
   <div class="date">
     Ben Scott {{ page.date | date: "%Y-%m-%d" }}

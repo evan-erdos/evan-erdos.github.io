@@ -5,26 +5,16 @@ permalink: /if/
 tag: Writing
 ---
 
-I like text adventures. [*Vividity*][vividity-web] and my new, small, subject-to-change adventure [*When Dan Left*][when-dan-left-web] were authored in [TADS3][tads] and are on [GitHub][github], which means if you want to steal my prose, sell it, and become rich and famous, you can do so. Alternately, you can play it online at the [Interactive Fiction Database][ifdb].
+I've written a few text adventures. I primarily use [TADS 3][], but started with [Inform 7][], which there was nothing wrong with, but it lacked a sort of rigor that I'd personally want to have anytime I'm programming. If you wanted to get into this sort of thing, [Twine][] might be a good place to start.
 
-**Update:** I have learned a useful piece of information about publishing TADS3 games online from [Emily Boegheim][emily_boegheim], namely that you can use [gs.tads.io][new-tads] to run a TADS interpreter on any file hosted online. This means, if you give it a \*.t3 file, it should run, no strings attached! So, you *could* play my text adventures online at the [Interactive Fiction Database][ifdb], or, you can just click the image below to be taken to the cool-kids way of hosting and playing text-adventures.
+**Update:** I have learned a useful piece of information about publishing [TADS 3][] games online from [Emily Boegheim][], namely that you can use [gs.tads.io][] to run a TADS interpreter on any file hosted online. This means, if you give it a \*.t3 file, it should run, no strings attached! So, you *could* play my text adventures online at the [Interactive Fiction Database][], or, you can just click the posts below to be taken to the cool-kids way of hosting and playing text-adventures.
 
 Welcome to the future.
 
-[![vividity](/rsc/if/vividity.png)][vividity-web]
-
----
-
-[![when-dan-left](/rsc/if/when-dan-left.png)][when-dan-left-cmu]
-
----
-
-[tads]: http://www.tads.org/
-[new-tads]: http://gs.tads.io/?storyfile=put_a_story_file_here.t3
-[twine]: http://www.twinery.org/
-[github]: http://github.com/
-[ifdb]: http://ifdb.tads.org/
-[vividity-web]: http://gs.tads.io/?storyfile=http://bescott.org/if/vividity_v0.1.5.t3
-[when-dan-left-web]: http://gs.tads.io/?storyfile=http://bescott.org/if/when_dan_left_web_v0.1.7.t3
-[when-dan-left-cmu]: http://gs.tads.io/?storyfile=http://www.andrew.cmu.edu/user/bescott/2015-09-12-when-dan-left/when_dan_left_web.t3
-[emily_boegheim]: http://ifdb.tads.org/showuser?id=vw7fr8dlv3k7i3pm
+[gs.tads.io]: <gs.tads.io/?storyfile=put_a_story_file_here.t3>
+[Twine]: <twinery.org>
+[Tads 3]: <tads.org>
+[Inform 7]: <inform7.com>
+[Emily Boegheim]: <ifdb.tads.org/showuser?id=vw7fr8dlv3k7i3pm>
+[GitHub]: <github.com>
+[Interactive Fiction Database]: <ifdb.tads.org>

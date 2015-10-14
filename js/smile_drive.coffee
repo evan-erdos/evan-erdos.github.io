@@ -38,6 +38,7 @@ myp = new p5 (p) ->
     arr_stars = []
 
     ### DOM ###
+    [container,canvas] = [null,null]
     [r_sl,g_sl,b_sl] = [null,null,null]
     [d_sl,s_sl,rand_sl] = [null,null,null]
 
@@ -119,7 +120,6 @@ myp = new p5 (p) ->
         constructor: (@r,@dt=0.1,@ot=0.05,@img) ->
             @r+=(p.random(-150,150)) if (@r>=300)
             if (@r<=1000) then @img = sun_img else @img = blue_img
-            #@isBinaryStar = true # to get binary each time
             @isBinaryStar = (p.random(100)>95)
 
         draw: ->
@@ -161,16 +161,19 @@ myp = new p5 (p) ->
     - `p.remove` destroys everything in the sketch
     ###
     p.preload = ->
-        sun_img = p.loadImage("/rsc/sketch/rsc/sun.png")
-        blue_img = p.loadImage("/rsc/sketch/rsc/blue_sun.png")
-        planet_img = p.loadImage("/rsc/sketch/rsc/planet.png")
-        gas_img = p.loadImage("/rsc/sketch/rsc/gas_giant.png")
-        rock_img = p.loadImage("/rsc/sketch/rsc/rock.png")
+        sun_img = p.loadImage("/rsc/sketch/sun.png")
+        blue_img = p.loadImage("/rsc/sketch/blue_sun.png")
+        planet_img = p.loadImage("/rsc/sketch/planet.png")
+        gas_img = p.loadImage("/rsc/sketch/gas_giant.png")
+        rock_img = p.loadImage("/rsc/sketch/rock.png")
 
     p.setup = ->
-        p.createCanvas(p.windowWidth,p.windowHeight, p.WEBGL)
+        canvas = p.createCanvas(756,512,p.WEBGL)
+        canvas.parent('CoffeeSketch')
+        canvas.class("entry")
+        canvas.style("max-width", "100%")
         p.noStroke()
-        #p.setupDOM()
+        #setupDOM()
         #setupAudio()
         setupWebGL()
         p.frameRate(60)
@@ -180,7 +183,7 @@ myp = new p5 (p) ->
         #HexGrid(128,128)
         getInput()
         #getAudio()
-        #p.drawDOM()
+        #drawDOM()
         drawWebGL()
 
     p.keyPressed = ->
@@ -211,8 +214,7 @@ myp = new p5 (p) ->
             x*delta_size,y*delta_size)
     ###
 
-    p.windowResized = ->
-        p.resizeCanvas(p.windowWidth, p.windowHeight);
+    #p.windowResized = -> p.resizeCanvas(p.windowWidth, p.windowHeight);
 
     #p.remove = -> p5 = null
 
@@ -246,8 +248,8 @@ myp = new p5 (p) ->
                     p.fill(p.random(255))
                 else p.fill(255)
                 p.polygon(
-                    x+(i*(h)*r*p.cos(pi_3))*2
-                    y+(3.45*j*h*r)+((i%2)*(h)*r*p.sin(pi_3))*2
+                    x+(i*h*r*p.cos(pi_3))*2
+                    y+(3.45*j*h*r)+((i%2)*h*r*p.sin(pi_3))*2
                     r, 6, pi_6)
 
 
@@ -270,12 +272,19 @@ myp = new p5 (p) ->
     ### DOM Functions
 
     These functions initialize the DOM objects in the sketch.
-    - `p.setupDOM` creates and positions the color sliders
-    - `p.drawDOM` renders the color sliders on every draw
-    - `p.getInput` collects input data, processes it, and in
+    - `setupCanvas` creates and positions the main canvas
+    - `setupDOM` creates and positions the color sliders
+    - `drawDOM` renders the color sliders on every draw
+    - `getInput` collects input data, processes it, and in
         the case of `p.mouseIsPressed`, it calls the mouse
         event callback (otherwise it single-clicks)
     ###
+    setupCanvas = ->
+        canvas = p.createCanvas(756,512,p.WEBGL)
+        canvas.parent('CoffeeSketch')
+        canvas.class("entry")
+        canvas.style("max-width", "100%")
+
     setupDOM = ->
         r_sl = p.createSlider(0,255,100)
         r_sl.position(16,16)
@@ -298,7 +307,6 @@ myp = new p5 (p) ->
         p.text("Size",150,64+4)
         p.text("Delta",150,80+4)
         p.text("Rand",150,96+4)
-        p.image(palette_img)
 
     getInput = ->
         mouse = [p.mouseX,p.mouseY]
@@ -311,19 +319,6 @@ myp = new p5 (p) ->
         key.right = (p.keyCode is p.RIGHT_ARROW)
 
         p.camera(cam_pos[0],cam_pos[1],cam_pos[2])
-
-        ###
-        if (key.up || key.down || key.left || key.right)
-            if (key.up || key.down)
-                cam_pos[1]-=10 if key.up
-                cam_pos[1]+=10 if key.down
-
-            if (key.left || key.right)
-                cam_pos[0]-=10 if key.left
-                cam_pos[0]+=10 if key.right
-
-        #p.camera(cam_pos[0],cam_pos[1],cam_pos[2])
-        ###
 
     ### WebGL Functions
 
@@ -338,7 +333,6 @@ myp = new p5 (p) ->
     drawWebGL = ->
         p.background(0)
         p.translate(0,100,0)
-        p.pointLight(250,250,250,1,0,0,0)
         drawStars()
         sun.draw()
         drawPlanets()
@@ -353,12 +347,12 @@ myp = new p5 (p) ->
     - `drawPlanets`: renders the planets
     ###
     setupStars = ->
-        xoff = 0
+        n = 0
         [x,y] = [2048,2048]
         for i in [0..n_stars/2]
-            xoff+=0.01
+            n+=0.01
             arr_stars.push(
-                [[(x-p.noise(xoff)*x*2)*10]
+                [[(x-p.noise(n)*x*2)*10]
                  [(y-p.random(y*2))*10]])
         for i in [0..n_stars/2]
             arr_stars.push(
@@ -382,15 +376,15 @@ myp = new p5 (p) ->
             planets.push(new Planet())
 
     drawStars = ->
-        xoff = 0
-        p.ambientMaterial(255,255,255)
+        n = 0
+        p.basicMaterial(255)
         for i in [0..n_stars]
-            xoff+=0.1
+            n+=0.1
             p.push()
             p.translate(
                 arr_stars[i][0]
                 arr_stars[i][1],-10000)
-            p.plane(20*p.noise(xoff),20*p.noise(xoff)) #p.sphere(20)
+            p.plane(20*p.noise(n),20*p.noise(n))
             p.pop()
 
     drawPlanets = ->

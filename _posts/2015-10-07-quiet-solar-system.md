@@ -6,9 +6,8 @@ tag: [Programming, GameDev]
 
 This sketch responds to the ambient volume, and the sun explodes if it's too loud.
 
-[Here it is][].
+**Edit**: This sketch is deprecated. See [the more advanced sketch][]. Also, the sound part wasn't terribly interesting.
 
-[Here it is]: </sketch/quiet_solarsystem.coffee>
 
 ```coffee
 ### Ben Scott # 2015-10-05 # A Quiet Solar System ###
@@ -347,3 +346,4 @@ the logic of the game / sketch.
             planet.burn() if (planet.ot<r)
 ```
 
+[the more advanced sketch]: </sketch/smile_drive.coffee/>

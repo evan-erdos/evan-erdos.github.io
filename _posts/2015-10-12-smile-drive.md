@@ -1,17 +1,14 @@
 ---
-layout: post
+layout: sketch
 title: Random Universe
 tag: [Programming, GameDev]
-img: /rsc/sketch/random-universe.png
+permalink: /sketch/smile_drive.coffee/
+script: /js/smile_drive.js
 ---
 
-> [In the future, like, man, the spaceships will fly all over the place.
-> ... and like, we'll be so advanced, that, like, they will just...
-> be powered by smiles and happiness, and love.][here]
+Space is neat. WebGL is neater. Once in ~20 runs, you will generate a binary star with this program (keep clicking).
 
-Once in ~20 times, you will generate a binary star (keep clicking). The code below is sloppy and not as well documented as the previous few. I left some code to generate a hexagonal grid in there while testing to see if I could integrate the WebGL side with the usual P5.js part, and I couldn't. This *was* named smile drive because I was going to have a spaceship, and then have it thrust based upon if the camera recorded if the user was smiling or not. The silly text above would have made sense if I had that running. Anyways, click on it or click on the image below to look around in the universe.
-
-[![img][]][here]
+The code below is sloppy and not as well documented as the previous few. I left some code to generate a hexagonal grid in there while testing to see if I could integrate the WebGL side with the usual P5.js part, and I couldn't. This *was* named smile drive because I was going to have a spaceship, and then have it thrust based upon if the camera recorded if the user was smiling or not. The silly text above would have made sense if I had that running. Anyways, click on it or click on the image below to look around in the universe.
 
 The most interesting code examples are probably the recursive planet drawing in the planet class and the perlin noise stars at the end.
 
@@ -24,10 +21,7 @@ The most interesting code examples are probably the recursive planet drawing in 
 
 ### `P5.js` Main class ###
 
-This is our instance of the main class in the `P5.js` library.
-The argument is the link between the library and this code, and
-the special functions we override in the class definition are
-callbacks for P5.js events.
+This is our instance of the main class in the `P5.js` library. The argument is the link between the library and this code, and the special functions we override in the class definition are callbacks for P5.js events.
 
 ```coffee
 myp = new p5 (p) ->
@@ -194,7 +188,7 @@ These functions are automatic callbacks for `P5.js` events:
         rock_img = p.loadImage("/rsc/rock.png")
 
     p.setup = ->
-        p.createCanvas(p.windowWidth,p.windowHeight, p.WEBGL)
+        setupCanvas()
         p.noStroke()
         #p.setupDOM()
         #setupAudio()
@@ -245,8 +239,7 @@ These functions are automatic callbacks for `P5.js` events:
 
 ### Library Functions ###
 
-These functions I've included from other files. They're the
-sort of generic utilities that would constitute a library.
+These functions I've included from other files. They're the sort of generic utilities that would constitute a library.
 
 - `p.polygon` draws a regular polygon.
   - @x,@y: center
@@ -305,13 +298,20 @@ These functions deal with audio input:
 
 These functions initialize the DOM objects in the sketch:
 
-- `p.setupDOM` creates and positions the color sliders
-- `p.drawDOM` renders the color sliders on every draw
-- `p.getInput` collects input data, processes it, and in
+- `setupCanvas` creates and positions the main canvas
+- `setupDOM` creates and positions the color sliders
+- `drawDOM` renders the color sliders on every draw
+- `getInput` collects input data, processes it, and in
     the case of `p.mouseIsPressed`, it calls the mouse
     event callback (otherwise it single-clicks)
 
 ```coffee
+    setupCanvas = ->
+        canvas = p.createCanvas(756,512,p.WEBGL)
+        canvas.parent('CoffeeSketch')
+        canvas.class("entry")
+        canvas.style("max-width", "100%")
+
     setupDOM = ->
         r_sl = p.createSlider(0,255,100)
         r_sl.position(16,16)
@@ -437,7 +437,4 @@ setupStars = ->
     drawPlanets = ->
         planet.draw() for planet in planets
 ```
-
-[img]: </rsc/sketch/rsc/random-universe.png>
-[here]: </sketch/smile_drive.coffee>
 
