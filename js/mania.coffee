@@ -110,7 +110,8 @@ myp = new p5 (p) ->
 
         draw: ->
             p.push()
-            p.fill(180)
+            value = p.map(value,0,255,60,120)
+            p.fill(value,180,180)
             p.stroke(128)
             p.line(@pos.x,@pos.y,@pos.x+8,@pos.y-8)
             p.line(@pos.x+8,@pos.y-8,@pos.x+12,@pos.y-4)

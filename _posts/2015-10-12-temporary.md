@@ -6,7 +6,7 @@ permalink: /sketch/mania.coffee/
 script: /js/mania.js
 ---
 
-Well, here we are. *This is __actually__ your brain on drugs*. None of that other nonsense, with eggs, frying pans... Jeez, what even was that commercial? What were we thinking? Who green-lit that whole thing? Anyways, code.
+**This is not complete, and the code below is not what's running above.**
 
 ```coffee
 ### Ben Scott # 2015-10-12 # Mania ###
