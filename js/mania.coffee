@@ -110,8 +110,10 @@ myp = new p5 (p) ->
 
         draw: ->
             p.push()
-            p.fill(127)
-            p.stroke(200)
+            p.fill(180)
+            p.stroke(128)
+            p.line(@pos.x,@pos.y,@pos.x+8,@pos.y-8)
+            p.line(@pos.x+8,@pos.y-8,@pos.x+12,@pos.y-4)
             polygon(@pos.x,@pos.y,5,6)
             #p.ellipse(@pos.x,@pos.y,@r,@r)
             #p.line(@pos.x,@pos.y,@tgt.x,@tgt.y)
@@ -272,8 +274,11 @@ myp = new p5 (p) ->
         p.clear()
         p.background(bg_img)
         getInput()
+        if (dope_rate<60 && p.frameCount%90==0)
+            dope_rate++
         if (p.frameCount%dope_rate==0 && neurotransmitters.length<100)
-            for i in [0..p.random(5,10)]
+            n = if (dope_rate>65) then 30 else 10
+            for i in [0..p.random(2,n)]
                 neurotransmitters.push(new Dopamine())
         for receptor in receptors
             receptor.draw()
@@ -295,6 +300,7 @@ myp = new p5 (p) ->
         pos = p.createVector(p.mouseX,p.mouseY)
         neurotransmitters.push(
             new Cocaine(10,pos,p.createVector(0,0)))
+        dope_rate--
 
     #p.windowResized = -> p.resizeCanvas(p.windowWidth, p.windowHeight);
 
