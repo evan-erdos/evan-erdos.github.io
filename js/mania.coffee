@@ -26,6 +26,7 @@ myp = new p5 (p) ->
 
     ### Domain ###
     dope_rate = 60
+    manic = false
     neurotransmitters = []
     receptors = []
     uptake_0 = p.createVector(p.width/2,p.height/2)
@@ -37,6 +38,7 @@ myp = new p5 (p) ->
     Dopamine, which is responsible for pleasure and euphoria.
     - `@a`: acceleration
     - `@v`: velocity
+    - `@m`: mass
     - `@max_v`: maximum speed
     - `@max_f`: maximum force
     - `@r`: radius
@@ -47,8 +49,9 @@ myp = new p5 (p) ->
         max_v = 3
         max_f = 0.05
         @tgt = null
+        @lifespan = 360
 
-        constructor: (@r=10,@pos) ->
+        constructor: (@r=10,@pos,@m=1,@lifespan=1024) ->
             @a = p.createVector(0,0)
             @v = p.createVector(p.random(-1,1),p.random(-1,1))
             @tgt = p.createVector(p.width/2,p.height/2)
@@ -63,7 +66,7 @@ myp = new p5 (p) ->
             @bounds()
             @draw()
 
-        applyForce: (f) -> @a.add(f)
+        applyForce: (f) -> @a.add(f)/@m
 
         flock: (group) ->
             sep = @separate(group)
@@ -75,13 +78,6 @@ myp = new p5 (p) ->
             ali.mult(1)
             coh.mult(1)
             final_steer.mult(0.5)
-
-            ###
-            p.push()
-            p.fill(0)
-            p.line(@pos.x,@pos.y,sep.normalize().x,sep.normalize().y)
-            p.pop()
-            ###
 
             @applyForce(sep)
             @applyForce(ali)
@@ -112,12 +108,14 @@ myp = new p5 (p) ->
             p.push()
             value = p.map(value,0,255,60,120)
             p.fill(value,180,180)
-            p.stroke(128)
-            p.line(@pos.x,@pos.y,@pos.x+8,@pos.y-8)
-            p.line(@pos.x+8,@pos.y-8,@pos.x+12,@pos.y-4)
+            p.stroke(180)
+            p.strokeWeight(2)
+            p.translate(p.random(3),p.random(3)) if (manic)
+            p.line(@pos.x,@pos.y,@pos.x-8,@pos.y-4)
+            p.line(@pos.x,@pos.y,@pos.x-8,@pos.y+4)
+            p.line(@pos.x,@pos.y,@pos.x+8,@pos.y-4)
+            p.line(@pos.x+8,@pos.y-4,@pos.x+12,@pos.y-2)
             polygon(@pos.x,@pos.y,5,6)
-            #p.ellipse(@pos.x,@pos.y,@r,@r)
-            #p.line(@pos.x,@pos.y,@tgt.x,@tgt.y)
             p.pop()
 
         separate: (group) ->
@@ -182,10 +180,26 @@ myp = new p5 (p) ->
     - `@tgt`: target position
     ###
     class Cocaine extends Dopamine
+        @n_tgt = null
+        @lifespan = 512
 
         constructor: ->
             super
-            @tgt = if (p.random(0,1)>0) then uptake_0 else uptake_1
+            #@tgt = if (p.random(0,1)>0) then uptake_0 else uptake_1
+            @lifespan = 512+p.random(-128,128)
+            @mass = 3
+            #p.height/2+p.random(-25,25))
+            @n_tgt = p.createVector(
+                p.width/2+p.random(-128,128)
+                p.height/2+p.random(-50,50))
+
+        update: ->
+            super
+            @lifespan--
+            #console.log("#{@lifespan}")
+            if (@lifespan<0)
+                @applyForce(@seek(p.createVector(
+                    p.width*2, p.random(-30,30))).mult(3))
 
         draw: ->
             p.push()
@@ -206,13 +220,119 @@ myp = new p5 (p) ->
             ali = @align(group)
             coh = @cohesion(group)
 
-            sep.mult(1.5)
+            sep.mult(1)
             ali.mult(1)
             coh.mult(1)
 
             @applyForce(sep)
             @applyForce(ali)
             @applyForce(coh)
+            @applyForce(@seek(@n_tgt))
+
+        separate: (group) ->
+            [tgt,n] = [20,0]
+            dir = p.createVector(0,0)
+            for elem in group
+                d = p5.Vector.dist(@pos,elem.pos)
+                if (0<d<tgt)
+                    diff = p5.Vector.sub(elem.pos,@pos)
+                    diff.normalize()
+                    diff.div(d)
+                    dir.add(diff)
+                    #console.log(elem instanceof Cocaine)
+                    unless (elem instanceof Cocaine)
+                        elem.applyForce(diff.normalize())
+                    n++
+            dir.div(n) if (n>0)
+            if (0<dir.mag())
+                dir.normalize()
+                dir.mult(3)
+                dir.sub(@v)
+                dir.limit(0.05)
+            return dir
+
+    ### `Amphetamine`
+
+    The same neuron! Now with amphetamines! Amphetamines act
+    as a releasing agent for dopamine, and are much easier
+    to animate!
+    - `@a`: acceleration
+    - `@v`: velocity
+    - `@max_v`: maximum speed
+    - `@max_f`: maximum force
+    - `@r`: radius
+    - `@pos`: current position
+    - `@tgt`: target position
+    ###
+    class Amphetamine extends Dopamine
+        @n_tgt = null
+
+        constructor: ->
+            super
+            @n_tgt = p.createVector(
+                p.width/2-128+p.random(-2,2)
+                p.height/2-100+p.random(-2,2))
+            if (p.random(3)>1)
+                @n_tgt = p.createVector(
+                    p.width/2+128+p.random(-2,2)
+                    p.height/2-100+p.random(-2,2))
+
+        update: ->
+            super
+            @lifespan--
+            #console.log("#{@lifespan}")
+            if (@lifespan<0)
+                if (p.random(2)>1)
+                    @applyForce(@seek(p.createVector(
+                        p.width*2, p.random(-30,30))).mult(3))
+                else @applyForce(@seek(p.createVector(
+                        p.width/2,-p.height).mult(3)))
+
+        draw: ->
+            p.push()
+            p.fill(255,180,180)
+            p.stroke(180)
+            p.strokeWeight(2)
+            p.line(@pos.x,@pos.y,@pos.x+8,@pos.y-4)
+            p.line(@pos.x+8,@pos.y-4,@pos.x+12,@pos.y-2)
+            polygon(@pos.x,@pos.y,5,6)
+            p.pop()
+
+        flock: (group) ->
+            sep = @separate(group)
+            ali = @align(group)
+            coh = @cohesion(group)
+
+            sep.mult(1)
+            ali.mult(0)
+            coh.mult(0)
+
+            @applyForce(sep)
+            @applyForce(ali)
+            @applyForce(coh)
+            @applyForce(@seek(@n_tgt))
+
+        separate: (group) ->
+            [tgt,n] = [20,0]
+            dir = p.createVector(0,0)
+            for elem in group
+                d = p5.Vector.dist(@pos,elem.pos)
+                if (0<d<tgt)
+                    diff = p5.Vector.sub(elem.pos,@pos)
+                    diff.normalize()
+                    diff.div(d)
+                    dir.add(diff)
+                    #console.log(elem instanceof Cocaine)
+                    unless (elem instanceof Cocaine)
+                        elem.applyForce(diff.normalize())
+                    n++
+            dir.div(n) if (n>0)
+            if (0<dir.mag())
+                dir.normalize()
+                dir.mult(3)
+                dir.sub(@v)
+                dir.limit(0.1)
+            return dir
 
     ### `Receptor`
 
@@ -226,29 +346,9 @@ myp = new p5 (p) ->
 
         draw: ->
             p.push()
-            p.fill(127)
-            p.stroke(200)
-            p.rotate(@theta/p.HALF_PI)
-            p.rect(@pos.x-10,@pos.y-10,@pos.x+10,@pos+10)
-            p.pop()
-
-
-
-
-    ### `Vesicle`
-
-    This class represents vesicles, which are what transport
-    neurotransmitters across synapses.
-    - `@r`: body radius
-    - `@pos`: position
-    - `@list`: contained particles
-    ###
-    class Vesicle
-        constructor: (@r,@pos,@list) ->
-
-        draw: ->
-            p.push()
-            p.ellipse(pos.x,pos.y)
+            p.fill(0)
+            #p.rotate(@theta/p.HALF_PI)
+            p.ellipse(@pos.x-10,@pos.y-10,@pos.x+10,@pos+10)
             p.pop()
 
     ### `Events`
@@ -270,24 +370,23 @@ myp = new p5 (p) ->
         p.noStroke()
         #setupDOM()
         p.frameRate(60)
+        receptors.push(new Receptor(p.createVector(p.width/2,p.height/2)))
 
     p.draw = ->
         p.clear()
         p.background(bg_img)
         getInput()
+        manic = (dope_rate<60)
+        drawReceptors()
         if (dope_rate<60 && p.frameCount%90==0)
             dope_rate++
         if (p.frameCount%dope_rate==0 && neurotransmitters.length<100)
-            n = if (dope_rate>65) then 30 else 10
+            n = if (dope_rate<55) then 30 else 5
             for i in [0..p.random(2,n)]
                 neurotransmitters.push(new Dopamine())
-        for receptor in receptors
-            receptor.draw()
         for dope in neurotransmitters
             unless dope==null || dope==undefined
                 dope.run(neurotransmitters)
-
-        console.log(neurotransmitters.length)
         #drawDOM()
 
     p.keyPressed = ->
@@ -299,8 +398,8 @@ myp = new p5 (p) ->
 
     p.mousePressed = ->
         pos = p.createVector(p.mouseX,p.mouseY)
-        neurotransmitters.push(
-            new Cocaine(10,pos,p.createVector(0,0)))
+        neurotransmitters.unshift(
+            new Amphetamine(10,pos,p.createVector(0,0)))
         dope_rate--
 
     #p.windowResized = -> p.resizeCanvas(p.windowWidth, p.windowHeight);
@@ -331,15 +430,6 @@ myp = new p5 (p) ->
         p.beginShape()
         for i in [0..p.TWO_PI] by theta
             p.vertex(x+p.cos(i+o)*r, y+p.sin(i+o)*r)
-        p.endShape(p.CLOSE)
-
-    benzene = (x,y,r=1) ->
-        theta = p.TWO_PI/6
-        base = [x+p.cos(5*theta)*r,y+p.sin(5*theta)*r]
-        p.line(base[0],base[1],base[0]+r,base[1]+r)
-        p.beginShape()
-        for i in [i..p.TWO_PI] by theta
-            p.vertex(x+p.cos(i)*r, y+p.sin(i)*r)
         p.endShape(p.CLOSE)
 
     HexGrid = (x=0,y=0,r=32,s=16) ->
@@ -407,6 +497,24 @@ myp = new p5 (p) ->
     - `drawStars`: renders the stars as planes
     - `drawPlanets`: renders the planets
     ###
+    drawReceptors = ->
+        p.push()
+        p.translate(p.width/2-128,p.height/2-100)
+        p.rotate(60)
+        p.ellipse(0,0,30,40)
+        p.fill(240)
+        p.ellipse(10,0,10,30)
+        p.ellipse(-10,0,10,30)
+        p.pop()
+        p.push()
+        p.translate(p.width/2+128,p.height/2-100)
+        p.rotate(-60)
+        p.ellipse(0,0,30,40)
+        p.fill(240)
+        p.ellipse(10,0,10,30)
+        p.ellipse(-10,0,10,30)
+        p.pop()
+
     setupStars = ->
         n = 0
         [x,y] = [2048,2048]
