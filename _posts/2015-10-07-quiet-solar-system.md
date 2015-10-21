@@ -1,6 +1,7 @@
 ---
 layout: post
 title: A Quiet Solar System
+permalink: /sketch/quiet_solarsystem.coffee
 tag: [Programming, GameDev]
 ---
 
