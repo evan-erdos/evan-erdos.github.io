@@ -7,14 +7,10 @@ tag: [Programming, GameDev]
 
 This sketch responds to the ambient volume, and the sun explodes if it's too loud.
 
-**Edit**: This sketch is deprecated. See [the more advanced sketch][]. Also, the sound part wasn't terribly interesting.
+**Edit**: This sketch is deprecated. See [the more advanced sketch][].
 
+[the more advanced sketch]: </sketch/smile_drive.coffee/>
 
-```coffee
-### Ben Scott # 2015-10-05 # A Quiet Solar System ###
-
-'use strict' # just like JavaScript
-```
 
 ### `P5.js` Main class ###
 
@@ -24,6 +20,10 @@ the special functions we override in the class definition are
 callbacks for P5.js events.
 
 ```coffee
+### Ben Scott # 2015-10-05 # A Quiet Solar System ###
+
+'use strict' # just like JavaScript
+
 myp = new p5 (p) ->
 
     ### Constants ###
@@ -55,8 +55,8 @@ myp = new p5 (p) ->
 
     ### Audio ###
     [mic,analyzer,volume] = [null,null,0]
-
 ```
+
 
 ### `Planet` ###
 
@@ -69,21 +69,21 @@ This is a class which represents planets.
 - `@r`: body radius
 
 ```coffee
-    class Planet
-        constructor: (@x,@y,@r,@dt=0.1,@ot=0.05,@img) ->
-            @img = planet_img if @img==null
+class Planet
+    constructor: (@x,@y,@r,@dt=0.1,@ot=0.05,@img) ->
+        @img = planet_img if @img==null
 
-        draw: ->
-            p.push()
-            p.rotateZ(0.375)
-            p.rotateY(p.frameCount * 0.01)
-            #p.translate(0,0,@ot)
-            p.texture(@img)
-            p.sphere(@r)
-            p.pop()
+    draw: ->
+        p.push()
+        p.rotateZ(0.375)
+        p.rotateY(p.frameCount * 0.01)
+        #p.translate(0,0,@ot)
+        p.texture(@img)
+        p.sphere(@r)
+        p.pop()
 
-        burn: ->
-            @img = sun_img
+    burn: ->
+        @img = sun_img
 ```
 
 ### `Sun` ###
@@ -98,17 +98,17 @@ cause problems.
 - `@img`: texture for the sun
 
 ```coffee
-    class Sun
-        constructor: (@r,@dt=0.1,@ot=0.05,@img) ->
-            @img = sun_img if @img==null
+class Sun
+    constructor: (@r,@dt=0.1,@ot=0.05,@img) ->
+        @img = sun_img if @img==null
 
-        draw: ->
-            p.push()
-            p.texture(sun_img)
-            p.rotateY(p.frameCount * 0.005)
-            p.sphere(sun_r) # from outside, set by audio
-            p.rotateY(p.frameCount * @dt)
-            p.pop()
+    draw: ->
+        p.push()
+        p.texture(sun_img)
+        p.rotateY(p.frameCount * 0.005)
+        p.sphere(sun_r) # from outside, set by audio
+        p.rotateY(p.frameCount * @dt)
+        p.pop()
 
 ```
 
@@ -312,7 +312,7 @@ WebGL defers rendering to the system's GPU. Neat, huh?
         p.sphere(20)
 ```
 
-### Domain Functions ###
+### Quiet Solarsystem Functions ###
 
 These functions draw the stars, the planets, and carry out
 the logic of the game / sketch.
@@ -347,4 +347,3 @@ the logic of the game / sketch.
             planet.burn() if (planet.ot<r)
 ```
 
-[the more advanced sketch]: </sketch/smile_drive.coffee/>

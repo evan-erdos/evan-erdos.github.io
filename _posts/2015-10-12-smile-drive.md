@@ -13,17 +13,15 @@ The code below is sloppy and not as well documented as the previous few. I left 
 The most interesting code examples are probably the recursive planet drawing in the planet class and the perlin noise stars at the end.
 
 
-```coffee
-### Ben Scott # 2015-10-12 # Random Universe ###
-
-'use strict' # just like JavaScript
-```
-
 ### `P5.js` Main class ###
 
 This is our instance of the main class in the `P5.js` library. The argument is the link between the library and this code, and the special functions we override in the class definition are callbacks for P5.js events.
 
 ```coffee
+### Ben Scott # 2015-10-12 # Random Universe ###
+
+'use strict' # just like JavaScript
+
 myp = new p5 (p) ->
 
     ### Constants ###
@@ -56,6 +54,7 @@ myp = new p5 (p) ->
     ### Audio ###
     [mic,analyzer,volume] = [null,null,0]
 ```
+
 
 ### `Planet` ###
 
@@ -120,6 +119,7 @@ class Planet
                     p.random(-0.05,0.05)))
 ```
 
+
 ### `Sun` ###
 
 This is a class which represents the sun. I'd like to have it inherit from planet (or vice versa) but that seems to cause problems. Every once in awhile, you will get a binary star. Uncommenting the one line will cause it to always be a binary star.
@@ -163,8 +163,8 @@ class Sun
         p.translate(0,@r/4,@r/4)
         p.sphere(@r/2)
         p.pop()
-
 ```
+
 
 ### `Events` ###
 
@@ -237,6 +237,7 @@ These functions are automatic callbacks for `P5.js` events:
     #p.remove = -> p5 = null
 ```
 
+
 ### Library Functions ###
 
 These functions I've included from other files. They're the sort of generic utilities that would constitute a library.
@@ -272,8 +273,8 @@ These functions I've included from other files. They're the sort of generic util
                     x+(i*(h)*r*p.cos(pi_3))*2
                     y+(3.45*j*h*r)+((i%2)*(h)*r*p.sin(pi_3))*2
                     r, 6, pi_6)
-
 ```
+
 
 ### Audio Functions ###
 
@@ -294,37 +295,23 @@ These functions deal with audio input:
         sun_r = p.max(150,sun_r_base)+p.map(volume,0,1,0,300)
 ```
 
+
 ### DOM Functions ###
 
 These functions initialize the DOM objects in the sketch:
 
-- `setupCanvas` creates and positions the main canvas
-- `setupDOM` creates and positions the color sliders
-- `drawDOM` renders the color sliders on every draw
-- `getInput` collects input data, processes it, and in
-    the case of `p.mouseIsPressed`, it calls the mouse
-    event callback (otherwise it single-clicks)
+- `setupDOM` creates and positions DOM elements and the canvas
+- `drawDOM` renders the DOM elements (called from `p.draw`)
+- `getInput` collects input data
 
 ```coffee
-    setupCanvas = ->
+    setupDOM = ->
         canvas = p.createCanvas(756,512,p.WEBGL)
         canvas.parent('CoffeeSketch')
         canvas.class("entry")
         canvas.style("max-width", "100%")
-
-    setupDOM = ->
-        r_sl = p.createSlider(0,255,100)
-        r_sl.position(16,16)
-        g_sl = p.createSlider(0,255,0)
-        g_sl.position(16,32)
-        b_sl = p.createSlider(0,255,255)
-        b_sl.position(16,48)
-        s_sl = p.createSlider(1,8,4)
-        s_sl.position(16,64)
-        d_sl = p.createSlider(0,64,32)
-        d_sl.position(16,80)
-        rand_sl = p.createSlider(0,16,4)
-        rand_sl.position(16,96)
+        #rand_sl = p.createSlider(0,16,4)
+        #rand_sl.position(16,96)
 
     drawDOM = ->
         p.fill(0)
@@ -367,7 +354,7 @@ These functions initialize the DOM objects in the sketch:
 WebGL defers rendering to the system's GPU. Neat, huh?
 
 - `setupWebGL` creates WebGL objects
-- `renderWebGL` renders the WebGL objects
+- `drawWebGL` renders the WebGL objects
 
 ```coffee
     setupWebGL = ->
@@ -383,7 +370,7 @@ WebGL defers rendering to the system's GPU. Neat, huh?
         drawPlanets()
 ```
 
-### Domain Functions ###
+### Random Universe Functions ###
 
 These functions draw the stars, the planets, and carry out the logic of the game / sketch.
 
@@ -393,7 +380,7 @@ These functions draw the stars, the planets, and carry out the logic of the game
 - `drawPlanets`: renders the planets
 
 ```coffee
-setupStars = ->
+    setupStars = ->
         xoff = 0
         [x,y] = [2048,2048]
         for i in [0..n_stars/2]

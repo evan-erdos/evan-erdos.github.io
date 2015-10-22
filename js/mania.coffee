@@ -429,10 +429,7 @@ myp = new p5 (p) ->
 
     These functions draw the stars, the planets, and carry out
     the logic of the game / sketch.
-    - `setupStars`: initializes a random array of stars
-    - `setupPlanets`: initializes an array of planets
-    - `drawStars`: renders the stars as planes
-    - `drawPlanets`: renders the planets
+    - `drawReceptors`: draws the reuptake receptors on the axon
     ###
     drawReceptors = ->
         p.push()

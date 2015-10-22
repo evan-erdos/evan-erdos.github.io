@@ -10,13 +10,7 @@ Just learned that P5.js does WebGL. Yaaaas.
 
 **Edit**: This sketch is deprecated. See [the more advanced sketch][].
 
----
-
-```coffee
-### Ben Scott # 2015-10-05 # Coffee Rings ###
-
-'use strict' # just like Javscript
-```
+[the more advanced sketch]: </sketch/smile_drive.coffee/>
 
 
 ### `P5.js` Main class ###
@@ -28,6 +22,10 @@ callbacks for P5.js events.
 
 
 ```coffee
+### Ben Scott # 2015-10-05 # Coffee Rings ###
+
+'use strict' # just like Javscript
+
 myp = new p5 (p)->
     alt = false
     pi = p.PI
@@ -45,13 +43,15 @@ myp = new p5 (p)->
 ```
 
 ### `Planet` Main Class ###
+
 This is a class which represents planets.
+
 - `@x,@y`: center
 - `@r`: radius of the planet
 - `@hasRing`: planet has rings
 
 ```coffee
-    class Planet
+class Planet
     r_ring: 1
 
     constructor: (@x=0,@y=0,@r=1,@hasRing=false) ->
@@ -63,6 +63,7 @@ This is a class which represents planets.
 ### `P5.js` Events ###
 
 These functions are automatic callbacks for `P5.js` events:
+
 - `p.preload` is called once, immediately before `setup`
 - `p.setup` is called once, at the beginning of execution
 - `p.draw` is called as frequently as `p.framerate`
@@ -70,13 +71,12 @@ These functions are automatic callbacks for `P5.js` events:
 - `p.mousePressed` is called on mouse down
 - `p.remove` destroys everything in the sketch
 
-
 ```coffee
     p.preload = ->
-            palette_img = p.loadImage("/rsc/colormap.gif")
-            planet_img = p.loadImage("/rsc/planet.png")
-            sun_img = p.loadImage("/rsc/sun.png")
-            #ring_img = p.loadImage("/rsc/ring.png")
+        palette_img = p.loadImage("/rsc/colormap.gif")
+        planet_img = p.loadImage("/rsc/planet.png")
+        sun_img = p.loadImage("/rsc/sun.png")
+        #ring_img = p.loadImage("/rsc/ring.png")
 
     p.setup = ->
         p.createCanvas(p.windowWidth,p.windowHeight, p.WEBGL)
@@ -155,18 +155,18 @@ sort of generic utilities that would constitute a library.
 ```
 
 
-### UI Functions ###
+### DOM Functions ###
 
 These functions initialize the DOM objects in the sketch.
-- `p.setupUI` creates and positions the color sliders
-- `p.drawUI` renders the color sliders on every draw
+- `p.setupDOM` creates and positions the color sliders
+- `p.drawDOM` renders the color sliders on every draw
 - `p.getInput` collects input data, processes it, and in
     the case of `p.mouseIsPressed`, it calls the mouse
     event callback (otherwise it single-clicks)
 
 
 ```coffee
-    p.setupUI = ->
+    p.setupDOM = ->
         r_sl = p.createSlider(0,255,100)
         r_sl.position(16,16)
         g_sl = p.createSlider(0,255,0)
@@ -180,7 +180,7 @@ These functions initialize the DOM objects in the sketch.
         rand_sl = p.createSlider(0,16,4)
         rand_sl.position(16,96)
 
-    p.drawUI = ->
+    p.drawDOM = ->
         p.fill(0)
         p.text("Red",150,16+4)
         p.text("Green",150,32+4)
@@ -215,5 +215,3 @@ These functions initialize the DOM objects in the sketch.
         p.texture(planet_img)
         p.sphere(50)
 ```
-
-[the more advanced sketch]: </sketch/smile_drive.coffee/>
