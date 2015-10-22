@@ -3,7 +3,7 @@ layout: sketch
 title: Random Universe
 tag: [Programming, GameDev]
 permalink: /sketch/smile_drive.coffee/
-script: /js/smile_drive.js
+script: smile_drive
 ---
 
 Space is neat. WebGL is neater. Once in ~20 runs, you will generate a binary star with this program (keep clicking).

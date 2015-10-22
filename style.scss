@@ -49,6 +49,10 @@ html {
   background-size: auto;
 }
 
+canvas {
+  max-width: 100%;
+}
+
 body {
   font: 18px/1.4 $helvetica;
   color: $darkGray;

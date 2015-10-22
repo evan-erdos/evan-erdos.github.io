@@ -3,7 +3,7 @@ layout: sketch
 title: Coffee Rings
 tag: Programming
 permalink: /sketch/rings.coffee/
-script: /js/rings.js/
+script: rings
 ---
 
 Just learned that P5.js does WebGL. Yaaaas.
