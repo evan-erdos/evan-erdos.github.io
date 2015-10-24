@@ -11,6 +11,7 @@ subjects = [
 	"Personality"]
 
 print = (s) -> document.write(s)
+
 println = (s) -> document.write(s+"<br><br>")
 
 choose = (list) -> list[Math.floor(Math.random()*list.length)]

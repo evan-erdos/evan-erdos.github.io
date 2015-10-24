@@ -48,13 +48,13 @@ myp = new p5 (p) ->
     ### `Planet`
 
     This is a class which represents planets.
-    - `@r`: body radius
-    - `@dist`: orbital radius
-    - `@ot`: orbit time
-    - `@dt`: day period
-    - `@z`: z-offset
-    - `@moons`: list of other planets
-    - `@img`: image to render onto the planet
+    - `@r` **int** : body radius
+    - `@dist` **int** : orbital radius
+    - `@ot` **real** : orbit time
+    - `@dt` **real** : day period
+    - `@z` **real** : z-offset
+    - `@moons` **Planet[]** : list of other planets
+    - `@img` **Image** : image to render onto the planet
     ###
     class Planet
         @moons = []
@@ -110,10 +110,10 @@ myp = new p5 (p) ->
     This is a class which represents the sun. I'd like to have
     it inherit from planet (or vice versa) but that seems to
     cause problems.
-    - `@r`: body radius
-    - `@dt`: day period
-    - `@ot`: orbit time
-    - `@img`: texture for the sun
+    - `@r` **int** : body radius
+    - `@dt` **real** : day period
+    - `@ot` **real** : orbit time
+    - `@img` **Image** : texture for the sun
     ###
     class Sun
         @isBinaryStar = false
@@ -223,15 +223,15 @@ myp = new p5 (p) ->
     These functions I've included from other files. They're the
     sort of generic utilities that would constitute a library.
 
-    - `p.polygon` draws a regular polygon.
-      - @x,@y: center
-      - @r: radius
-      - @n: number of points
-      - @o: offset theta
-    - `p.HexGrid` draws a grid of hexagons.
-      - @x,@y: center
-      - @r: radius
-      - @s: size
+    - `polygon` draws a regular polygon.
+      - `@x,@y` \<**int**,**int**\> : center
+      - `@r` **int** : radius
+      - `@n` **int** : number of points
+      - `@o` **real** : offset theta
+    - `HexGrid` draws a grid of hexagons.
+      - `@x,@y` \<**int**,**int**\> : center
+      - `@r` **int** : radius
+      - `@s` **int** : size
     ###
     polygon = (x,y,r=1,n=3,o=0) ->
         theta = p.TWO_PI/n
@@ -256,8 +256,8 @@ myp = new p5 (p) ->
     ### Audio Functions
 
     These functions deal with audio input.
-    - `p.setupAudio` initializes audio system
-    - `p.getAudio` gets the volume, maps it to the sun
+    - `setupAudio` initializes audio system
+    - `getAudio` gets the volume, maps it to the sun
     ###
     setupAudio = ->
         mic = new p5.AudioIn()

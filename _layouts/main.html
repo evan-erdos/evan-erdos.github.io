@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
+    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }}</title>
 
     {% include meta.html %}
 
@@ -14,11 +14,14 @@
       <div class="titlerect">
         <div id="fade-down">
           <header class="masthead clearfix">
-            <a href="{{ site.baseurl }}/" class="site-avatar"><img src="/rsc/rook-top.png" /></a>
-            <!--<div class="site-info"> -->
-              <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
-              <p class="site-description">{{ site.description }}</p>
-            <!--</div>-->
+            <a href="{{ site.baseurl }}/" class="site-avatar">
+              <img src="/rsc/rook-top.png" /></a>
+            <h1 class="site-name"><a href="{{ site.baseurl }}/">
+              {{ site.name }}
+            </a></h1>
+            <a href="{{ page.link }}"><p class="site-description">
+              {{ site.description }}
+            </p></a>
           </header>
           <hr id="thr">
           <nav>
@@ -32,14 +35,16 @@
         </div>
       </div>
     </div>
-    <script language="javascript" src="/js/lib/p5.min.js"></script>
-    <script language="javascript" src="/js/lib/p5.dom.js"></script>
-    <script language="javascript" src="/js/lib/p5.sound.min.js"></script>
-    <script language="javascript" src= "/js/smile_drive.js" ></script>
+
     <div id="CoffeeSketch" class="mainContainer" style="background: #000;"></div>
+    <script src="/js/lib/three.min.js"></script>
+    <script src="/js/lib/OrbitControls.js"></script>
+    <script language="javascript" src="/js/{{ page.feature }}.js"></script>
+
     <div id="main" role="main" class="container">
       {{ content }}
     </div>
+
     <a href="{{ site.baseurl }}/3d/komodo">
       <div id="main" role="main" class="mainContainer">
         <video autoplay loop>

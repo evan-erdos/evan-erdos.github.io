@@ -37,12 +37,12 @@ myp = new p5 (p) ->
 
     This class represents a generic neurotransmitter, which
     the dopamine and amphetamine classes extend.
-    - `@a`: acceleration (pixel^2/frame)
-    - `@v`: velocity (pixel/frame)
-    - `@m`: mass
-    - `@t`: lifetime (frames)
-    - `@pos`: current position (Vector<pixel,pixel>)
-    - `@tgt`: target position (Vector<pixel,pixel>)
+    - `@a` **real** : acceleration (m^2/ms)
+    - `@v` **real** : velocity (m/ms)
+    - `@m` **int** : mass (kg)
+    - `@t` **real** : lifetime (ms)
+    - `@pos` \<**real**,**real**\> : current position
+    - `@tgt` \<**real**,**real**\> : target position
     ###
     class Neurotransmitter
 
@@ -100,15 +100,15 @@ myp = new p5 (p) ->
 
     This is a class which represents the neurotransmitter
     Dopamine, which is responsible for pleasure and euphoria.
-    - `@a`: acceleration (pixel^2/frame)
-    - `@v`: velocity (pixel/frame)
-    - `@t`: lifetime (frames)
-    - `@r`: radius (pixel)
-    - `@m`: mass
-    - `@max_v`: maximum speed
-    - `@max_f`: maximum force
-    - `@pos`: current position <pixel,pixel>
-    - `@tgt`: target position <pixel,pixel>
+    - `@a` **real** : acceleration (m^2/ms)
+    - `@v` **real** : velocity (m/ms)
+    - `@m` **int** : mass (kg)
+    - `@t` **real** : lifetime (ms)
+    - `@r` **int** : radius (pixel)
+    - `@pos` \<**real**,**real**\> : current position
+    - `@tgt` \<**real**,**real**\> : target position
+    - `@max_v` **real** : maximum speed
+    - `@max_f` **real** : maximum force
     ###
     class Dopamine extends Neurotransmitter
 
@@ -187,10 +187,13 @@ myp = new p5 (p) ->
 
     This is a class which represents Cocaine, a dopamine
     reuptake inhibitor (obviously this is what it's known for)
-    - `@a`: acceleration
-    - `@v`: velocity
-    - `@pos`: current position
-    - `@tgt`: target position
+    - `@a` **real** : acceleration (m^2/ms)
+    - `@v` **real** : velocity (m/ms)
+    - `@m` **int** : mass (kg)
+    - `@t` **real** : lifetime (ms)
+    - `@pos` \<**real**,**real**\> : current position
+    - `@tgt` \<**real**,**real**\> : target position
+    - `@n_tgt` \<**real**,**real**\> : clearing behaviour
     ###
     class Cocaine extends Dopamine
         @n_tgt = null
@@ -256,11 +259,13 @@ myp = new p5 (p) ->
     The same neuron! Now with amphetamines! Amphetamines act
     as a releasing agent for dopamine, and are much easier
     to animate!
-    - `@a`: acceleration
-    - `@v`: velocity
-    - `@r`: radius
-    - `@pos`: current position
-    - `@tgt`: target position
+    - `@a` **real** : acceleration (m^2/ms)
+    - `@v` **real** : velocity (m/ms)
+    - `@m` **int** : mass (kg)
+    - `@t` **real** : lifetime (ms)
+    - `@pos` \<**real**,**real**\> : current position
+    - `@tgt` \<**real**,**real**\> : target position
+    - `@n_tgt` \<**real**,**real**\> : clearing behaviour
     ###
     class Amphetamine extends Dopamine
         @n_tgt = null
@@ -384,10 +389,10 @@ myp = new p5 (p) ->
     - 'Array::Remove' takes an element out of a standard array
       - `@e`: element to remove
     - `polygon` draws a regular polygon.
-      - @x,@y: center
-      - @r: radius
-      - @n: number of points
-      - @o: offset theta
+      - `@x,@y` \<**int**,**int**\> : center
+      - `@r` **int** : radius
+      - `@n` **int** : number of points
+      - `@o` **real** : offset theta
     ###
     Array::remove = (e) ->
         @[t..t] = [] if (t=@indexOf(e))>-1
@@ -448,10 +453,3 @@ myp = new p5 (p) ->
         p.ellipse(10,0,10,30)
         p.ellipse(-10,0,10,30)
         p.pop()
-
-
-
-
-
-
-

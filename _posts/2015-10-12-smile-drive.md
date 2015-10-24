@@ -60,13 +60,13 @@ myp = new p5 (p) ->
 
 This is a class which represents planets. If no arguments are passed to it, it makes a random planet, with random attributes. A planet of sufficient size turns into a gas giant, while smaller planets look whiter. Moons are added recursively, and are also drawn as such, taking their proper orbit.
 
-- `@r`: body radius
-- `@dist`: orbital radius
-- `@ot`: orbit time
-- `@dt`: day period
-- `@z`: z-offset
-- `@moons`: list of other planets
-- `@img`: image to render onto the planet
+- `@r` **int** : body radius
+- `@dist` **int** : orbital radius
+- `@ot` **real** : orbit time
+- `@dt` **real** : day period
+- `@z` **real** : z-offset
+- `@moons` **Planet[]** : list of other planets
+- `@img` **Image** : image to render onto the planet
 
 ```coffee
 class Planet
@@ -124,10 +124,10 @@ class Planet
 
 This is a class which represents the sun. I'd like to have it inherit from planet (or vice versa) but that seems to cause problems. Every once in awhile, you will get a binary star. Uncommenting the one line will cause it to always be a binary star.
 
-- `@r`: body radius
-- `@dt`: day period
-- `@ot`: orbit time
-- `@img`: texture for the sun
+- `@r` **int** : body radius
+- `@dt` **real** : day period
+- `@ot` **real** : orbit time
+- `@img` **Image** : texture for the sun
 
 ```coffee
 class Sun
@@ -242,17 +242,16 @@ These functions are automatic callbacks for `P5.js` events:
 
 These functions I've included from other files. They're the sort of generic utilities that would constitute a library.
 
-- `p.polygon` draws a regular polygon.
-  - @x,@y: center
-  - @r: radius
-  - @n: number of points
-  - @o: offset theta
+- `polygon` draws a regular polygon.
+  - `@x,@y` **int,int** : center
+  - `@r` **int** : radius
+  - `@n` **int** : number of points
+  - `@o` **real** : offset theta
 
-- `p.HexGrid` draws a grid of hexagons.
-  - @x,@y: center
-  - @r: radius
-  - @s: size
-
+- `HexGrid` draws a grid of hexagons.
+  - `@x,@y` **int,int** : center
+  - `@r` **int** : radius
+  - `@s` **int** : size
 
 ```coffee
     polygon = (x,y,r=1,n=3,o=0) ->
@@ -280,8 +279,8 @@ These functions I've included from other files. They're the sort of generic util
 
 These functions deal with audio input:
 
-- `p.setupAudio` initializes audio system
-- `p.getAudio` gets the volume, maps it to the sun
+- `setupAudio` initializes audio system
+- `getAudio` gets the volume, maps it to the sun
 
 ```coffee
     setupAudio = ->

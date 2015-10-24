@@ -1,11 +1,13 @@
 ---
 layout: main
+feature: changes
+link: /three/changes.coffee
 ---
 
 Ben Scott's Website!
 ====================
 
-Wow, look, it's the universe.
+Wow, look, it's the universe, now with real lights and well-UV-mapped planets! Thank youuuuu [Three.js][]. Click and drag!
 
 I have stolen this background from D. Scott Brown's [Rubicon X](http://www.marathonrubicon.com) website, as the last one was tacky and I haven't finished the new one yet. The thievery and low cunning will be over soon.
 
@@ -26,4 +28,6 @@ I Play Music!
 
 [vulcain]: /3d/vulcain/
 [_vulcain]: /rsc/3d/vulcain/render.png
+
+[Three.js]: <http://threejs.org>
 
