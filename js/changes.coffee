@@ -5,10 +5,7 @@
 
 'use strict' # just like JavaScript
 
-### WebGL ###
-#loader = new THREE.TextureLoader();
-#jsonLoader = new THREE.JSONLoader()
-[geometry, material, mesh] = [null,null,null]
+container = null
 
 ### `Main`
 
@@ -21,7 +18,7 @@ This is the program entrypoint for my three.js example.
     what it is that this one does!
 ###
 class Main
-    constructor: () ->
+    constructor: ->
         @scene = new THREE.Scene()
         @camera = new THREE.PerspectiveCamera(
             75, 768/512, 1, 1000)
@@ -30,9 +27,13 @@ class Main
         @renderer.setSize(768,512)
         @renderer.setClearColor(0xFFFFFF,0)
 
+        #@controls = new THREE.OrbitControls(
+        #    @camera,@renderer.domElement)
+
+        [@planet,@sun] = [null,null]
+
     init: ->
         #jsonLoader.load("/rsc/3D/rocket.js", addModelToScene)
-        geometry = new THREE.BoxGeometry(10,10,10)
         ###
         loader.load(
             '/rsc/rook-top.png'
@@ -41,19 +42,32 @@ class Main
                     { map: texture }))
         ###
         #texture = THREE.TextureLoader('/rsc/rook-top.png')
-        light = new THREE.PointLight(0xFFFFFF,3,100)
-        light.position.set(20,20,20)
-        @scene.add(light)
-        material = new THREE.MeshLambertMaterial(
+        sun_geo = new THREE.SphereGeometry(60,64,64)
+        sun_mat = new THREE.MeshBasicMaterial(
             { map: THREE.ImageUtils.loadTexture(
-                "/rsc/rook-top.png") } );
-        mesh = new THREE.Mesh(geometry, material)
-        @scene.add(mesh)
-        @camera.position.z = 15
-        document.getElementById("CoffeeSketch").appendChild(
-            @renderer.domElement)
+                "/rsc/sketch/sun.png") } )
+        @sun = new THREE.Mesh(sun_geo,sun_mat)
+        @scene.add(@sun)
+        light = new THREE.PointLight(0xFFFFFF,2,256)
+        @scene.add(light)
+        planet_geo = new THREE.SphereGeometry(16,16,16)
+        planet_geo.applyMatrix(
+            new THREE.Matrix4().makeTranslation(0,0,-150))
+        planet_mat = new THREE.MeshLambertMaterial(
+            { map: THREE.ImageUtils.loadTexture(
+                "/rsc/sketch/planet.png") })
+        @planet = new THREE.Mesh(planet_geo,planet_mat)
+        @sun.add(@planet)
+        #@planet.position.set(128,0,0)
+        @scene.add(@planet)
+        @camera.position.z = 256
+        container = document.getElementById("CoffeeSketch")
+        container.appendChild(@renderer.domElement)
         #floor_albedo = new THREE.
         #ImageUtils.loadTexture('/rsc/rook-top.png')
+
+    update: ->
+        #controls.update()
 
     ### `Main.render`
 
@@ -62,10 +76,11 @@ class Main
     e.g., calling render at the proper framerate, AFAIK.
     ###
     render: =>
+        @update()
         requestAnimationFrame(@render)
         @renderer.clear()
-        mesh.rotation.x += 0.01
-        mesh.rotation.y += 0.02
+        @sun.rotation.y += 0.005
+        @planet.rotation.y += 0.02
         @renderer.render(@scene,@camera)
 
     ###
