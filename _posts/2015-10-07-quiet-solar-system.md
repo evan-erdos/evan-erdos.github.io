@@ -7,7 +7,7 @@ tag: [Programming, GameDev]
 
 This sketch responds to the ambient volume, and the sun explodes if it's too loud.
 
-**Edit**: This sketch is deprecated. See [the more advanced sketch][].
+**This sketch is deprecated. See [the more advanced sketch][].**
 
 [the more advanced sketch]: </sketch/smile_drive.coffee/>
 

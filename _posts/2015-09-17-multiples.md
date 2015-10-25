@@ -1,6 +1,7 @@
 ---
 layout: post
-title: 60-201 - Multiples
+title: Multiples
+course: 60-201
 tag: [Programming, GameDev]
 img: /rsc/60-201/multiples/0.png
 ---

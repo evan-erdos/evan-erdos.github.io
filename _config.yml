@@ -15,6 +15,7 @@ footer-links:
   stackoverflow: users/5266983/ben-scott
   #dribbble:
 #google_analytics:
+disqus:
 baseurl: ""
 markdown: redcarpet
 redcarpet:

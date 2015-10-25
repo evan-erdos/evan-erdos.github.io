@@ -8,8 +8,12 @@
 ### Constants & Aliases ###
 pi = Math.PI
 framerate = 60
-rand = Math.random
 T = THREE
+rand = Math.random
+next = (n) => Math.floor(Math.random()*n)
+
+#str_color = (r,g,b) =>
+#    '\##{(0x1000000+b+0x100*g+0x10000*r).toString(16).substr(1)}'
 
 ### DOM ###
 dir = "/rsc/sketch/" # directory
@@ -19,51 +23,90 @@ container = null # parent in the HTML document
 renderers = [] # list of objects to render
 
 ### Three.js ###
-textureLoader = new T.TextureLoader()
+tex_loader = new T.TextureLoader()
 
 ### `Planet`
 
 This class represents planetary bodies.
-- `@r` **int** : radius (km)
-- `@d` **int** : distance from sun (km)
-- `@t` **real** : orbit time (ms)
-- `@o` **real** : day period (ms)
-- `@z` **real** : Z-Axis offset (rad)
-- `@obj` **T.Object3D** : pivot object
-- `@tex` **T.Texture** : surface texture
-- `@mat` **T.Material** : lambert material
-- `@geo` **T.Geometry** : sphere for planets
-- `@mesh` **T.Mesh** : planet's mesh
+- `@radius` **int** : radius (km)
+- `@dist` **int** : distance from sun (km)
+- `@orbit` **real** : orbit time (ms)
+- `@period` **real** : day period (ms)
+- `@declin` **real** : Z-Axis declination (rad)
+- `@color` **hex** : hex code for tint
+- `@file` **string** : file name for resources
+- `@obj` **Object3D** : root object
+- `@albedo` **Texture** : surface texture
+- `@normal` **Texture** : normal map
+- `@spec` **Texture** : specular map
+- `@mat` **Material** : lambert material
+- `@geo` **Geometry** : sphere for planets
+- `@mesh` **Mesh** : planet's mesh
 ###
 class Planet
-    constructor: (@r=-1,@d=256,@t=0.1,@o=0.05,@z=0.0) ->
-        @randomize() if @r<0
-        @obj = new T.Object3D()
-        @mat = new T.MeshLambertMaterial { map: @tex }
-        @geo = new T.SphereGeometry(@r,16,16)
+    constructor: (params = {}) ->
+        @radius = params.radius ?
+            (1+rand())*32
+        @dist = params.distance ?
+            ((rand()-0.5)*32)*256
+        @orbit = params.orbit ?
+            (rand()-0.5)
+        @period = params.period ?
+            (rand()-0.5)*10
+        @declin = params.declin ?
+            (rand()-0.5)*0.5
+        @file = params.file ?
+            "planet"
+        @color = params.color ?
+            0xAAAAAA
+        @albedo = params.albedo ?
+            Planet.albedo
+        @spec = params.spec ?
+            Planet.spec
+        @normal = params.normal ?
+            Planet.normal
+
+        @mat = new T.MeshPhongMaterial {
+            color: @color
+            specular: 0x222222
+            shininess: 10
+            map: @albedo
+            specularMap: @spec
+            normalMap: @normal
+            normalScale: new T.Vector2(0.8,0.8) }
+
+        @geo = new T.SphereGeometry(@radius,16,16)
         @mesh = new T.Mesh(@geo,@mat)
-        main.scene.add @obj
-        main.scene.add @mesh
+        @obj = new T.Object3D()
         @obj.add @mesh
+        main.scene.add @obj
 
         renderers.push @
 
+    @init: ->
+        file = "planet"
+        Planet.albedo = tex_loader.load(
+            "#{dir}#{file}_albedo.png")
+        Planet.spec = tex_loader.load(
+            "#{dir}#{file}_spec.png")
+        Planet.normal = tex_loader.load(
+            "#{dir}#{file}_normal.jpg")
+
     render: =>
-        @mesh.rotation.y += @o/framerate
-        @mesh.position.z = @d
-        @obj.rotation.x = @z
-        @obj.rotation.y += @t/framerate
+        @mesh.rotation.y += @period/framerate
+        @mesh.position.z = @dist
+        @obj.rotation.x = @declin
+        @obj.rotation.y += @orbit/framerate
 
     randomize: ->
-        @r = (rand()+1)*32
-        filename = if @r<48 then "planet" else "gas_giant"
-        @tex = textureLoader.load "#{dir}#{filename}.png"
-        @d = ((rand()-0.5)*16)*256
+        @radius = (rand()+1)*32
+        filename = if @radius<48 then "planet" else "gas"
+        @tex = tex_loader.load "#{dir}#{filename}.png"
+        @dist = ((rand()-0.5)*16)*256
         if (@d<0) then @d -= 512 else @d += 512
-        @o = (rand()-0.5)*10
-        @t = (rand()-0.5)
-        @z = (rand()-0.5)*0.5
-
+        @orbit = (rand()-0.5)*10
+        @period = (rand()-0.5)
+        @declin = (rand()-0.5)*0.5
 
 ### `Star`
 
@@ -73,11 +116,11 @@ along with it's mesh.
 - `@o` **real** : day period (rad/ms)
 - `@i` **real** : sun intensity
 - `@c` **hex** : sun color
-- `@tex` **T.Texture** : surface texture
-- `@mat` **T.Material** : basic material (looks like glow)
-- `@geo` **T.Geometry** : sphere for sun's surface
-- `@mesh` **T.Mesh** : sun's mesh
-- `@light` **T.PointLight** : sun's emissions
+- `@tex` **Texture** : surface texture
+- `@mat` **Material** : basic material (looks like glow)
+- `@geo` **Geometry** : sphere for sun's surface
+- `@mesh` **Mesh** : sun's mesh
+- `@light` **PointLight** : sun's emissions
 ###
 class Star extends Planet
     constructor: (@r=-1, @o=0.05, @i=1, @c=0xFF) ->
@@ -99,8 +142,8 @@ class Star extends Planet
         @r = 256+rand()*128
         @o = (rand()-0.5)*0.1
         @o += 0.1 if Math.abs(@o)<0.1
-        filename = if @r<300 then "sun" else "blue_sun"
-        @tex = textureLoader.load "#{dir}#{filename}.png"
+        filename = if @r<300 then "sun" else "blue"
+        @tex = tex_loader.load "#{dir}#{filename}_albedo.png"
         @c = if @r<300 then 0xFFEEAA else 0xBBBBFF
 
 ### `Main`
@@ -125,20 +168,28 @@ class Main
 
     init: ->
         @initDOM()
+        @initControls()
         @initPlanets()
         @camera.position.z = 1024
-        @controls = new T.OrbitControls(
-            @camera,@renderer.domElement)
-        @controls.userZoom = false
         @render()
 
     initDOM: ->
         container = document.getElementById("CoffeeSketch")
         container.appendChild(@renderer.domElement)
 
+    initControls: ->
+        @controls = new T.OrbitControls(
+            @camera,@renderer.domElement)
+        @controls.userZoom = true
+        @controls.minDistance = 512
+        @controls.maxDistance = 2048
+
     initPlanets: ->
+        Planet.init()
         @sun = new Star()
-        new Planet() for i in [0..4]
+        new Planet() for i in [0..Math.floor(rand()*8)]
+
+        @followPlanet = new Planet()
 
     update: ->
         @controls.update()

@@ -1,12 +1,17 @@
 ---
-layout: sketch
+layout: post
 title: Random Universe
 tag: [Programming, GameDev]
 permalink: /sketch/smile_drive.coffee/
 script: smile_drive
 ---
 
+
 Space is neat. WebGL is neater. Once in ~20 runs, you will generate a binary star with this program (keep clicking).
+
+**This code is deprecated. See [the more advanced version][].**
+
+[the more advanced version]: </code/space.coffee/>
 
 The code below is sloppy and not as well documented as the previous few. I left some code to generate a hexagonal grid in there while testing to see if I could integrate the WebGL side with the usual P5.js part, and I couldn't. This *was* named smile drive because I was going to have a spaceship, and then have it thrust based upon if the camera recorded if the user was smiling or not. The silly text above would have made sense if I had that running. Anyways, click on it or click on the image below to look around in the universe.
 

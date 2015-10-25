@@ -1,9 +1,10 @@
 ---
 layout: default
+comments: true
 ---
 
 <article class="post">
-  <span><h1><a href="{{ site.baseurl }}{{ post.url }}">{{ page.title }}{% if page.version %}<span class="date"> v{{ page.version }}</span>{% endif %}</a></h1></span>
+  {% include title.html %}
 
   {% if page.link %}
     <a href="{{ page.link }}">

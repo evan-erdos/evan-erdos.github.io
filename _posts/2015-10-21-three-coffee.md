@@ -1,12 +1,16 @@
 ---
-layout: three
-title: Three.coffee
+layout: post
+title: Three
+extension: .coffee
 tag: [Programming, GameDev]
-permalink: /three/changes.coffee/
-script: changes
+permalink: /code/changes.coffee/
 ---
 
 This has very little to do with the project assigned, but wow, look at what happens when you click and drag! Three.js is pretty neat. Real lights? UV Maps without giant holes in them? Sign me up.
+
+**This code is deprecated. See [the more advanced version][].**
+
+[the more advanced version]: </code/space.coffee/>
 
 Here's some variables and loaders for assets and whatnot.
 
@@ -42,11 +46,11 @@ This class represents planetary bodies.
 - `@t` **real** : orbit time (ms)
 - `@o` **real** : day period (ms)
 - `@z` **real** : Z-Axis offset (rad)
-- `@obj` **T.Object3D** : pivot object
-- `@tex` **T.Texture** : surface texture
-- `@mat` **T.Material** : lambert material
-- `@geo` **T.Geometry** : sphere for planets
-- `@mesh` **T.Mesh** : planet's mesh
+- `@obj` **Object3D** : pivot object
+- `@tex` **Texture** : surface texture
+- `@mat` **Material** : lambert material
+- `@geo` **Geometry** : sphere for planets
+- `@mesh` **Mesh** : planet's mesh
 
 ```coffee
 class Planet
@@ -88,11 +92,11 @@ This class represents stars. It creates a light object along with it's mesh.
 - `@o` **real** : day period (rad/ms)
 - `@i` **real** : sun intensity
 - `@c` **hex** : sun color
-- `@tex` **T.Texture** : surface texture
-- `@mat` **T.Material** : basic material (looks like glow)
-- `@geo` **T.Geometry** : sphere for sun's surface
-- `@mesh` **T.Mesh** : sun's mesh
-- `@light` **T.PointLight** : sun's emissions
+- `@tex` **Texture** : surface texture
+- `@mat` **Material** : basic material (looks like glow)
+- `@geo` **Geometry** : sphere for sun's surface
+- `@mesh` **Mesh** : sun's mesh
+- `@light` **PointLight** : sun's emissions
 
 ```coffee
 class Star extends Planet

@@ -1,7 +1,7 @@
 ---
 layout: main
-feature: changes
-link: /three/changes.coffee
+feature: space
+link: /code/space.coffee
 ---
 
 Ben Scott's Website!

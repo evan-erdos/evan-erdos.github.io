@@ -1,6 +1,7 @@
 ---
 layout: sketch
-title: Coffee Rings
+title: Rings
+extension: .coffee
 tag: Programming
 permalink: /sketch/rings.coffee/
 script: rings
