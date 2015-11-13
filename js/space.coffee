@@ -6,20 +6,22 @@
 'use strict' # just like JavaScript
 
 ### Constants & Aliases ###
-{abs,floor,random,sqrt} = Math # wow destructuring ooh
+{abs,floor,random,sqrt} = Math
 [pi,rate] = [Math.PI,60]
-[rand,T] = [random,THREE] # i am not typing all this
-next = (n) =>
-    floor(random()*n)
+[rand,T] = [random,THREE]
+next = (n) => floor(random()*n)
 
 ### DOM ###
-dir = "/js/assets/" # directory
+dir = "/js/assets" # directory
 divID = "CoffeeCode" # id of parent
 container = null # parent in the HTML document
 
 ### WebGL ###
 renderers = [] # list of objects to render
+loader = new T.JSONLoader()
 textureLoader = new T.TextureLoader()
+
+file_rocket = "vulcain_v0.1.48"
 
 ### Space ###
 planets = []
@@ -77,11 +79,11 @@ class Planet
         Planet.color = 0xDDDDDD
         Planet.file = "planet"
         Planet.albedo = textureLoader.load(
-            "#{dir}#{Planet.file}_albedo.png")
+            "#{dir}/#{Planet.file}_albedo.png")
         Planet.spec = textureLoader.load(
-            "#{dir}#{Planet.file}_spec.png")
+            "#{dir}/#{Planet.file}_spec.png")
         Planet.normal = textureLoader.load(
-            "#{dir}#{Planet.file}_normal.jpg")
+            "#{dir}/#{Planet.file}_normal.jpg")
 
     render: =>
         @mesh.rotation.y += @period/rate
@@ -143,11 +145,11 @@ class GasGiant extends Planet
         GasGiant.color = 0xDDDDDD
         GasGiant.file = "gas_giant"
         GasGiant.albedo = textureLoader.load(
-            "#{dir}#{GasGiant.file}_albedo.png")
+            "#{dir}/#{GasGiant.file}_albedo.png")
         GasGiant.spec = textureLoader.load(
-            "#{dir}#{GasGiant.file}_spec.png")
+            "#{dir}/#{GasGiant.file}_spec.png")
         GasGiant.normal = textureLoader.load(
-            "#{dir}#{GasGiant.file}_normal.jpg")
+            "#{dir}/#{GasGiant.file}_normal.jpg")
 
 ### `Star`
 
@@ -176,7 +178,7 @@ class Star extends Planet
             if @radius<300 then "sun" else "blue"
         @albedo = params.albedo ?
             textureLoader.load(
-                "#{dir}#{@file}_albedo.png")
+                "#{dir}/#{@file}_albedo.png")
 
         @geo = new T.SphereGeometry(@radius,64,64)
         @mat = new T.MeshBasicMaterial { map: @albedo }
@@ -218,6 +220,17 @@ class Main
             antialias: true, alpha: false }
         @renderer.setSize(768,512)
         @renderer.setClearColor(0x0,0)
+        loader.load(
+            "#{dir}/#{file_rocket}.js"
+            (geo) =>
+                mat = new T.MeshLambertMaterial {
+                    color: 0xAEAEAE }
+
+                mesh = new T.Mesh(geo, mat)
+                mesh.position.z -= 1024
+                mesh.rotation.y = pi/2
+                mesh.scale.set(50,50,50)
+                @scene.add mesh)
         #@renderer.shadowMap.enabled = true
         #@renderer.shadowMap.type = T.PCFSoftShadowMap
 
@@ -285,11 +298,18 @@ class Main
         rend.render() for rend in renderers
         @renderer.render(@scene,@camera)
 
-    addModelToScene: (geometry, materials) ->
-        material = new T.MeshFaceMaterial(materials);
-        mesh = new T.Mesh(geometry, material);
-        mesh.scale.set(10,10,10);
-        @scene.add(mesh);
+    import3D: (filename) ->
+        loader.load(
+            "#{dir}/#{filename}.js"
+            (geo) =>
+                mat = new T.MeshPhongMaterial {
+                    color: 0xAEAEAE
+                    specular: 0xAAAAAA }
+                mesh = new T.Mesh(geo, mat)
+                mesh.position.z -= 1024
+                mesh.rotation.y = pi/2
+                mesh.scale.set(50,50,50)
+                @scene.add mesh)
 
 main = new Main()
 main.init()

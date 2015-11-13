@@ -1,0 +1,15 @@
+---
+layout: post
+---
+
+<div id='CoffeeCode'></div>
+
+<script src="/js/lib/three.min.js"></script>
+<script src="/js/lib/OrbitControls.js"></script>
+
+<script language="javascript" src="/js/lib/viewer.js"></script>
+<script language="javascript">
+	initViewer("{{ page.filename }}"{% if page.distance %},{{ page.distance }}{% endif %});
+</script>
+
+{{ content }}
