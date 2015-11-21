@@ -11,10 +11,10 @@ I've written a few text adventures. I primarily use [TADS 3][], but started with
 
 Welcome to the future.
 
-[gs.tads.io]: <gs.tads.io/?storyfile=put_a_story_file_here.t3>
-[Twine]: <twinery.org>
-[Tads 3]: <tads.org>
-[Inform 7]: <inform7.com>
-[Emily Boegheim]: <ifdb.tads.org/showuser?id=vw7fr8dlv3k7i3pm>
-[GitHub]: <github.com>
-[Interactive Fiction Database]: <ifdb.tads.org>
+[gs.tads.io]: <http://gs.tads.io/?storyfile=put_a_story_file_here.t3>
+[Twine]: <http://twinery.org>
+[Tads 3]: <http://tads.org>
+[Inform 7]: <http://inform7.com>
+[Emily Boegheim]: <http://ifdb.tads.org/showuser?id=vw7fr8dlv3k7i3pm>
+[GitHub]: <http://github.com>
+[Interactive Fiction Database]: <http://ifdb.tads.org>
