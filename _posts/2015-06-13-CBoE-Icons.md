@@ -2,7 +2,7 @@
 layout: post
 title: Classic Blades of Exile
 tag: [Programming, GameDev]
-img: /rsc/boe-icon.png
+img: https://cmu.box.com/shared/static/lu6q1b6w0d5vcyn9qahcmwyfos4d4kfy.png
 link: http://github.com/calref/cboe/
 ---
 

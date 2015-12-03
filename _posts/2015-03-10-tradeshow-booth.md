@@ -3,7 +3,7 @@ layout: post
 title: Tradeshow Booth Design
 permalink: /other/fi/booth/
 tag: Other
-img: /rsc/fi/booth-design.jpg
+img: https://cmu.box.com/shared/static/t662hxngtb5kyieidt3nng7vd0gksele.png
 ---
 
 I made something that actually exists!
@@ -12,8 +12,8 @@ I was commissioned to make a flashier trade show booth for a company's upcoming 
 
 ---
 
-![real-booth](/rsc/fi/trade-show-booth.jpg)
+![real-booth](https://cmu.box.com/shared/static/ztvzjzt0foztspvlglegajlgni4tp13n.jpg)
 
 ---
 
-![banner-blue](/rsc/fi/banner-blue.png)
+![banner-blue](https://cmu.box.com/shared/static/qwxm4yfi91boq629stqxcv3gm9b6v402.png)
