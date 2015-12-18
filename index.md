@@ -27,7 +27,7 @@ I Play Music!
 -->
 
 [vulcain]: /3d/vulcain/
-[_vulcain]: /rsc/3d/vulcain/render.png
+[_vulcain]: <https://cmu.box.com/shared/static/o3ar40pjwok7q23b4mm76ipaa8rj5o43.png>
 
 [Three.js]: <http://threejs.org>
 

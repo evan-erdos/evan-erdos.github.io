@@ -220,6 +220,7 @@ class Main
             antialias: true, alpha: false }
         @renderer.setSize(768,512)
         @renderer.setClearColor(0x0,0)
+        ###
         loader.load(
             "#{dir}/#{file_rocket}.js"
             (geo) =>
@@ -231,6 +232,7 @@ class Main
                 mesh.rotation.y = pi/2
                 mesh.scale.set(50,50,50)
                 @scene.add mesh)
+        ###
         #@renderer.shadowMap.enabled = true
         #@renderer.shadowMap.type = T.PCFSoftShadowMap
 

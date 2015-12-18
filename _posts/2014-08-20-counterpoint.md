@@ -4,7 +4,7 @@ title: Counterpoint
 version: 1.18.3
 permalink: /3d/counterpoint/
 tag: [3D, GameDev]
-img: /rsc/3d/counterpoint/terrain.png
+img: https://cmu.box.com/shared/static/w0ibwvny1ey9xs6gcyc9aaqp0eai24yz.png
 ---
 
 It's large, industrial, and has a totally slick [rocket][] housed in the center.
@@ -16,16 +16,16 @@ I would really like to travel back in time and watch people in the 1940s use not
 ### Edit: ###
 I did go back to it! There are some finer points to it now, some better details & UV mapping, a new [rocket](/3d/vulcain), and a brand new annex.
 
-![counterpoint-bridge](/rsc/3d/counterpoint/bridge.png)
+![counterpoint-bridge](https://cmu.box.com/shared/static/y2mq35s7mp6tooe40if5953lhdc4zqfp.png)
 
-![counterpoint-trusses](/rsc/3d/counterpoint/trusses.png)
+![counterpoint-trusses](https://cmu.box.com/shared/static/ach697g2i6hslgu6zcol0vr3vc2bus30.png)
 
-![counterpoint-annex](/rsc/3d/counterpoint/annex.png)
+![counterpoint-annex](https://cmu.box.com/shared/static/yoflccaphcb6agw2f0u0krpy6n2rycia.png)
 
-[![counterpoint-vulcain](/rsc/3d/vulcain/core.png)](/3d/vulcain)
+[![counterpoint-vulcain](https://cmu.box.com/shared/static/zjw1tlj23ar0cfdzobbue31f5mfdu2oz.png)](/3d/vulcain)
 
 
 [ivan]: http://en.wikipedia.org/wiki/Ivan_Sutherland
 [sketch]: http://en.wikipedia.org/wiki/Sketchpad
-[amelia]: /gd/amelia_animation
+[amelia]: </gd/amelia_animation>
 [rocket]: </3d/vulcain/> "Rocket Engine v2.1.55"
