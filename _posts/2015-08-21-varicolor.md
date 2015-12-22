@@ -14,4 +14,4 @@ I wrote a syntax highlighter for [Sublime Text][]. It works for anything that co
 [![varicolor](/rsc/varicolor.png)][GitHub]
 
 [Sublime Text]: http://www.sublimetext.com
-[GitHub]: http://github.com/iasEnvy/varicolor
+[GitHub]: http://github.com/evan-erdos/varicolor

@@ -7,7 +7,7 @@ tag: [Programming, GameDev]
 
 >[An Adventure Game engine with an Interactive Fiction inspired twist!][pathways]
 
-[pathways]: <https://github.com/iasEnvy/PathwaysEngine/>
+[pathways]: <https://github.com/evan-erdos/PathwaysEngine/>
 
 This `PathwaysEngine` I just released right now is the culmination of my efforts to create a game engine. It has aspects of [FPS][]s, [RPG][]s, and, perhaps uniquely, [Text Adventures][]. Movement and Cameras are controlled by the typical "WASD" & Mouse, but more advanced input is achieved through a text-based command line. The source is written in [C#][], and targets [Unity][], a common game development engine. Below is an overview of the namespaces, and some other important information.
 
