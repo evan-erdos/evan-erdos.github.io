@@ -2,7 +2,7 @@
 layout: post
 title: First Steps into Maya Animation
 tag: [Programming, GameDev]
-img: https://cmu.box.com/shared/static/67s4eywgcz1h1grcfbuonyekqvg87fr2.png
+img: https://cmu.box.com/shared/static/6t8qscy426gyfdnxgojhtfqdfjrhjxzo.png
 ---
 
 I'm kicking myself for not learning Maya a long, long time ago.
@@ -28,6 +28,5 @@ They worked OK before that, however.
 ---
 
 I do wonder if I could export this sort of animation statically.
-It seems
-
+It seems like cache-ing is the answer to that.
 
