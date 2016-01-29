@@ -28,5 +28,5 @@ They worked OK before that, however.
 ---
 
 I do wonder if I could export this sort of animation statically.
-It seems like cache-ing is the answer to that.
+It seems like caching is the answer to that.
 
