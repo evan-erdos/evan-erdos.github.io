@@ -14,7 +14,10 @@ No I'm not. Try clicking and dragging. Ohh, wow, look at it go.
 
 ## What's new? ##
 
-A little of this, a little of that. For starters, your browser is running [Three.js][] instead of [P5.js][], and [Three.js][] is ridiculously fast. The planets are now affected by the sun's light (and its color) and have normal and specular mapping. The stars in the background are not an image, but are `2^14` individual particles, distributed randomly, thousands of "lightyears" away.
+A little of this, a little of that.
+For starters, your browser is running [Three.js][] instead of [P5.js][], and [Three.js][] is ridiculously fast.
+The planets are now affected by the sun's light (and its color) and have normal and specular mapping.
+The stars in the background are not an image, but are `2^14` individual particles, distributed randomly, thousands of "lightyears" away.
 
 [Three.js]: <http://threejs.org>
 [P5.js]: <http://p5js.org>

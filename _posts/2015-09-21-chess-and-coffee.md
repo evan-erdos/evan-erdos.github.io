@@ -4,9 +4,10 @@ title: Chess & Coffee
 tag: GameDev
 ---
 
-Ben attempts to write a Chess TwitterBot in CoffeeScript (Hipster nonsense)
+Ben attempts to write a Chess TwitterBot in CoffeeScript (Hipster nonsense).
 
-I'll begin with constants and arrays for the base board, and the usual initial setup. This doesn't mean we won't be playing fischer 360 later.
+I'll begin with constants and arrays for the base board, and the usual initial setup.
+This doesn't mean we won't be playing fischer 360 later.
 
 ```coffee
 # Ben Scott # 2015-09-21 # coffee & chess #
@@ -66,7 +67,8 @@ validMove = (move) ->
 	return (temp.length==2 && validSquare(temp))
 ```
 
-`overlayBoard` returns a char-array of unicode characters, which represent whatever board was passed in. It uses a sort of masking to retain the underlying square colors.
+`overlayBoard` returns a char-array of unicode characters, which represent whatever board was passed in.
+It uses a sort of masking to retain the underlying square colors.
 
 ```coffee
 overlayBoard = (board) ->

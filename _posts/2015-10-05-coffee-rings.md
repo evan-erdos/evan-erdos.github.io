@@ -17,9 +17,7 @@ Just learned that P5.js does WebGL. Yaaaas.
 ### `P5.js` Main class ###
 
 This is our instance of the main class in the `P5.js` library.
-The argument is the link between the library and this code, and
-the special functions we override in the class definition are
-callbacks for P5.js events.
+The argument is the link between the library and this code, and the special functions we override in the class definition are callbacks for P5.js events.
 
 
 ```coffee
@@ -119,8 +117,8 @@ These functions are automatic callbacks for `P5.js` events:
 
 ### Library Functions ###
 
-These functions I've included from other files. They're the
-sort of generic utilities that would constitute a library.
+These functions I've included from other files.
+They're the sort of generic utilities that would constitute a library.
 
 - `p.polygon` draws a regular polygon.
   - @x,@y: center
@@ -158,7 +156,8 @@ sort of generic utilities that would constitute a library.
 
 ### DOM Functions ###
 
-These functions initialize the DOM objects in the sketch.
+These functions initialize the DOM objects in the sketch:
+
 - `p.setupDOM` creates and positions the color sliders
 - `p.drawDOM` renders the color sliders on every draw
 - `p.getInput` collects input data, processes it, and in

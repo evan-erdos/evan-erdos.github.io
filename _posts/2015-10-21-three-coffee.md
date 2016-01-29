@@ -6,7 +6,10 @@ tag: [Programming, GameDev]
 permalink: /code/changes.coffee/
 ---
 
-This has very little to do with the project assigned, but wow, look at what happens when you click and drag! Three.js is pretty neat. Real lights? UV Maps without giant holes in them? Sign me up.
+This has very little to do with the project assigned, but wow, look at what happens when you click and drag!
+Three.js is pretty neat.
+Real lights? UV Maps without giant holes in them?
+Sign me up.
 
 **This code is deprecated. See [the more advanced version][].**
 
