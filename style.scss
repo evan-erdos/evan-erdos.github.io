@@ -13,6 +13,35 @@ video { /* bescott edits */
   border-radius: 8px;
 }
 
+/* begin crossfade */
+
+.cf {
+  float: left;
+  position: relative;
+
+  min-height: 150px;
+  min-width: 150px;
+  vertical-align: middle;
+}
+
+.cf img {
+  position: absolute;
+  left: 0;
+  width: 128px;
+  height: 128px;
+  -webkit-transition: opacity 0.1s ease-in-out;
+  -moz-transition: opacity 0.1s ease-in-out;
+  -o-transition: opacity 0.1s ease-in-out;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.cf img.top:hover {
+  opacity:0;
+}
+
+/* end crossfade */
+
+
 img.portrait {
   display: block;
   margin-left: auto;
@@ -426,8 +455,8 @@ img {
 
 .site-avatar {
   float: left;
-  width: 72px;
-  height: 72px;
+  min-width: 72px;
+  min-height: 72px;
   margin-left: 8px;
   margin-right: 16px;
   /*box-shadow: 1px 3px 2px $darkerGray; */
@@ -471,9 +500,9 @@ img {
 }
 
 nav {
-  float: center;
-  text-align: center;
-  padding-bottom: 16px;
+  float: left;
+  text-align: left;
+  //padding-bottom: 16px;
   margin-top: 8px;
   margin-bottom: 8px;
   font-family: $helveticaNeue;
@@ -493,7 +522,8 @@ nav {
   }
 
   a {
-    margin-left: 20px;
+    margin-left: 8px;
+    margin-right: 8px;
     color: $white;
     /* text-shadow: 1px 3px 2px $darkerGray; */
     text-align: center;

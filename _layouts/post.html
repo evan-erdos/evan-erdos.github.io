@@ -6,17 +6,11 @@ comments: true
 <article class="post">
   {% include title.html %}
 
-  {% if page.link %}
-    <a href="{{ page.link }}">
-    {% if page.img %}
-      <img class="caption__media" src="{{site.baseurl}}{{page.img}}">
-    {% endif %}
-    </a>
-  {% else %}
-    {% if page.img %}
-      <img class="caption__media" src="{{site.baseurl}}{{page.img}}">
-    {% endif %}
+  <a href="{{ page.link }}">
+  {% if page.img %}
+    <img class="caption__media" src="{{site.baseurl}}{{page.img}}">
   {% endif %}
+  </a>
 
   <div class="entry">
     {{ content }}

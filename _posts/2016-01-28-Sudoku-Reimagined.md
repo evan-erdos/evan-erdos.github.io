@@ -2,13 +2,17 @@
 layout: post
 title: Sudoku Reimagined
 tag: [GameDev]
+thumb:
+  start: /rsc/thumbs/sudoku-thumb.png
+  hover: /rsc/thumbs/sudoku-hover.png
 img: https://cmu.box.com/shared/static/6kz0y6rn8sfr25knfieug1tv12emje7k.png
 ---
 
 Sudoku is a great brain teaser, but mental math is boring.
 Numbers are cool, but who needs them?
 
-A few alternatives could easily replace the numbers on a Sudoku board, while maintaining the core problem solving fun of the original game.
+A few alternatives could easily replace the numbers on a Sudoku board,
+while maintaining the core problem solving fun of the original game.
 
 ---
 

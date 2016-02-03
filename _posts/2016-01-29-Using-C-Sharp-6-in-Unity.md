@@ -2,11 +2,21 @@
 layout: post
 title: Using C#6.0 in Unity 5
 tag: [Programming]
+thumb:
+  start: /rsc/thumbs/csharp-thumb.png
+  hover: /rsc/thumbs/csharp-hover.png
 ---
 
-C#6 can be compiled into .NET 2.0-compliant machine code, and can therefore be used with Unity.
+C#6 presents a score of new and delicious syntax sugars,
+and can be compiled into .NET 2.0-compliant bytecode.
+This means it has implications for Unity Developers,
+and the overall health and wellbeing of their code.
+
 A few of the fancy features are unusable, but on the whole, it works well.
-In fact, my game engine, [`PathwaysEngine`][pathways], uses it pretty heavily, and I've seen no problems when using it, aside from a few features which cause problems when used.
+In fact, my game engine, [`PathwaysEngine`][pathways], uses it pretty heavily,
+and I haven't seen any code-related issues when using it,
+aside from a few features which don't work, but also don't cause bugs.
+
 
 Alex Zhdankin's [repository][] holds a template project / installer for his custom C#6.0 compiler.
 Instructions can be found there.
@@ -37,7 +47,7 @@ A shining example of how useful this is in Unity programming is such:
 
 ```csharp
     var audio = GetComponent<AudioSource>();
-    if (audio==null) audio.Play();
+    if (audio==null) audio.Play(); // whoops!
 ```
 
 How often do we have to poke around looking for `Component`s, and how often do they not exist, or exist somewhere else we didn't expect?
@@ -50,10 +60,10 @@ With C#6, this whole mess can be rewritten as such:
 
 Presuming that we don't actually need the reference for later, this works fine, and also avoids a nasty `NullReferenceException` in the event that we forgot to add an `AudioSource` to the `GameObject`.
 
-While I don't frequently use builtin arrays anymore, if I did, I'd use this operator to ensure I didn't try to index into something that turns out to be `null`.
+While I don't frequently use built-in arrays anymore, if I did, I'd use this operator to ensure I didn't try to index into something that turns out to be `null`.
 
 ```csharp
-    int[] arr; //= new int[3]; whoops! I didn't init
+    int[] arr; //= new int[3];  // whoops!
     int? n = arr?[2];
 ```
 
@@ -64,7 +74,7 @@ In prior versions of C#, there was no way to safely invoke a `delegate` without 
 
 ```csharp
     OnMyEventChange?.Invoke(this, EventArgs.Empty, value);
-    // or whatever args match the delegate
+    // or whatever arguments match the delegate
 ```
 
 The Unity Editor's UI *only* allows built-in arrays to be assigned to from the editor.
