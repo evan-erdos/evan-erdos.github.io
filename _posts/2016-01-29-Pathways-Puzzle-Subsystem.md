@@ -67,7 +67,7 @@ In that case, a given piece might not have its own solution, but could represent
         value to attempt to solve with
 
 
-```csharp
+~~~csharp
 public interface IPiece<T> {
 
     event OnSolve<T> SolveEvent;
@@ -80,7 +80,7 @@ public interface IPiece<T> {
 
     bool Solve(T condition);
 }
-```
+~~~
 
 ---
 
@@ -105,7 +105,7 @@ If declared on a reference type (any deriving type of `IPiece` should be the typ
 
     This changes the state of the iterator, and returns the next element.
 
-```csharp
+~~~csharp
 public interface IIterator<T> : IPiece<T>, ICollection<IPiece<T>> {
 
     IPiece<T> Current {get;}
@@ -114,7 +114,7 @@ public interface IIterator<T> : IPiece<T>, ICollection<IPiece<T>> {
 
     IPiece<T> Advance();
 }
-```
+~~~
 
 ---
 
@@ -183,12 +183,12 @@ When an `IPiece` is solved, the parent should be notified via this `event`.
 
      was the `sender` solved?
 
-```csharp
+~~~csharp
 public delegate T OnSolve<T>(
     IPiece<T> sender,
     EventArgs e,
     bool solved);
-```
+~~~
 
 ---
 

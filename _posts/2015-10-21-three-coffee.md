@@ -17,7 +17,7 @@ Sign me up.
 
 Here's some variables and loaders for assets and whatnot.
 
-```coffee
+~~~coffee
 ### Ben Scott # 2015-10-24 # Three ###
 
 'use strict' # just like JavaScript
@@ -37,7 +37,7 @@ renderers = [] # list of objects to render
 
 ### Three.js ###
 textureLoader = new T.TextureLoader()
-```
+~~~
 
 
 ### `Planet` ###
@@ -55,7 +55,7 @@ This class represents planetary bodies.
 - `@geo` **Geometry** : sphere for planets
 - `@mesh` **Mesh** : planet's mesh
 
-```coffee
+~~~coffee
 class Planet
     constructor: (@r=-1,@d=256,@t=0.1,@o=0.05,@z=0.0) ->
         @randomize() if @r<0
@@ -84,7 +84,7 @@ class Planet
         @o = (rand()-0.5)*10
         @t = (rand()-0.5)
         @z = (rand()-0.5)*0.5
-```
+~~~
 
 
 ### `Star` ###
@@ -101,7 +101,7 @@ This class represents stars. It creates a light object along with it's mesh.
 - `@mesh` **Mesh** : sun's mesh
 - `@light` **PointLight** : sun's emissions
 
-```coffee
+~~~coffee
 class Star extends Planet
     constructor: (@r=-1, @o=0.05, @i=1, @c=0xFF) ->
         @randomize() if @r<0
@@ -125,7 +125,7 @@ class Star extends Planet
         filename = if @r<300 then "sun" else "blue_sun"
         @tex = textureLoader.load "#{dir}#{filename}.png"
         @c = if @r<300 then 0xFFEEAA else 0xBBBBFF
-```
+~~~
 
 
 ### `Main` ###
@@ -136,7 +136,7 @@ This is the program entrypoint for my three.js example.
 - `@camera`: The main rendering viewpoint, typically uses perspective rather than orthogonal rendering.
 - `@renderer`: ... I'll... get back to you about exactly what it is that this one does!
 
-```coffee
+~~~coffee
 class Main
     constructor: ->
         @scene = new T.Scene()
@@ -166,25 +166,25 @@ class Main
 
     update: ->
         @controls.update()
-```
+~~~
 
 
 ### `Main.render` ###
 
 This needs to be a bound function, and is the callback used by `requestAnimationFrame`, which does a bunch of stuff, e.g., calling render at the proper framerate.
 
-```coffee
+~~~coffee
     render: =>
         requestAnimationFrame(@render)
         @update()
         rend.render() for rend in renderers
         @renderer.render(@scene,@camera)
-```
+~~~
 
 
 Finally, we instantiate a new main, initialize, and a call to init starts the loop.
 
-```coffee
+~~~coffee
 main = new Main()
 main.init()
-```
+~~~

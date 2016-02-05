@@ -22,7 +22,7 @@ The stars in the background are not an image, but are `2^14` individual particle
 [Three.js]: <http://threejs.org>
 [P5.js]: <http://p5js.org>
 
-```coffee
+~~~coffee
 ### Ben Scott # 2015-10-25 # Space ###
 
 'use strict' # just like JavaScript
@@ -42,7 +42,7 @@ container = null # parent in the HTML document
 ### WebGL ###
 renderers = [] # list of objects to render
 textureLoader = new T.TextureLoader()
-```
+~~~
 
 
 ### `Planet` ###
@@ -64,7 +64,7 @@ This class represents planetary bodies.
 - `@geo` **Geometry** : sphere for planets
 - `@mesh` **Mesh** : planet's mesh
 
-```coffee
+~~~coffee
 class Planet
     constructor: (params = {}) -> # destructure
         @radius = params.radius ? (1+rand())*32
@@ -113,7 +113,7 @@ class Planet
         @mesh.position.z = @dist
         @obj.rotation.x = @declin
         @obj.rotation.y += @orbit/rate
-```
+~~~
 
 
 ### `GasGiant` ###
@@ -135,7 +135,7 @@ This class represents large planetary bodies.
 - `@geo` **Geometry** : sphere for planets
 - `@mesh` **Mesh** : planet's mesh
 
-```coffee
+~~~coffee
 class GasGiant extends Planet
     constructor: (params = {}) -> # destructure
         @radius = params.radius ? (2+rand())*64
@@ -178,7 +178,7 @@ class GasGiant extends Planet
             "#{dir}#{GasGiant.file}_spec.png")
         GasGiant.normal = textureLoader.load(
             "#{dir}#{GasGiant.file}_normal.jpg")
-```
+~~~
 
 
 ### `Star` ###
@@ -197,7 +197,7 @@ This class represents stars. It creates a light object along with it's mesh.
 - `@mesh` **Mesh** : sun's mesh
 - `@light` **PointLight** : sun's light object
 
-```coffee
+~~~coffee
 class Star extends Planet
     constructor: (params = {}) -> # destructure
         @radius = params.radius ? (rand()+1)*256
@@ -230,7 +230,7 @@ class Star extends Planet
 
     render: ->
         @obj.rotation.y += @period/rate
-```
+~~~
 
 
 ### `Main` ###
@@ -243,7 +243,7 @@ This is the program entry point for the whole affair
 - `@renderer`: ... I'll... get back to you about exactly
     what it is that this one does!
 
-```coffee
+~~~coffee
 class Main
     constructor: ->
         @scene = new T.Scene()
@@ -300,25 +300,25 @@ class Main
 
     update: ->
         @controls.update()
-```
+~~~
 
 
 ### `Main.render` ###
 
 This needs to be a bound function, and is the callback used by `requestAnimationFrame`, which does a bunch of stuff, e.g., calling render at the proper frame rate.
 
-```coffee
+~~~coffee
     render: =>
         requestAnimationFrame(@render)
         @update()
         rend.render() for rend in renderers
         @renderer.render(@scene,@camera)
-```
+~~~
 
 
 Finally, we instantiate a new main, initialize, and a call to init starts the loop.
 
-```coffee
+~~~coffee
 main = new Main()
 main.init()
-```
+~~~

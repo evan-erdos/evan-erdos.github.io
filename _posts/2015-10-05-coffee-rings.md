@@ -20,7 +20,7 @@ This is our instance of the main class in the `P5.js` library.
 The argument is the link between the library and this code, and the special functions we override in the class definition are callbacks for P5.js events.
 
 
-```coffee
+~~~coffee
 ### Ben Scott # 2015-10-05 # Coffee Rings ###
 
 'use strict' # just like Javscript
@@ -39,7 +39,7 @@ myp = new p5 (p)->
     [input,analyzer,volume] = [null,null,null]
 
     mouse = [p.mouseX,p.mouseY]
-```
+~~~
 
 ### `Planet` Main Class ###
 
@@ -49,14 +49,14 @@ This is a class which represents planets.
 - `@r`: radius of the planet
 - `@hasRing`: planet has rings
 
-```coffee
+~~~coffee
 class Planet
     r_ring: 1
 
     constructor: (@x=0,@y=0,@r=1,@hasRing=false) ->
         @r_ring = @r+50 if @hasRing
     #draw: ->
-```
+~~~
 
 
 ### `P5.js` Events ###
@@ -70,7 +70,7 @@ These functions are automatic callbacks for `P5.js` events:
 - `p.mousePressed` is called on mouse down
 - `p.remove` destroys everything in the sketch
 
-```coffee
+~~~coffee
     p.preload = ->
         palette_img = p.loadImage("/rsc/colormap.gif")
         planet_img = p.loadImage("/rsc/planet.png")
@@ -112,7 +112,7 @@ These functions are automatic callbacks for `P5.js` events:
             x*delta_size,y*delta_size)
 
     #p.remove = -> p5 = null
-```
+~~~
 
 
 ### Library Functions ###
@@ -132,7 +132,7 @@ They're the sort of generic utilities that would constitute a library.
   - @s: size
 
 
-```coffee
+~~~coffee
     p.polygon = (x,y,r=1,n=3,o=0) ->
         theta = p.TWO_PI/n
         p.beginShape()
@@ -151,7 +151,7 @@ They're the sort of generic utilities that would constitute a library.
                     x+(i*(h)*r*p.cos(pi_3))*2
                     y+(3.45*j*h*r)+((i%2)*(h)*r*p.sin(pi_3))*2
                     r, 6, pi_6)
-```
+~~~
 
 
 ### DOM Functions ###
@@ -165,7 +165,7 @@ These functions initialize the DOM objects in the sketch:
     event callback (otherwise it single-clicks)
 
 
-```coffee
+~~~coffee
     p.setupDOM = ->
         r_sl = p.createSlider(0,255,100)
         r_sl.position(16,16)
@@ -214,4 +214,4 @@ These functions initialize the DOM objects in the sketch:
         #p.plane(100, 100)
         p.texture(planet_img)
         p.sphere(50)
-```
+~~~

@@ -17,25 +17,24 @@ footer-links:
 #google_analytics:
 disqus:
 baseurl: ""
-markdown: redcarpet
-redcarpet:
-  extensions:
-  - no_intra_emphasis
-  - fenced_code_blocks
-  - autolink
-  - tables
-  - with_toc_data
-  - strikethrough
-  - footnotes
-  - highlight
-  - superscript
+#markdown: redcarpet
+#redcarpet:
+#  extensions:
+#  - no_intra_emphasis
+#  - fenced_code_blocks
+#  - autolink
+#  - tables
+#  - with_toc_data
+#  - strikethrough
+#  - footnotes
+#  - highlight
+#  - superscript
 
 #kramdown:
 #  input: GFM
-#  syntax_highlighter: coderay
-#  coderay_css: 'fruity.css'
+#  syntax_highlighter_ops:
 
-highlighter: pygments
+#highlighter: pygments
 permalink: /:title/
 version: v1.9.2
 

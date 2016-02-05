@@ -12,9 +12,9 @@ This very small bug fix is a shining example of my typically underwhelming level
 
 I fixed the bug by adding `7` after the `3`:
 
-```cpp
+~~~cpp
    play_sound(3, time_in_ticks(5));
-```
+~~~
 
 The game ran just fine without my fix.
 There were no unusual behaviours, no graphical errors, and most importantly, all the *other* sounds played as expected.

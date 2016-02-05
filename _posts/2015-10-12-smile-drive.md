@@ -22,7 +22,7 @@ The most interesting code examples are probably the recursive planet drawing in 
 
 This is our instance of the main class in the `P5.js` library. The argument is the link between the library and this code, and the special functions we override in the class definition are callbacks for P5.js events.
 
-```coffee
+~~~coffee
 ### Ben Scott # 2015-10-12 # Random Universe ###
 
 'use strict' # just like JavaScript
@@ -58,7 +58,7 @@ myp = new p5 (p) ->
 
     ### Audio ###
     [mic,analyzer,volume] = [null,null,0]
-```
+~~~
 
 
 ### `Planet` ###
@@ -73,7 +73,7 @@ This is a class which represents planets. If no arguments are passed to it, it m
 - `@moons` **Planet[]** : list of other planets
 - `@img` **Image** : image to render onto the planet
 
-```coffee
+~~~coffee
 class Planet
     @moons = []
     @img = null
@@ -122,7 +122,7 @@ class Planet
                     p.random(0.05)
                     p.random()
                     p.random(-0.05,0.05)))
-```
+~~~
 
 
 ### `Sun` ###
@@ -134,7 +134,7 @@ This is a class which represents the sun. I'd like to have it inherit from plane
 - `@ot` **real** : orbit time
 - `@img` **Image** : texture for the sun
 
-```coffee
+~~~coffee
 class Sun
     @isBinaryStar = false
     constructor: (@r,@dt=0.1,@ot=0.05,@img) ->
@@ -168,7 +168,7 @@ class Sun
         p.translate(0,@r/4,@r/4)
         p.sphere(@r/2)
         p.pop()
-```
+~~~
 
 
 ### `Events` ###
@@ -183,7 +183,7 @@ These functions are automatic callbacks for `P5.js` events:
 - `p.remove` destroys everything in the sketch
 
 
-```coffee
+~~~coffee
 	p.preload = ->
         palette_img = p.loadImage("/rsc/colormap.gif")
         sun_img = p.loadImage("/rsc/sun.png")
@@ -240,7 +240,7 @@ These functions are automatic callbacks for `P5.js` events:
         p.resizeCanvas(p.windowWidth, p.windowHeight);
 
     #p.remove = -> p5 = null
-```
+~~~
 
 
 ### Library Functions ###
@@ -258,7 +258,7 @@ These functions I've included from other files. They're the sort of generic util
   - `@r` **int** : radius
   - `@s` **int** : size
 
-```coffee
+~~~coffee
     polygon = (x,y,r=1,n=3,o=0) ->
         theta = p.TWO_PI/n
         p.beginShape()
@@ -277,7 +277,7 @@ These functions I've included from other files. They're the sort of generic util
                     x+(i*(h)*r*p.cos(pi_3))*2
                     y+(3.45*j*h*r)+((i%2)*(h)*r*p.sin(pi_3))*2
                     r, 6, pi_6)
-```
+~~~
 
 
 ### Audio Functions ###
@@ -287,7 +287,7 @@ These functions deal with audio input:
 - `setupAudio` initializes audio system
 - `getAudio` gets the volume, maps it to the sun
 
-```coffee
+~~~coffee
     setupAudio = ->
         mic = new p5.AudioIn()
         mic.start()
@@ -297,7 +297,7 @@ These functions deal with audio input:
         volume = ((raw_volume-volume)/2)%10
         if volume>0.001 then sun_r_base+=5 else sun_r_base-=2
         sun_r = p.max(150,sun_r_base)+p.map(volume,0,1,0,300)
-```
+~~~
 
 
 ### DOM Functions ###
@@ -308,7 +308,7 @@ These functions initialize the DOM objects in the sketch:
 - `drawDOM` renders the DOM elements (called from `p.draw`)
 - `getInput` collects input data
 
-```coffee
+~~~coffee
     setupDOM = ->
         canvas = p.createCanvas(756,512,p.WEBGL)
         canvas.parent('CoffeeSketch')
@@ -351,7 +351,7 @@ These functions initialize the DOM objects in the sketch:
 
         #p.camera(cam_pos[0],cam_pos[1],cam_pos[2])
         ###
-```
+~~~
 
 ### WebGL Functions ###
 
@@ -360,7 +360,7 @@ WebGL defers rendering to the system's GPU. Neat, huh?
 - `setupWebGL` creates WebGL objects
 - `drawWebGL` renders the WebGL objects
 
-```coffee
+~~~coffee
     setupWebGL = ->
         setupPlanets()
         setupStars()
@@ -372,7 +372,7 @@ WebGL defers rendering to the system's GPU. Neat, huh?
         drawStars()
         sun.draw()
         drawPlanets()
-```
+~~~
 
 ### Random Universe Functions ###
 
@@ -383,7 +383,7 @@ These functions draw the stars, the planets, and carry out the logic of the game
 - `drawStars`: renders the stars as planes
 - `drawPlanets`: renders the planets
 
-```coffee
+~~~coffee
     setupStars = ->
         xoff = 0
         [x,y] = [2048,2048]
@@ -427,5 +427,5 @@ These functions draw the stars, the planets, and carry out the logic of the game
 
     drawPlanets = ->
         planet.draw() for planet in planets
-```
+~~~
 
