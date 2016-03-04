@@ -9,3 +9,7 @@ permalink: /about/
 ### Contact Me ###
 
 <bescott@andrew.cmu.edu>
+
+### Resume ###
+- [A fancy Resume](/resume/)
+- [A printable Resume](/resume.pdf)
