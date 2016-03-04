@@ -27,6 +27,7 @@ At the end of the day, any program is sending around ones and zeros,
 and types are ways of reading those bits.
 
 Here are some types:
+
 - **`bool`**: a boolean value, `true` or `false`
 - **`int`**: an integer! `1.5` is not an **`int`**, `32` is an **`int`**
 - **`uint`**: a nonnegative natural number, not frequently used
@@ -42,6 +43,7 @@ and if a timer has `59.535` seconds left, it's using a **`float`** or a **`doubl
 These are very simple, however, there are more complicated value types, known as `struct`s.
 
 The Unity API defines a few:
+
 - **`Vector2`**: just x and y
 - **`Vector3`**: a set of 3 **`float`**s, typically used for positions and forces, etc.
 - **`Vector4`**: a 4-dimensional vector! wow! (not frequently used)
