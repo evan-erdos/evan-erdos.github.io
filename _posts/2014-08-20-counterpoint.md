@@ -11,6 +11,12 @@ It's large, industrial, and has a totally slick [rocket][] housed in the center.
 I seem to gravitate towards radial architecture when I set out to draft a building.
 There is a large, multi-level hangar in the back, and the rest of the building is wrapped around a central core.
 
+Here's an earlier video, showing off some of the advanced character animation.
+
+<video autoplay loop>
+  <source src="https://cmu.box.com/shared/static/dbixjv8rjn685l47e5b3up2tfqu2aeqs.mov" type="video/mp4">
+</video>
+
 ### Edit: ###
 There are some finer points to it now, some better details & UV mapping, a new [rocket][], and a brand new annex.
 

@@ -4,14 +4,14 @@ title: When Dan Left
 version: 1.0.5
 tags: [GameDev, Writing]
 img: /rsc/if/when-dan-left.png
-link: http://gs.tads.io/?storyfile=http://bescott.org/if/when_dan_left.t3
+link: gs.tads.io/?storyfile=https://github.com/evan-erdos/when-dan-left/releases/download/v1.0.0/when_dan_left_web.t3
 ---
 
 Dan sure has been acting strangely.
 
 *[When Dan Left][]* is a smaller, weirder, more subject-to-change text adventure, written from an unlikely perspective.
 
-[When Dan Left]: <gs.tads.io/?storyfile=http://bescott.org/if/when_dan_left_web_v0.1.7.t3>
+[When Dan Left]: <gs.tads.io/?storyfile=https://github.com/evan-erdos/when-dan-left/releases/download/v1.0.0/when_dan_left_web.t3>
 [gs.tads.io]: <gs.tads.io/?storyfile=put_a_story_file_here.t3>
 [twine]: <twinery.org>
 [Tads 3]: <tads.org>
