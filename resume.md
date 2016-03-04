@@ -78,6 +78,9 @@ Ben Scott
     - demonstration of numerous technical elements
     - including advanced character rigging, ragdoll physics, and inverse kinematics
 
+- [Simulation for EncaptureMD (2014)][encapture]
+    - demonstrates the relationship between hospital hardware & the software product
+
 ---
 
 
@@ -87,14 +90,12 @@ Ben Scott
 
 ---
 
+[c-sharp]: <https://github.com/search?l=csharp&q=user%3Aevan-erdos&type=Repositories>
 [git]: <http://github.com/evan-erdos/>
 [pdf]: <http://bescott.org/resume.pdf>
 [myst]: <http://bescott.org/Myst-Jam/>
 [amelia]: <http://bescott.org/3d/counterpoint/>
 [cmu-adv]: <https://github.com/evan-erdos/CMU.ADV>
 [crystal]: <http://bescott.org/gd/among-fields-of-crystal/>
-
-
-
-
+[encapture]: <http://bescott.org/encapture-md-simulation/>
 
