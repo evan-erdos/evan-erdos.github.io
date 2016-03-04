@@ -14,7 +14,7 @@ There is a large, multi-level hangar in the back, and the rest of the building i
 Here's an earlier video, showing off some of the advanced character animation.
 
 <video autoplay loop>
-  <source src="https://cmu.box.com/shared/static/dbixjv8rjn685l47e5b3up2tfqu2aeqs.mov" type="video/mp4">
+  <source src="https://cmu.box.com/shared/static/dbixjv8rjn685l47e5b3up2tfqu2aeqs.mov">
 </video>
 
 ### Edit: ###
