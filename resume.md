@@ -19,7 +19,7 @@ Ben Scott
 
 
 ### Objective ###
-- Seeking a position as a Teaching Assistant for the 2016 NHSGA Program.
+- Seeking a position as a Teaching Assistant for the 2016 NHSGA Program
 
 ---
 
@@ -64,7 +64,7 @@ Ben Scott
 ### Pertinent Work Experience & Projects ###
 
 - [_I Think I'll Write Her A Story_ (2016)][myst]
-    - a puzzle / adventure game, created for a Myst-themed game jam
+    - a puzzle / adventure game, created for a _Myst_®-themed game jam
     - features many interesting technological and visual elements
 
 - [CMU.ADV (2015-present)][cmu-adv]
