@@ -8,7 +8,6 @@ Ben Scott
 
 |                                            |                                                  |
 |--------------------------------------------|--------------------------------------------------|
-| <i class="fa fa-file-pdf-o fa-fw"></i>     | [Printable Résumé][pdf]                          |
 | <i class="fa fa-phone fa-fw"></i>          | (434) 996-5463                                   |
 | <i class="fa fa-envelope fa-fw"></i>       | <bescott@andrew.cmu.edu>                         |
 | <i class="fa fa-bookmark fa-fw"></i>       | [bescott.org](http://bescott.org)                |
