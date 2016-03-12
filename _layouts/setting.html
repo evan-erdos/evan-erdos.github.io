@@ -1,0 +1,16 @@
+---
+layout: story
+---
+
+<article class="setting">
+  <header class="setting-header">
+    <h1 class="setting-title">{{ page.title }}</h1>
+  </header>
+  {% if page.image %}
+  	<img src="{{site.baseurl}}/trail-of-cthulhu/assets/{{ page.image }}" alt="{{ page.title }} Profile" width="256" style="float:left">
+  {% endif %}
+  <div class="setting-content">
+    {{ content }}
+  </div>
+</article>
+

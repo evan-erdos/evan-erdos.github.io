@@ -1,0 +1,26 @@
+---
+layout: story
+---
+
+<article class="sequence">
+  <header class="sequence-header">
+    <h1 class="sequence-title">{% if page.seq %}Sequence {{ page.seq | plus:1 }} : {% endif %}{{ page.title }}</h1>
+  </header>
+  <div class="sequence-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+    <ul class="fa-ul">
+    {% assign acts = (site.pages | sort:'url') %}
+    {% for scene in acts %}
+      {% if scene.layout == 'scene' and (scene.url contains page.url) %}
+        <li><a href="{{site.baseurl}}{{ scene.url }}">
+        <span class="beat">
+        {% if scene.beat %}{% include trail/beat/{{ scene.beat }}.html %}{% endif %}
+        </span>
+        {% if scene.scene %}Scene {{ scene.scene | plus:1 }} : {% endif %}<i>{{ scene.title }}</i></a>
+        </li>
+    {% endif %}
+    {% endfor %}
+    </ul>
+</article>
+

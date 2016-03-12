@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  {% include trail/head.html %}
+  <body>
+    {% include trail/header.html %}
+    <div class="page-content">
+      <div class="wrapper">
+        <div>{% include trail/nav.html %}</div>
+        {{ content }}
+        <div>{% include trail/nav.html %}</div>
+      </div>
+    </div>
+    {% include trail/footer.html %}
+  </body>
+</html>

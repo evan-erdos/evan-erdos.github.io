@@ -30,6 +30,12 @@ baseurl: ""
 #  - highlight
 #  - superscript
 
+trail_title: "Trail of Cthulhu : Red Tide Rising"
+trail_desc: >
+  A Lovecraftian horror story,
+  written for the Trail of Cthulhu Game System.
+
+
 markdown: kramdown
 
 kramdown:
@@ -53,6 +59,7 @@ sass:
 
 gems:
 - jekyll-sitemap
+#- jekyll-redirect-from
 
 exclude:
 - Gemfile
