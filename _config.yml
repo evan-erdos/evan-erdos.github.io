@@ -1,9 +1,9 @@
-# This file contains configuration flags
+
 name: Ben Scott
 url: http://bescott.org/
 avatar: "/rsc/ben-rules.jpg"
 github_username: evan-erdos
-description: "2016-01-29: Game Jam! Game Jam! Game Jam! (this is going to hurt)!"
+description: "2016-03-16: I'm the Supreme Fascist of the CMU Computer Club!"
 footer-links:
   email: bescott@andrew.cmu.edu
   github: evan-erdos
@@ -14,6 +14,7 @@ footer-links:
   #twitter: /404
   stackoverflow: users/5266983/ben-scott
   #dribbble:
+incremental: true
 #google_analytics:
 disqus:
 baseurl: ""
@@ -29,12 +30,6 @@ baseurl: ""
 #  - footnotes
 #  - highlight
 #  - superscript
-
-trail_title: "Trail of Cthulhu : Red Tide Rising"
-trail_desc: >
-  A Lovecraftian horror story,
-  written for the Trail of Cthulhu Game System.
-
 
 markdown: kramdown
 
