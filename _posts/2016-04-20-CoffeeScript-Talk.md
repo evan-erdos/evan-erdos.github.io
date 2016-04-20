@@ -202,8 +202,6 @@ Now, let's write some CoffeeScript!
 
 ### CoffeeScript and You ###
 
-#### The Simple Things ####
-
 Here's A variable!
 
 ~~~coffee
@@ -256,19 +254,8 @@ void myFunction(string[] args) {
 ~~~
 
 
-#### *Just CoffeeScript Things* ####
+### *Just CoffeeScript Things* ###
 
-There are a few ways to denote a function in `${talk_subject}`.
-
-Here's plain ole' assignment.
-
-~~~coffee
-f = (n) -> n**n # square literally anything!
-~~~
-
-`f` now refers to that function there.
-
-Here's a method of a class.
 
 ~~~coffee
 class MyClass
