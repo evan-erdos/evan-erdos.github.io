@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "<code>${talk_title}</code>"
+permalink: talk/
 tags: [GameDev, Writing]
 ---
 
