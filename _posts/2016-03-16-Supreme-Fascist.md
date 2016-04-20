@@ -1,6 +1,6 @@
 ---
 layout: post
-title: I Am the Supreme Fascist of CMU Club
+title: I Am the Supreme Fascist of CMU Computer Club
 ---
 
 I almost Donald Trumped the CMU Computer Club elections.
