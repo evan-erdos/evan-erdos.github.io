@@ -8,6 +8,15 @@ dl, dd, ol, ul, figure {
     padding: 0;
 }
 
+
+/* Equations with KaTeX */
+.equation {
+  padding-bottom:  1rem;
+  padding-top:     1rem;
+  text-align:      center;
+  font-size:       1.5em;
+}
+
 .beat {
     font-size: 75%;
     vertical-align: 2px;
@@ -261,7 +270,7 @@ code {
     font-size: 16px;
     border: 1px solid $grey-color-light;
     border-radius: 4px;
-    background-color: #fff;
+    background-color: #111;
 }
 
 code {

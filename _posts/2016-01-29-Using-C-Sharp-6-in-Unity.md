@@ -45,10 +45,10 @@ However, the null-conditional operator can both prevent `NullReferenceException`
 
 A shining example of how useful this is in Unity programming is such:
 
-~~~csharp
+```csharp
     var audio = GetComponent<AudioSource>();
     if (audio==null) audio.Play(); // whoops!
-~~~
+```
 
 How often do we have to poke around looking for `Component`s, and how often do they not exist, or exist somewhere else we didn't expect?
 Almost all the time.

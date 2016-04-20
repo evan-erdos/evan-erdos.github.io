@@ -1,5 +1,5 @@
 
-.highlight {
+.highlighter-rouge {
   background-color: #efefef;
   padding: 7px 7px 7px 10px;
   border: 1px solid #ddd;
@@ -10,9 +10,7 @@
   overflow: scroll;
 }
 
-code {
-  font-family:'Bitstream Vera Sans Mono','Courier', monospace;
-}
+code { font-family:'Menlo', monospace; color: #222222; }
 
 .highlight .c { color: #586E75 } /* Comment */
 .highlight .err { color: #93A1A1 } /* Error */
@@ -82,3 +80,7 @@ code {
 .highlight .vg { color: #268BD2 } /* Name.Variable.Global */
 .highlight .vi { color: #268BD2 } /* Name.Variable.Instance */
 .highlight .il { color: #2AA198 } /* Literal.Number.Integer.Long */
+
+
+
+

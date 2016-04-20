@@ -8,8 +8,13 @@
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
   </head>
-
+  <style>
+    .MathJax_Preview { color: #888 }
+    .math_finished .MathJax_Preview { display: none }
+  </style>
   <body>
     {% include header.html %}
     <div id="main" role="main" class="container">
@@ -25,4 +30,26 @@
     </div>
     {% include analytics.html %}
   </body>
+  <!-- -->
+  <script type="text/javascript">
+    var tex = document.getElementsByClassName("equation");
+    Array.prototype.forEach.call(tex, function(el) {
+        katex.render(el.getAttribute("data-expr"), el);
+    });
+  </script> <!-- -->
+
+  <script>
+  var scripts = document.getElementsByTagName("script");
+  for (var i=0; i<scripts.length; ++i) {
+    var script = scripts[i];
+    if (script.type.match(/^math\/tex/)) {
+      var text = script.text === "" ? script.innerHTML : script.text;
+      var options = script.type.match(/mode\s*=\s*display/)
+        ? {displayMode: true} : { };
+      script.insertAdjacentHTML("beforebegin",
+        katex.renderToString(text, options));
+    }
+  }
+  document.body.className += " math_finished";
+  </script>
 </html>

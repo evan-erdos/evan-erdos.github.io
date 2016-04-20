@@ -4,7 +4,9 @@ title: Music
 permalink: /music/
 ---
 
-Here's some really bad recordings. The microphone isn't high-quality, my playing isn't high-quality, the piano is a bit wobbly, I waver quite a bit: the whole affair is a mess, but here it is. I like David Bowie, Paul McCartney (and those other guys who followed him around for awhile in the 60s), Stevie Wonder, Bob Dylan, and the Velvet Underground. I like to pretend to be Mick Jagger, but being seated at a piano makes that difficult. Brian Wilson and the Beach Boys also constitute a large part of my repertoire. These are extremely raw, perfectly uncut recordings of my better sessions from my [SoundCloud][] page.
+Here's some really bad recordings.
+I like David Bowie, Paul McCartney, Stevie Wonder, Bob Dylan, etc.
+These are extremely rough recordings of my better sessions.
 
 My Favorites
 ------------
@@ -39,7 +41,7 @@ Below are nicely formatted tables of all the songs I play regularly. The Band is
 A solid 80% of the links here won't work until I upload a recording of myself performing the song in question. If you get a 404, please refer to this sentence for troubleshooting.
 
 
- Beach Boys                   | Best: I'm Waiting For the Day
+ Beach Boys                   |
 :----------------------------:|:--------------------------------:
  [Caroline, No][0]            | [Surfer Girl][4]
  [God Only Knows][1]          | [Warmth of the Sun][5]
@@ -50,7 +52,7 @@ A solid 80% of the links here won't work until I upload a recording of myself pe
 ---
 
 
- Beatles                          | Best: She's Leaving Home
+ Beatles                          |
 :--------------------------------:|:--------------------------:
  [All I've Got to Do][7]          | [Michelle][19]
  [All My Loving][8]               | [Misery][20]
@@ -69,7 +71,7 @@ A solid 80% of the links here won't work until I upload a recording of myself pe
 ---
 
 
- Billy Joel           | Best: Lullaby
+ Billy Joel           |
 :--------------------:|:-------------:
  [And So it Goes][31] | [Lullaby][32]
 
@@ -77,7 +79,7 @@ A solid 80% of the links here won't work until I upload a recording of myself pe
 ---
 
 
- Bob Dylan                               | Best: You're Gonna Make Me Lonesome
+ Bob Dylan                               |
 :---------------------------------------:|:-----------------------------------:
  [Abandoned Love][33]                    | [Like a Rolling Stone][39]
  [Don't Think Twice, It's All Right][34] | [My Back Pages][40]
@@ -90,7 +92,7 @@ A solid 80% of the links here won't work until I upload a recording of myself pe
 ---
 
 
- David Bowie               | Best: Oh, You Pretty Things
+ David Bowie               |
 :-------------------------:|:---------------------------:
  [Changes][45]             | [Life On Mars?][49]
  [Fill Your Heart][46]     | [Oh, You Pretty Things][50]
@@ -101,7 +103,7 @@ A solid 80% of the links here won't work until I upload a recording of myself pe
 ---
 
 
- Elton John                     | Best: Rocket Man
+ Elton John                     |
 :------------------------------:|:-----------------:
  [Daniel][53]                   | [Tiny Dancer][56]
  [Rocket Man][54]               | [Your Song][57]
@@ -111,7 +113,7 @@ A solid 80% of the links here won't work until I upload a recording of myself pe
 ---
 
 
- Paul McCartney         | Best: Tomorrow
+ Paul McCartney         |
 :----------------------:|:--------------:
  [Maybe I'm Amazed][58] | [Tomorrow][60]
  [New][59]              |
@@ -120,7 +122,7 @@ A solid 80% of the links here won't work until I upload a recording of myself pe
 ---
 
 
- Rolling Stones            | Best: Let it Loose
+ Rolling Stones            |
 :-------------------------:|:------------------------------------:
  [Angie][61]               | [Let's Spend the Night Together][69]
  [Beast of Burden][62]     | [Loving Cup][70]
@@ -135,7 +137,7 @@ A solid 80% of the links here won't work until I upload a recording of myself pe
 ---
 
 
- Stevie Wonder                       | Best: Don't You Worry 'bout a Thing
+ Stevie Wonder                       |
 :-----------------------------------:|:-----------------------------------:
  [Don't You Worry 'bout a Thing][77] | [My Cherie Amour][82]
  [For Once in My Life][78]           | [Signed, Sealed, Delivered][83]
@@ -147,7 +149,7 @@ A solid 80% of the links here won't work until I upload a recording of myself pe
 ---
 
 
- Velvet Underground        | Best: I'll Be Your Mirror
+ Velvet Underground        |
 :-------------------------:|:-------------------------:
  [Femme Fatale][86]        | [Sunday Morning][89]
  [I Found A Reason][87]    | [There She Goes][90]
@@ -157,106 +159,108 @@ A solid 80% of the links here won't work until I upload a recording of myself pe
 ---
 
 
-[0]: https://soundcloud.com/bescott-1/caroline-no
-[1]: https://soundcloud.com/bescott-1/god-only-knows
-[2]: https://soundcloud.com/bescott-1/here-today
-[3]: https://soundcloud.com/bescott-1/im-waiting-for-the-day
-[4]: https://soundcloud.com/bescott-1/surfer-girl
-[5]: https://soundcloud.com/bescott-1/warmth-of-the-sun
-[6]: https://soundcloud.com/bescott-1/wouldnt-it-be-nice
+[0]: https://soundcloud.com/evan-erdos/caroline-no
+[1]: https://soundcloud.com/evan-erdos/god-only-knows
+[2]: https://soundcloud.com/evan-erdos/here-today
+[3]: https://soundcloud.com/evan-erdos/im-waiting-for-the-day
+[4]: https://soundcloud.com/evan-erdos/surfer-girl
+[5]: https://soundcloud.com/evan-erdos/warmth-of-the-sun
+[6]: https://soundcloud.com/evan-erdos/wouldnt-it-be-nice
 
-[7]: https://soundcloud.com/bescott-1/all-ive-got-to-do
-[8]: https://soundcloud.com/bescott-1/all-my-loving
-[9]: https://soundcloud.com/bescott-1/dont-let-me-down
-[10]: https://soundcloud.com/bescott-1/for-no-one
-[11]: https://soundcloud.com/bescott-1/hey-jude
-[12]: https://soundcloud.com/bescott-1/i-should-have-known-better
-[13]: https://soundcloud.com/bescott-1/i-will
-[14]: https://soundcloud.com/bescott-1/im-in-love
-[15]: https://soundcloud.com/bescott-1/in-my-life
-[16]: https://soundcloud.com/bescott-1/its-only-love
-[17]: https://soundcloud.com/bescott-1/lady-madonna
-[18]: https://soundcloud.com/bescott-1/lovely-rita
-[19]: https://soundcloud.com/bescott-1/michelle
-[20]: https://soundcloud.com/bescott-1/misery
-[21]: https://soundcloud.com/bescott-1/not-a-second-time
-[22]: https://soundcloud.com/bescott-1/oh-darling
-[23]: https://soundcloud.com/bescott-1/real-love
-[24]: https://soundcloud.com/bescott-1/shes-leaving-home
-[25]: https://soundcloud.com/bescott-1/something
-[26]: https://soundcloud.com/bescott-1/the-fool-on-the-hill
-[27]: https://soundcloud.com/bescott-1/this-boy
-[28]: https://soundcloud.com/bescott-1/two-of-us
-[29]: https://soundcloud.com/bescott-1/yes-it-is
-[30]: https://soundcloud.com/bescott-1/yesterday
+[7]: https://soundcloud.com/evan-erdos/all-ive-got-to-do
+[8]: https://soundcloud.com/evan-erdos/all-my-loving
+[9]: https://soundcloud.com/evan-erdos/dont-let-me-down
+[10]: https://soundcloud.com/evan-erdos/for-no-one
+[11]: https://soundcloud.com/evan-erdos/hey-jude
+[12]: https://soundcloud.com/evan-erdos/i-should-have-known-better
+[13]: https://soundcloud.com/evan-erdos/i-will
+[14]: https://soundcloud.com/evan-erdos/im-in-love
+[15]: https://soundcloud.com/evan-erdos/in-my-life
+[16]: https://soundcloud.com/evan-erdos/its-only-love
+[17]: https://soundcloud.com/evan-erdos/lady-madonna
+[18]: https://soundcloud.com/evan-erdos/lovely-rita
+[19]: https://soundcloud.com/evan-erdos/michelle
+[20]: https://soundcloud.com/evan-erdos/misery
+[21]: https://soundcloud.com/evan-erdos/not-a-second-time
+[22]: https://soundcloud.com/evan-erdos/oh-darling
+[23]: https://soundcloud.com/evan-erdos/real-love
+[24]: https://soundcloud.com/evan-erdos/shes-leaving-home
+[25]: https://soundcloud.com/evan-erdos/something
+[26]: https://soundcloud.com/evan-erdos/the-fool-on-the-hill
+[27]: https://soundcloud.com/evan-erdos/this-boy
+[28]: https://soundcloud.com/evan-erdos/two-of-us
+[29]: https://soundcloud.com/evan-erdos/yes-it-is
+[30]: https://soundcloud.com/evan-erdos/yesterday
 
-[31]: https://soundcloud.com/bescott-1/and-so-it-goes
-[32]: https://soundcloud.com/bescott-1/lullaby
+[31]: https://soundcloud.com/evan-erdos/and-so-it-goes
+[32]: https://soundcloud.com/evan-erdos/lullaby
 
-[33]: https://soundcloud.com/bescott-1/abandoned-love
-[34]: https://soundcloud.com/bescott-1/dont-think-twice
-[35]: https://soundcloud.com/bescott-1/girl-from-the-north-country
-[36]: https://soundcloud.com/bescott-1/hurricane
-[37]: https://soundcloud.com/bescott-1/if-you-see-her
-[38]: https://soundcloud.com/bescott-1/it-aint-me
-[39]: https://soundcloud.com/bescott-1/like-a-rolling-stone
-[40]: https://soundcloud.com/bescott-1/my-back-pages
-[41]: https://soundcloud.com/bescott-1/queen-jane-approximately
-[42]: https://soundcloud.com/bescott-1/simple-twist-of-fate
-[43]: https://soundcloud.com/bescott-1/tangled-up-in-blue
-[44]: https://soundcloud.com/bescott-1/youre-gonna-make-me-lonesome
+[33]: https://soundcloud.com/evan-erdos/abandoned-love
+[34]: https://soundcloud.com/evan-erdos/dont-think-twice
+[35]: https://soundcloud.com/evan-erdos/girl-from-the-north-country
+[36]: https://soundcloud.com/evan-erdos/hurricane
+[37]: https://soundcloud.com/evan-erdos/if-you-see-her
+[38]: https://soundcloud.com/evan-erdos/it-aint-me
+[39]: https://soundcloud.com/evan-erdos/like-a-rolling-stone
+[40]: https://soundcloud.com/evan-erdos/my-back-pages
+[41]: https://soundcloud.com/evan-erdos/queen-jane-approximately
+[42]: https://soundcloud.com/evan-erdos/simple-twist-of-fate
+[43]: https://soundcloud.com/evan-erdos/tangled-up-in-blue
+[44]: https://soundcloud.com/evan-erdos/youre-gonna-make-me-lonesome
 
-[45]: https://soundcloud.com/bescott-1/changes
-[46]: https://soundcloud.com/bescott-1/fill-your-heart
-[47]: https://soundcloud.com/bescott-1/lady-stardust
-[48]: https://soundcloud.com/bescott-1/letters-to-hermione
-[49]: https://soundcloud.com/bescott-1/life-on-mars
-[50]: https://soundcloud.com/bescott-1/oh-you-pretty-things
-[51]: https://soundcloud.com/bescott-1/starman
-[52]: https://soundcloud.com/bescott-1/watch-that-man
+[45]: https://soundcloud.com/evan-erdos/changes
+[46]: https://soundcloud.com/evan-erdos/fill-your-heart
+[47]: https://soundcloud.com/evan-erdos/lady-stardust
+[48]: https://soundcloud.com/evan-erdos/letters-to-hermione
+[49]: https://soundcloud.com/evan-erdos/life-on-mars
+[50]: https://soundcloud.com/evan-erdos/oh-you-pretty-things
+[51]: https://soundcloud.com/evan-erdos/starman
+[52]: https://soundcloud.com/evan-erdos/watch-that-man
 
-[53]: https://soundcloud.com/bescott-1/daniel
-[54]: https://soundcloud.com/bescott-1/rocket-man
-[55]: https://soundcloud.com/bescott-1/saturday-nights-alright-for-fighting
-[56]: https://soundcloud.com/bescott-1/tiny-dancer
-[57]: https://soundcloud.com/bescott-1/your-song
+[53]: https://soundcloud.com/evan-erdos/daniel
+[54]: https://soundcloud.com/evan-erdos/rocket-man
+[55]: https://soundcloud.com/evan-erdos/saturday-nights-alright-for-fighting
+[56]: https://soundcloud.com/evan-erdos/tiny-dancer
+[57]: https://soundcloud.com/evan-erdos/your-song
 
-[58]: https://soundcloud.com/bescott-1/maybe-im-amazed
-[59]: https://soundcloud.com/bescott-1/new
-[60]: https://soundcloud.com/bescott-1/tomorrow
+[58]: https://soundcloud.com/evan-erdos/maybe-im-amazed
+[59]: https://soundcloud.com/evan-erdos/new
+[60]: https://soundcloud.com/evan-erdos/tomorrow
 
-[61]: https://soundcloud.com/bescott-1/angie
-[62]: https://soundcloud.com/bescott-1/beast-of-burden
-[63]: https://soundcloud.com/bescott-1/dead-flowers
-[64]: https://soundcloud.com/bescott-1/following-the-river
-[65]: https://soundcloud.com/bescott-1/happy
-[66]: https://soundcloud.com/bescott-1/heartbreaker
-[67]: https://soundcloud.com/bescott-1/lady-jane
-[68]: https://soundcloud.com/bescott-1/let-it-loose
-[69]: https://soundcloud.com/bescott-1/lets-spend-the-night
-[70]: https://soundcloud.com/bescott-1/loving-cup
-[71]: https://soundcloud.com/bescott-1/miss-you
-[72]: https://soundcloud.com/bescott-1/rip-this-joint
-[73]: https://soundcloud.com/bescott-1/rocks-off
-[74]: https://soundcloud.com/bescott-1/ruby-tuesday
-[75]: https://soundcloud.com/bescott-1/so-divine
-[76]: https://soundcloud.com/bescott-1/time-is-on-my-side
+[61]: https://soundcloud.com/evan-erdos/angie
+[62]: https://soundcloud.com/evan-erdos/beast-of-burden
+[63]: https://soundcloud.com/evan-erdos/dead-flowers
+[64]: https://soundcloud.com/evan-erdos/following-the-river
+[65]: https://soundcloud.com/evan-erdos/happy
+[66]: https://soundcloud.com/evan-erdos/heartbreaker
+[67]: https://soundcloud.com/evan-erdos/lady-jane
+[68]: https://soundcloud.com/evan-erdos/let-it-loose
+[69]: https://soundcloud.com/evan-erdos/lets-spend-the-night
+[70]: https://soundcloud.com/evan-erdos/loving-cup
+[71]: https://soundcloud.com/evan-erdos/miss-you
+[72]: https://soundcloud.com/evan-erdos/rip-this-joint
+[73]: https://soundcloud.com/evan-erdos/rocks-off
+[74]: https://soundcloud.com/evan-erdos/ruby-tuesday
+[75]: https://soundcloud.com/evan-erdos/so-divine
+[76]: https://soundcloud.com/evan-erdos/time-is-on-my-side
 
-[77]: https://soundcloud.com/bescott-1/dont-you-worry-bout-a-thing
-[78]: https://soundcloud.com/bescott-1/for-once-in-my-life
-[79]: https://soundcloud.com/bescott-1/isnt-she-lovely
-[80]: https://soundcloud.com/bescott-1/knocks-me-off-my-feet
-[81]: https://soundcloud.com/bescott-1/living-for-the-city
-[82]: https://soundcloud.com/bescott-1/my-cherie-amour
-[83]: https://soundcloud.com/bescott-1/signed-sealed-delivered
-[84]: https://soundcloud.com/bescott-1/sir-duke
-[85]: https://soundcloud.com/bescott-1/summer-soft
+[77]: https://soundcloud.com/evan-erdos/dont-you-worry-bout-a-thing
+[78]: https://soundcloud.com/evan-erdos/for-once-in-my-life
+[79]: https://soundcloud.com/evan-erdos/isnt-she-lovely
+[80]: https://soundcloud.com/evan-erdos/knocks-me-off-my-feet
+[81]: https://soundcloud.com/evan-erdos/living-for-the-city
+[82]: https://soundcloud.com/evan-erdos/my-cherie-amour
+[83]: https://soundcloud.com/evan-erdos/signed-sealed-delivered
+[84]: https://soundcloud.com/evan-erdos/sir-duke
+[85]: https://soundcloud.com/evan-erdos/summer-soft
 
-[86]: https://soundcloud.com/bescott-1/femme-fatale
-[87]: https://soundcloud.com/bescott-1/i-found-a-reason
-[88]: https://soundcloud.com/bescott-1/ill-be-your-mirror
-[89]: https://soundcloud.com/bescott-1/sunday-morning
-[90]: https://soundcloud.com/bescott-1/there-she-goes
-[91]: https://soundcloud.com/bescott-1/these-days
+[86]: https://soundcloud.com/evan-erdos/femme-fatale
+[87]: https://soundcloud.com/evan-erdos/i-found-a-reason
+[88]: https://soundcloud.com/evan-erdos/ill-be-your-mirror
+[89]: https://soundcloud.com/evan-erdos/sunday-morning
+[90]: https://soundcloud.com/evan-erdos/there-she-goes
+[91]: https://soundcloud.com/evan-erdos/these-days
 
-[SoundCloud]: https://soundcloud.com/bescott-1
+[SoundCloud]: https://soundcloud.com/evan-erdos
+
+
