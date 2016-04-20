@@ -176,14 +176,29 @@ body {
 
 code, kbd, samp, pre {
   font: Menlo;
-  color: white;
+  color: #111;
   font-family: monospace;
   font-size: 1em
 }
 
-.highlight pre, pre, .highlight .hll {
+pre {
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+
+  code {
+    color: #fff;
+    overflow-x: wrap;
+  }
+}
+
+
+.highlight pre, pre, pre.code .highlight .hll {
   background-image: url("/rsc/dark-tex.png");
   background-color: #212121;
+  overflow-x: wrap !important;
   /*margin-left: 1em;*/
   /*margin-right: 1em;*/
   border: 2px inset #ddd;
