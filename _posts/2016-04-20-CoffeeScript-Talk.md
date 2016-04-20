@@ -52,32 +52,6 @@ and make super neat WebGL Solar Systems that run on your phone.
 ### how can we be so great and awesome, ben scott? ###
 Fancy you ask!
 
-### Syntax Sugars ###
-Everything is a returnable expression!
-
-~~~coffee
-f = (n) -> n**n
-
-map = (f(x) for x in [0,1,3,-4,5,11] where 0 < x <= 5)
-
-# => "whatever all that comes out to"
-~~~
-
-Destructuring argument + heregex literals! (from the [Cookbook][])
-
-~~~coffee
-pattern =
-  ///\b
-    \(?(\d{3})\)?  # area code
-    [-\s]?(\d{3})  # prefix
-    -?(\d{4})      # line number
-  \b///g
-
-[area_code, prefix, line] = "(555) 123-4567".match(pattern)[1..3]
-
-# => ['555', '123', '4567']
-~~~
-
 ### How do I do `${fancy_nonsense_related_to_talk_subject}` with this? ###
 Fancy you ask!
 There's no shortage of web developers with lots of time on their hands.
@@ -222,7 +196,141 @@ The only difference is that we've made a `canvas` node,
 and made it a child of the `div` we were looking for.
 Then, the framework renders all its nonsense into the `canvas`.
 
+This is all we need to worry about, insofar as HTML is concerned.
 
+Now, let's write some CoffeeScript!
+
+### CoffeeScript and You ###
+
+#### The Simple Things ####
+
+Here's A variable!
+
+~~~coffee
+myVariable = 'A'
+~~~
+
+Here's a function!
+
+~~~coffee
+myFunction = (args) ->
+  console.log "That thing you passed me is #{args}!" if args?
+~~~
+
+We're logging a message, but only if `args` is non-null and not undefined.
+That there is the existential operator, and it's your friend.
+Also, that string there is interpolated.
+Double quoted strings can have any in-scope variable inserted into them via the `"#{myVar}"` syntax.
+Also, the `if` came after the statement.
+This is because everything[^0] is a returnable expression!
+
+Anywhere you could omit braces in a C-like language,
+you can put a control flow statement after something in CoffeeScript.
+
+[^0]:
+    Not everything is a returnable expression.
+    Anything that could sensibly be a returnable expression is such.
+
+~~~coffee
+myFunction = (args) ->
+  return unless args?
+  console.log "#{args} exists, for sure!"
+~~~
+
+This is a nice little pattern here.
+How often do you want to make sure the arguments actually exist?
+This function will terminate if `args` is `undefined` or `null`,
+but will otherwise continue evaluating the function.
+The `unless` keyword is simply `if not`.
+I find this to be cleaner than it's equivalent in another language:
+
+~~~cpp
+void myFunction(string[] args) {
+    if (args=="" || args==null) {
+        return;
+    }
+    for (int i=0; i<whatever; ++i) {
+        cout << args[i];
+    }
+}
+~~~
+
+
+#### *Just CoffeeScript Things* ####
+
+There are a few ways to denote a function in `${talk_subject}`.
+
+Here's plain ole' assignment.
+
+~~~coffee
+f = (n) -> n**n # square literally anything!
+~~~
+
+`f` now refers to that function there.
+
+Here's a method of a class.
+
+~~~coffee
+class MyClass
+  constructor: (params = {}) ->
+    @params = @myMethod(params)
+
+  myMethod: (n) -> n**n # square figuratively anything
+
+~~~
+
+Ok, so, also, classes exist. Don't let it get to you.
+
+There's a lot going on here:
+
+1. `@` is an alias, and is converted to `this.`
+2. `@params` is just like `this.params` in JavaScript
+3. `@params` is declared in that statement, it's an instance property
+4. `@myMethod` is an instance method
+
+
+You can have class methods, too.
+They're declared like this.
+
+~~~coffee
+class MyClass
+  constructor: (@params) ->
+    MyClass.myMethod(3)
+
+  @myMethod: (n) -> n**n
+~~~
+
+Also notice that there's a `@` in the constructor now.
+It automatically creates the property on the class.
+
+#### Syntax Sugars ####
+For loops are returnable expressions!
+
+~~~coffee
+f = (n) -> n**n # square literally anything!
+
+map = (f(x) for x in [0,1,3,-4,5,11] where 0 < x <= 5)
+
+# => "whatever all that comes out to"
+~~~
+
+Destructuring argument + heregex literals! (from the [Cookbook][])
+
+~~~coffee
+pattern =
+  ///\b
+    \(?(\d{3})\)?  # area code
+    [-\s]?(\d{3})  # prefix
+    -?(\d{4})      # line number
+  \b///g
+
+[area_code, prefix, line] = "(555) 123-4567".match(pattern)[1..3]
+
+# => ['555', '123', '4567']
+~~~
+
+
+---
 
 ### A Short Review of the Code ###
 Wow, that was quick!
