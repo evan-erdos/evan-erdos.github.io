@@ -3,36 +3,38 @@
 
 ### Ben Scott # 2015-10-26 # Viewer ###
 
-'use strict' # just like JavaScript
+'use strict'
 
 ### Constants & Aliases ###
-{abs,floor,random,sqrt} = Math # destructuring fun
+{abs,floor,random,sqrt} = Math
 T = THREE
 
 ### DOM ###
-dir = "/js/assets" # directory
+dir = "/js/assets/" # directory
 divID = "CoffeeCode" # id of parent
-container = null # parent in the HTML document
+container = null # parent in document
 
 ### WebGL ###
 loader = new T.JSONLoader()
+objectLoader = new T.ObjectLoader()
+objLoader = new T.OBJLoader()
 textureLoader = new T.TextureLoader()
 
-### `Main`
 
-This is the program entrypoint, and it initializes all of the
-[Three.js][] objects.
-- `@scene`: An object representing everything in the
-    environment, including `camera`s, 3D models, etc.
-- `@camera`: The main rendering viewpoint, typically uses
-    perspective rather than orthogonal rendering.
-- `@renderer`: ... I'll... get back to you about exactly
-    what it is that this one does!
+### `Viewer`
+#
+# This is the program entrypoint, and it initializes all of the
+# [Three.js][] objects.
+# - `@scene`: An object representing everything in the
+#     environment, including `camera`s, 3D models, etc.
+# - `@camera`: The main rendering viewpoint, typically uses
+#     perspective rather than orthogonal rendering.
+# - `@renderer`: ... I'll... get back to you about exactly
+#     what it is that this one does!
 ###
-class Main
-    constructor: (filename) ->
+class Viewer
+    constructor: (@filename,@distance = 1) ->
         @scene = new T.Scene()
-        @scene.fog = new T.Fog(0x00,2**12,2**16)
         @camera = new T.PerspectiveCamera(
             75,768/512,1,65536)
         @renderer = new T.WebGLRenderer {
@@ -43,74 +45,138 @@ class Main
         @scene.add @ambient
         @light = new T.DirectionalLight(0xEFEFED,1)
         @light.position.set(512,512,512)
-        @scene.add @light
-        @import3D(filename)
+        @model = {
+            mesh: null
+            material: null
+            albedo: null
+            normal: null
+            specular: null
+        }
 
-    init: (distance = 1024) ->
+        @model.material = @createMaterial(
+            @model.albedo
+            @model.normal
+            @model.specular)
+
+        @scene.add @light
+        @import3D(@filename)
+        @init()
+
+
+    init: ->
         @initDOM()
         @initControls()
-        @camera.position.z = distance
+        @camera.position.z = @distance
         @render()
+
 
     initDOM: ->
         container = document.getElementById(divID)
         container.appendChild(@renderer.domElement)
+
 
     initControls: ->
         @controls = new T.OrbitControls(
             @camera,@renderer.domElement)
         @controls.userZoom = false
 
-    update: ->
-        @controls.update()
 
-    ### `Main.render`
-
-    This needs to be a bound function, and is the callback
-    used by `requestAnimationFrame`, which does a bunch of
-    stuff, e.g., calling render at the proper framerate.
+    ### `Viewer.render`
+    #
+    # This needs to be a bound function, and is the callback
+    # used by `requestAnimationFrame`, which does a bunch of
+    # stuff, e.g., calling render at the proper framerate.
     ###
     render: =>
         requestAnimationFrame(@render)
-        @update()
+        @controls.update()
         @renderer.render(@scene,@camera)
 
-    ### `Main.import3D`
-
-    This needs to be a bound function, and is the callback
-    used by the `JSONLoader` to initialize geometry from
-    the provided filename.
+    ### `Viewer.import3D`
+    #
+    # This needs to be a bound function, and is the callback
+    # used by the `JSONLoader` to initialize geometry from
+    # the provided filename.
     ###
     import3D: (filename) =>
-        albedo = textureLoader.load(
-            "#{dir}/#{filename}_albedo.png")
-        normal = textureLoader.load(
-            "#{dir}/#{filename}_normal.jpg")
-        spec = textureLoader.load(
-            "#{dir}/#{filename}_spec.png")
+        textureLoader.load(
+            "#{dir}#{filename}-albedo.png"
+            (texture) =>
+                @model.albedo = texture
+                texture.needsUpdate = true)
 
-        loader.load(
-            "#{dir}/#{filename}.js"
-            (geo) =>
-                mat = new T.MeshPhongMaterial {
-                    color: 0xAEAEAE
-                    specular: 0xAAAAAA
-                    shininess: 10
-                    map: albedo
-                    specularMap: spec
-                    normalMap: normal
-                    normalScale: new T.Vector2(0.8,0.8) }
-                mesh = new T.Mesh(geo, mat)
-                mesh.scale.set(50,50,50)
-                @scene.add mesh)
+        textureLoader.load(
+            "#{dir}#{filename}-normal.jpg"
+            (texture) =>
+                @model.normal = texture
+                @loadModel(filename)
+                texture.needsUpdate = true)
 
-### `@initViewer`
+        #textureLoader.load(
+        #    "#{dir}#{filename}-specular.png"
+        #    (texture) =>
+        #        @model.specular = texture
+        #        texture.needsUpdate = true)
 
-This is a global function, callable from other scripts, and
-will be used with another script on the page to load an
-arbitrary 3D model into a basic scene.
+    loadModel: (filename) =>
+        objLoader.load(
+            "#{dir}#{filename}.obj"
+            (object) =>
+                object.traverse (child) =>
+                    return unless (child instanceof T.Mesh)
+                    #@model.mesh = child
+                    #@model.mesh.material = new T.MeshPhongMaterial {
+                    #    color: 0xFFFFFF
+                    #    specular: 0xAAAAAA
+                    #    shininess: 10
+                    #    map: @model.albedo }
+                    mat = new T.MeshPhongMaterial {
+                        color: 0xFFFFFF
+                        specular: 0xAAAAAA
+                        shininess: 10
+                        map: @model.albedo
+                        specularMap: @model.specular
+                        normalMap: @model.normal
+                        normalScale: new T.Vector2(0.8,0.8) }
+                    mesh = new T.Mesh(child.geometry, mat)
+                    console.log mesh
+                    #@model.mesh.material.map = @model.albedo
+                    #@model.mesh.material.normalMap = @model.normal
+                    #child.material = @createMaterial(
+                    #    @model.albedo
+                    #    @model.normal
+                    #    @model.specular)
+                    #@model.
+                    mesh.scale.set(100,100,100)
+                    @renderer.render(@scene,@camera)
+                    @scene.add mesh)
+
+
+
+    createMaterial: (albedo, normal, specular) =>
+        new T.MeshPhongMaterial {
+            color: 0xFFFFFF
+            specular: 0xAAAAAA
+            shininess: 10
+            map: albedo
+            specularMap: specular
+            normalMap: normal
+            normalScale: new T.Vector2(0.8,0.8) }
+
+
+
+### `@createViewer`
+#
+# This is a global function, callable from other scripts, and
+# will be used with another script on the page to load an
+# arbitrary 3D model into a basic scene.
 ###
-@initViewer = (filename, distance=1024) =>
-    main = new Main(filename)
-    main.init(distance)
+@createViewer = (filename, distance=1) =>
+    new Viewer(filename,distance)
+
+
+
+
+
+
 
