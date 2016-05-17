@@ -31,6 +31,24 @@ class TemplateForm
         @desc.innerHTML = @room.description
         @addFormField(form,@desc,'Description')
 
+
+        interact('.draggable').draggable({
+            inertia: true
+            restrict:
+              restriction: "parent"
+              endOnly: true
+              elementRect:
+                top: 0
+                left: 0
+                bottom: 1
+                right: 1
+            autoScroll: true
+            onend: (e) => textEl = e.target.querySelector('p')
+            onmove: @dragMoveListener
+        })
+
+        window.dragMoveListener = @dragMoveListener
+
         form.appendChild(document.createElement 'hr')
         @sounds = []
         for sound,i in @room.sounds
@@ -68,6 +86,16 @@ class TemplateForm
         @result.style.color = '#fff'
         form.appendChild(@result)
 
+
+    dragMoveListener: (e) =>
+        target = e.target
+        x = (parseFloat(target.getAttribute('data-x')) || 0) + e.dx
+        y = (parseFloat(target.getAttribute('data-y')) || 0) + e.dy
+        target.style.webkitTransform =
+            target.style.transform =
+                "translate(#{x}px, #{y}px)"
+        target.setAttribute('data-x', x)
+        target.setAttribute('data-y', y)
 
     addFormField: (form,field,name) ->
         form.appendChild @createLabel(field,name)
