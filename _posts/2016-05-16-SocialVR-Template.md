@@ -68,5 +68,34 @@ Generates a block of `*.yml` text from the input.
 
 
 
+<script>
+  function handleFileSelect(e) {
+    var files = e.target.files; // FileList object
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+
+      // Only process image files.
+      if (!f.type.match('image.*')) continue;
+
+      var reader = new FileReader();
+
+      reader.onload = (function(theFile) {
+        return function(e) {
+          var span = document.createElement('span');
+          span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'].join('');
+          document.getElementById('span').insertBefore(span, null);
+        };
+      })(f);
+
+      reader.readAsDataURL(f);
+    }
+  }
+
+  document.getElementById('form').addEventListener('change', handleFileSelect, false);
+</script>
+
+
 
 

@@ -14,6 +14,8 @@ class TemplateForm
     constructor: (@room) ->
         form = document.getElementById 'form'
 
+        form.addEventListener('change',@handleImage,false)
+
         @name = @createInput('text','name')
         @name.value = @room.name
         @addFormField(form,@name,'Room Name')
@@ -21,8 +23,11 @@ class TemplateForm
         @image = @createInput('file','image')
         @image.defaultValue = @room.image
         @image.accept = 'image/*'
+        @image.onchange = @handleImage
         @addFormField(form,@image,'Panorama')
-
+        @span = document.createElement 'span'
+        @span.id = 'span'
+        form.appendChild @span
         @select = @createSelect(@room.options)
         @addFormField(form,@select,'Room Type')
 
@@ -85,6 +90,19 @@ class TemplateForm
         @result = document.createElement 'pre'
         @result.style.color = '#fff'
         form.appendChild(@result)
+
+
+    handleImage: (e) =>
+        reader = new FileReader()
+        reader.onload = (file) =>
+            (e) =>
+                img = document.createElement 'img'
+                img.src = @image.value
+                img.src = e.target.result if e
+                console.log "img.src: #{img.src} @@@@ #{file}"
+                @span.appendChild img
+        console.log "#{@image.value} +++++ #{e.target.result}"
+        reader.readAsDataURL(e.target.result)
 
 
     dragMoveListener: (e) =>
@@ -196,6 +214,7 @@ room =
 
 templateForm = new TemplateForm(room)
 window.submit = () => templateForm.process()
+window.handle = () => templateForm.handleImage()
 templateForm.process()
 
 
