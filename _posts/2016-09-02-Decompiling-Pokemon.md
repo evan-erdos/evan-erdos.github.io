@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Decompiling Pokémon Go
+permalink: pokemon
 tags: [Programming, GameDev]
 ---
 

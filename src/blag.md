@@ -9,10 +9,7 @@ permalink: /blag/
     <article class="post">
       {% include post_thumb.html %}
       {% include post_title.html %}
-      </a></h1></span>
-      <div class="entry">
-        {{ post.excerpt }}
-      </div>
+      <div class="entry">{{ post.excerpt }}</div>
       <hr>
     </article>
   {% endfor %}
