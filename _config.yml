@@ -3,7 +3,7 @@ name: Ben Scott
 url: http://bescott.org/
 avatar: "/rsc/ben-rules.jpg"
 github_username: evan-erdos
-description: "2016-04-30: Gretel+Portal+VR!"
+description: "v1.0.4-beta: fixed a bug where time disappeared in VR mode"
 
 footer-links:
   email: bescott@andrew.cmu.edu

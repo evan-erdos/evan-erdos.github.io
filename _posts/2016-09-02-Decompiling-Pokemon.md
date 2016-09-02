@@ -5,13 +5,12 @@ tags: [Programming, GameDev]
 ---
 
 
-### Abstract ###
 Given how competitive the field of mobile game development is,
 and given that [Java is very easy to decompile][0],
 you might wonder if a clever developer could get their paws on some juicy trade secrets.
 
-
-**Question:** Is Pokemon Go safe from reverse-engineering?
+### Abstract ###
+Is Pokemon Go safe from reverse-engineering?
 
 **Answer:** *NO! It is super not safe from that!*
 
