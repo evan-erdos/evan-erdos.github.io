@@ -71,7 +71,7 @@ Go figure.
 
 The [Sample Project][] *(v1.0.0, 37kB or something)* is organized as such:
 
-```
+~~~
 ├── LICENSE
 ├── README.md
 ├── assets
@@ -97,7 +97,7 @@ The [Sample Project][] *(v1.0.0, 37kB or something)* is organized as such:
 │   └── space.coffee
 ├── index.html
 └── style.css
-```
+~~~
 
 We've got a bunch of stuff in there.
 
@@ -129,35 +129,35 @@ Here, we're using:
 
 The important thing is that it can render stuff to a HTML `canvas` node.
 
-```html
+~~~html
 <div id="CoffeeCode" class="mainContainer"></div>
 <script src="code/lib/three.min.js"></script>
 <script src="code/lib/OrbitControls.js"></script>
 <script type="text/coffeescript" src="code/space.coffee"></script>
 <script type="text/javascript" src="code/lib/coffee-script.js"></script>
-```
+~~~
 
 This is all the HTML you need to worry about.
 
 
-```html
+~~~html
 <div id="CoffeeCode" class="mainContainer"></div>
-```
+~~~
 
 This is where we're going to put the new canvas node:
 in the designated CoffeeCode `div`.
 
 
-```html
+~~~html
 <script src="code/lib/three.min.js"></script>
 <script src="code/lib/OrbitControls.js"></script>
-```
+~~~
 
 These are some libraries. You'll need them around to run this whole deal.
 
-```html
+~~~html
 <script type="text/javascript" src="code/lib/coffee-script.js"></script>
-```
+~~~
 
 Take note, this is an awful thing to do.
 We're loading the entire CoffeeScript "compiler" when we load the page.
@@ -166,9 +166,9 @@ There's a hundred ways to do this ahead of time,
 this is only here out of convenience.
 
 
-```html
+~~~html
 <script type="text/coffeescript" src="code/space.coffee"></script>
-```
+~~~
 
 This refers to whatever script you're writing, in our case, `space.coffee`.
 Notice the `*.js` there at the end, specifically that it says coffee.
@@ -182,7 +182,7 @@ There's a "compiler", and a bunch of other things that do this.
 ### What does the webpage look like when it's set up? ###
 Excellent Question, Tim!
 
-```html
+~~~html
 <body style="background-color:#000">
 <div id="CoffeeCode" class="mainContainer">
     <canvas width="944" height="583" style="width: 944px; height: 583px;"></canvas>
@@ -191,7 +191,7 @@ Excellent Question, Tim!
 <script src="code/lib/OrbitControls.js"></script>
 <script type="text/coffeescript" src="code/space.coffee"></script>
 <script type="text/javascript" src="code/lib/coffee-script.js"></script>
-```
+~~~
 
 The only difference is that we've made a `canvas` node,
 and made it a child of the `div` we were looking for.
@@ -205,16 +205,16 @@ Now, let's write some CoffeeScript!
 
 Here's A variable!
 
-```coffee
+~~~coffee
 myVariable = 'A'
-```
+~~~
 
 Here's a function!
 
-```coffee
+~~~coffee
 myFunction = (args) ->
   console.log "That thing you passed me is #{args}!" if args?
-```
+~~~
 
 We're logging a message, but only if `args` is non-null and not undefined.
 That there is the existential operator, and it's your friend.
@@ -230,11 +230,11 @@ you can put a control flow statement after something in CoffeeScript.
     Not everything is a returnable expression.
     Anything that could sensibly be a returnable expression is such.
 
-```coffee
+~~~coffee
 myFunction = (args) ->
   return unless args?
   console.log "#{args} exists, for sure!"
-```
+~~~
 
 This is a nice little pattern here.
 How often do you want to make sure the arguments actually exist?
@@ -243,7 +243,7 @@ but will otherwise continue evaluating the function.
 The `unless` keyword is simply `if not`.
 I find this to be cleaner than it's equivalent in another language:
 
-```cpp
+~~~cpp
 void myFunction(string[] args) {
     if (args=="" || args==null) {
         return;
@@ -252,20 +252,20 @@ void myFunction(string[] args) {
         cout << args[i];
     }
 }
-```
+~~~
 
 
 ### *Just CoffeeScript Things* ###
 
 
-```coffee
+~~~coffee
 class MyClass
   constructor: (params = {}) ->
     @params = @myMethod(params)
 
   myMethod: (n) -> n**n # square figuratively anything
 
-```
+~~~
 
 Ok, so, also, classes exist. Don't let it get to you.
 
@@ -280,13 +280,13 @@ There's a lot going on here:
 You can have class methods, too.
 They're declared like this.
 
-```coffee
+~~~coffee
 class MyClass
   constructor: (@params) ->
     MyClass.myMethod(3)
 
   @myMethod: (n) -> n**n
-```
+~~~
 
 Also notice that there's a `@` in the constructor now.
 It automatically creates the property on the class.
@@ -294,17 +294,17 @@ It automatically creates the property on the class.
 #### Syntax Sugars ####
 For loops are returnable expressions!
 
-```coffee
+~~~coffee
 f = (n) -> n**n # square literally anything!
 
 map = (f(x) for x in [0,1,3,-4,5,11] where 0 < x <= 5)
 
 # => "whatever all that comes out to"
-```
+~~~
 
 Destructuring argument + heregex literals! (from the [Cookbook][])
 
-```coffee
+~~~coffee
 pattern =
   ///\b
     \(?(\d{3})\)?  # area code
@@ -315,7 +315,7 @@ pattern =
 [area_code, prefix, line] = "(555) 123-4567".match(pattern)[1..3]
 
 # => ['555', '123', '4567']
-```
+~~~
 
 
 ---

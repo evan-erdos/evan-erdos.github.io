@@ -1,17 +1,40 @@
-evan-erdos.github.io [![mit][]][license]
-========================================
 
-This is the repository for my personal website.
-It uses Jekyll to render *.md and *.sass to a static webpage, hosted by Github Pages.
-It's basically the coolest thing ever and all I needed was a domain name.
-5/5 stars, would webdev again.
+Ben Scott v1.0.4-beta
+=====================
+[![version]][release]
+[![passing]][website]
+[![tastes]][github]
 
-
-[mit]: <http://img.shields.io/:license-MIT-blue.svg?style=plastic>
+---
+[mit]: <http://img.shields.io/:license-MIT-blue.svg>
 [license]: <http://bescott.mit-license.org>
+[version]: <https://img.shields.io/badge/version-1.0.4--beta-blue.svg>
+[release]: <https://github.com/evan-erdos/evan-erdos.github.io/releases/>
+[passing]: <https://img.shields.io/badge/GPA-passing-brightgreen.svg>
+[website]: <http://bescott.org/>
+[tastes]: <https://img.shields.io/badge/cultural_references-out_of_date-orange.svg>
+[github]: <https://github.com/evan-erdos/>
+
+A simple Unity plugin which turns coffee into VR games.
+Visit the [Wiki][website] for more information.
 
 
+### About ###
+Hi, I'm Ben Scott, here next to a Charles Gleyre painting of me.
+When I'm not misbehaving amidst fine art,
+I'm a student and a researcher at Carnegie Mellon University.
 
+### Changelog ###
 
+#### v1.0.4-beta ####
+- fixed a memory error when moving between too many rooms
+- new feature: fear of the unknown
+- some personality-related bug fixes
 
+#### v1.0.3-beta ####
+- networking feature now stores multiple clients + names
+- fixed a bug which caused time to disappear in VR mode
 
+#### v0.1.4-alpha ####
+- "return to home" button removed for consistency
+- behaviour cleaned up and now more responsive

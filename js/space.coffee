@@ -68,8 +68,8 @@ class Planet
 
     @geo = new T.SphereGeometry(@radius,16,16)
     @mesh = new T.Mesh(@geo,@mat)
-    #@mesh.castShadow = true
-    #@mesh.recieveShadow = true
+    @mesh.castShadow = true
+    @mesh.recieveShadow = true
     @obj = new T.Object3D()
     @obj.add @mesh
     main.scene.add @obj
@@ -184,8 +184,8 @@ class Star extends Planet
     @mat = new T.MeshBasicMaterial { map: @albedo }
     @mesh = new T.Mesh(@geo,@mat)
     @light = new T.PointLight(@color,@glow,0)
-    #@light.castShadow = true
-    #@light.shadowDarkness = 0.75
+    @light.castShadow = true
+    @light.shadowDarkness = 0.75
     @obj = new T.Object3D()
     @obj.add @mesh
     @obj.add @light
@@ -233,8 +233,8 @@ class Main
         mesh.scale.set(50,50,50)
         @scene.add mesh)
     ###
-    #@renderer.shadowMap.enabled = true
-    #@renderer.shadowMap.type = T.PCFSoftShadowMap
+    @renderer.shadowMapEnabled = true
+    @renderer.shadowMap.type = T.PCFSoftShadowMap
 
   init: ->
     @initDOM()

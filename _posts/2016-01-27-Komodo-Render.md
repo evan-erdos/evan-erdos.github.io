@@ -26,11 +26,6 @@ I've since realized that the frames can be snapped to the grid en-masse.
 
 ---
 
-I do wonder if I could export this sort of animation statically.
-It seems like caching is the answer to that.
-
----
-
 [planets]: <https://cmu.box.com/shared/static/u4a2ejpip5j9860iob702p4jhxyd8454.gif>
 [komodo]: </komodo/>
 
