@@ -2,7 +2,7 @@
 layout: post
 title: Counterpoint
 permalink: /3d/counterpoint/
-tag: [3D, GameDev]
+tag: [GameDev]
 img: https://cmu.box.com/shared/static/w0ibwvny1ey9xs6gcyc9aaqp0eai24yz.png
 ---
 

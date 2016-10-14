@@ -2,8 +2,8 @@
 layout: post
 title: Rocket Engine
 version: 2.1.55
-permalink: 3d/vulcain/
-tag: 3D
+permalink: dev/vulcain/
+tags: [GameDev]
 img: https://cmu.box.com/shared/static/zl89rwnbzen460dapi925wbn4q3b25qz.png
 ---
 

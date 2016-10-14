@@ -7,7 +7,7 @@ permalink: /sketch/rings.coffee/
 script: rings
 ---
 
-Just learned that P5.js does WebGL. Yaaaas.
+Just learned that P5.js does WebGL.
 
 **Edit**: This sketch is deprecated. See [the more advanced sketch][].
 
