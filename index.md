@@ -4,13 +4,13 @@ feature: space
 link: /code/space.coffee
 ---
 
-Ben Scott's Website!
-====================
-
----
-
-I have stolen this background from D. Scott Brown's [Rubicon X][] website.
-The thievery and low cunning may not ever end.
-
-[rubicon x]: <http://www.marathonrubicon.com/>
-
+<div class="posts">
+  {% for post in site.posts %}
+    <article class="post">
+      {% include post_thumb.html %}
+      {% include post_title.html %}
+      <div class="entry">{{ post.excerpt }}</div>
+      <hr>
+    </article>
+  {% endfor %}
+</div>

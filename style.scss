@@ -18,17 +18,18 @@ video { /* bescott edits */
 .cf {
   float: left;
   position: relative;
-
-  min-height: 150px;
-  min-width: 150px;
+//  min-width: 100%;
+//  height: auto;
+  width: 64px;
+  height: 64px;
   vertical-align: middle;
 }
 
 .cf img {
   position: absolute;
   left: 0;
-  width: 128px;
-  height: 128px;
+//  width: 72px;
+//  height: 72px;
   -webkit-transition: opacity 0.1s ease-in-out;
   -moz-transition: opacity 0.1s ease-in-out;
   -o-transition: opacity 0.1s ease-in-out;

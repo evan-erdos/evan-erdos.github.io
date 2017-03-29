@@ -25,9 +25,6 @@ Once installed, any `*.cs` file in the project will be able to make use of the f
 Two of the listed features of C#6.0 cannot be used in Unity as of `2015-01-29`.
 Primary constructors cannot be used either, as they were not included in the final language spec.
 
-First, `async` stuff is really weird, and I don't understand it.
-There are, apparently, some limitations to its use.
-
 Secondly, the `using static MyNamespace.MyClass` syntax cannot be used on any attachable scripts.
 Ordinarily, it would allow the compiler to import the `static` methods and properties from another source file, and it does achieve this!
 It works fine in management scripts, and in runtime classes which do not need to be attached to any in-scene `GameObject`s.

@@ -1,7 +1,6 @@
 ---
 layout: about
 title: About
-permalink: /about/
 ---
 
 Ben Scott v1.0.4-beta
@@ -22,7 +21,6 @@ Ben Scott v1.0.4-beta
 
 A simple Unity plugin which turns coffee into VR games.
 Visit the [Wiki][website] for more information.
-
 
 ### About ###
 Hi, I'm Ben Scott, here next to a Charles Gleyre painting of me.

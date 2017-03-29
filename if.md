@@ -1,7 +1,6 @@
 ---
 layout: tagpage
 title: Writing
-permalink: /if/
 tag: Writing
 ---
 

@@ -1,8 +1,8 @@
 ---
 layout: tagpage
-title: 3D Modeling
-permalink: /3d/
-tag: 3D
+title: Game Development
+permalink: /dev/
+tag: [GameDev,3D]
 ---
 
 [marathon]: <marathon.bungie.org> "Marathon"
@@ -20,5 +20,4 @@ tag: 3D
 [_vulcain]: </rsc/3d/vulcain/render.png> "Rocket Engine v2.1.55"
 [pfhor]: </3d/pfhor/> "P'fhor v6.2.1"
 [_pfhor]: </rsc/3d/pfhor/char-sheet.png> "P'fhor v6.2.1"
-
 
