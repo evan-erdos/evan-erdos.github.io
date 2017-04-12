@@ -16,12 +16,11 @@ Hello, and welcome to "Welcome to Reality with Ben Scott" with me, Ben Scott.
 
 #### Overview of Terms ####
 
-* Hey so what the *fuck* even is VR?
-    * ok, for starters, let's keep it civil
+* Hey so what even is VR?
     * VR is both the broad category and a specific category within itself
     * there's going to be a lot of this sort of thing, so start taking notes
 
-* Hey so anyways what the *actual fuck* is "VR"?
+* Hey so anyways what is "VR"?
     * VR is a type of "VR" where your entire reality is supplanted by digital media
     * head-mounted-displays are ubiquitous in VR and in "VR"
     * Stereoscopic rendering is really quite common across all of "VR", not just in VR
@@ -51,7 +50,7 @@ Hello, and welcome to "Welcome to Reality with Ben Scott" with me, Ben Scott.
 
 * virtual reality was invented in 1966
     * brought to you by ya boy Ivan Sutherland
-    * I met Ivan Sutherland last year at Carnival holy shiiitttttttt
+    * I met Ivan Sutherland last year at Carnival!!!!11!!!!!1!!!
     * the initial experiment was called "The Sword of Damocles"
     * why? because you literally strap a damn CRT monitor to your face,
       using an engine hoist so it doesn't shatter your spine
@@ -133,7 +132,7 @@ Hello, and welcome to "Welcome to Reality with Ben Scott" with me, Ben Scott.
     * everything should be at least 0.5m from the Player's face
 
 * VR Dev Law #3: Substance Abuse is Fine®
-    * Physically Based Rendering / Shading (PBR) is clutch AF in VR
+    * Physically Based Rendering / Shading (PBR) is clutch in VR
     * PBR approximates real, physical materials that have surface details
     * without them it's impossible to gage if an object is spinning / far away
     * flat shading can *take a bracing shot at the moon* for all I care
