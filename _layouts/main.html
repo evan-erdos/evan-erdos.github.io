@@ -13,10 +13,7 @@
   <body>
     {% include header.html %}
 
-    <div id="CoffeeCode" class="mainContainer" style="background: #000;"></div>
-    <script src="/js/lib/three.min.js"></script>
-    <script src="/js/lib/OrbitControls.js"></script>
-    <script language="javascript" src="/js/{{ page.feature }}.js"></script>
+    {% include feature.html %}
 
     <div id="main" role="main" class="container">
       {{ content }}
